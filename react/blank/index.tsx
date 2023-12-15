@@ -4,11 +4,6 @@ import { createRoot } from 'react-dom/client';
 import './src/styles/reset.css';
 import './src/styles/vars.css';
 
-import './index.css';
-
-import './src/i18n/i18n';
-
-
 import { BrowserRouter } from 'react-router-dom';
 import Root from './src/Root';
 
