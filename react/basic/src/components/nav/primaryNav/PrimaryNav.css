@@ -1,0 +1,10 @@
+nav.primary-nav-wrapper {
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+}
+
+nav.primary-nav-wrapper ul {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

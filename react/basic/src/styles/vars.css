@@ -1,0 +1,6 @@
+:root {
+  --clr-white: #ffffff;
+  --clr-black: #000000;
+
+  --border-loading-spinner: solid 5px var(--clr-white);
+}
