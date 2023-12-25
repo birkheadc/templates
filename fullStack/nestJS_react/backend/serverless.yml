@@ -1,0 +1,32 @@
+service: project_name_backend
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-southeast-2
+  iam:
+    role:
+      name: project_name-backend-role
+      # statements:
+      #   - Effect: Allow
+      #     Action: 'dynamodb:*'
+      #     Resource:
+      #       - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/LeaveACommentUsers'
+      #       - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/LeaveACommentComments'
+      #   - Effect: Allow
+      #     Action: 'secretsmanager:GetSecretValue'
+      #     Resource: 'arn:aws:secretsmanager:ap-southeast-2:290153383648:secret:Secrets-K5NU5a'
+
+functions:
+  api:
+    handler: dist/lambda.handler
+    events:
+      - http:
+          method: any
+          path: /{proxy+}
+          cors: true

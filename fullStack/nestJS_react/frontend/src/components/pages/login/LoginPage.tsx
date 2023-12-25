@@ -25,7 +25,7 @@ export default function LoginPage(props: ILoginPageProps): JSX.Element | null {
 
   const submit = async (request: LoginCredentials) => {
     setLoading(true);
-    const result = await api.session.login(request);
+    const result = await api.auth.login(request);
     setRecentResult(result);
     if (result.wasSuccess) {
       login(result.body);

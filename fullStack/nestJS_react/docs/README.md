@@ -9,21 +9,27 @@ This is my current working template for creating full stack applications. It use
 - Create .env in the root directory (.env is not included in the repository as it is in .gitignore)
   - Lately I have begun to use .env only in development; I set environment variables differently in production
 
-- Initialize the app with `npm init`, then follow the prompts.
-  - entry point should be `index.tsx`
+<!-- - Initialize the app with `npm init`, then follow the prompts.
+  - entry point should be `index.tsx` -->
 
-- Install dependencies and dev-dependencies with the following commands:
+<!-- - Install dependencies and dev-dependencies with the following commands:
   - `npm install react react-dom react-router-dom react-modal`
-  - `npm install --save-dev @babel/cli @babel/core @babel/preset-react @babel/preset-typescript @types/node @types/react-dom @types/react-modal babel-loader css-loader dotenv-webpack html-webpack-plugin node-polyfill-webpack-plugin style-loader typescript webpack webpack-cli webpack-dev-server webpack-merge`
+  - `npm install --save-dev @babel/cli @babel/core @babel/preset-react @babel/preset-typescript @types/node @types/react-dom @types/react-modal babel-loader css-loader dotenv-webpack html-webpack-plugin node-polyfill-webpack-plugin style-loader typescript webpack webpack-cli webpack-dev-server webpack-merge` -->
 
-- Add scripts to `package.json` for start / build:
+<!-- - Add scripts to `package.json` for start / build:
   ```
   "scripts": {
     "start": "webpack-dev-server . --config ./webpack/webpack.dev.js",
     "build": "webpack . --config ./webpack/webpack.prod.js"
   },
-  ```
+  ``` -->
 
-- Run `npm run start` and confirm that `localhost:3000` displays the app.
+<!-- - Run `npm run start` and confirm that `localhost:3000` displays the app. -->
+
+- Replace all instances of `project_name` in all files with the name of the new project.
+
+- Make sure the app works.
+  - Grant executable permission to `start.sh` in the root directory, then run it with `./start.sh`.
+  - Attempt to login with the credentials `admin`/`password`. If it works, the front- and back-end are connecting properly.
 
 - Delete the contents of this README from the new project if you like.

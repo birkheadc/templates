@@ -5,8 +5,7 @@ const apiConfig: ApiConfig = {
     timeout: 8000
   },
   authentication: {
-    url: process.env.AUTHENTICATION_URL || "not_set",
-    method: "POST"
+    url: (process.env.BACKEND_URL ?? "not_set") + "/auth"
   }
 }
 

@@ -7,6 +7,7 @@ export type ResultError = {
 export class Result<T = any> {
   wasSuccess: boolean = false;
   errors: ResultError[] = [];
+  message?: string | undefined = undefined;
   body?: T | undefined = undefined;
 
   static Fail<T>(): Result<T> {
@@ -19,6 +20,11 @@ export class Result<T = any> {
     const result = new Result<T>();
     result.wasSuccess = true;
     return result;
+  }
+
+  WithMessage(message: string): Result {
+    this.message = message;
+    return this;
   }
 
   WithError(error: ResultError): Result {

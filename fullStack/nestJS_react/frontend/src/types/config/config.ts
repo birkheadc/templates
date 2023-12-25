@@ -7,7 +7,6 @@ export type ApiConfig = {
     timeout: number
   },
   authentication: {
-    url: string,
-    method: string
+    url: string
   }
 }

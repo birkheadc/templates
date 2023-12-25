@@ -10,6 +10,7 @@ interface IHomePageProps {
  * @returns {JSX.Element | null}
  */
 function HomePage(props: IHomePageProps): JSX.Element | null {
+
   return (
     <main>
       <h1>Home</h1>

@@ -1,5 +1,5 @@
-import session from "./session"
+import auth from "./auth";
 
 export default {
-  session
+  auth
 }
