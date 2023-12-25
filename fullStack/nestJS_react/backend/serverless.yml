@@ -12,15 +12,14 @@ provider:
   iam:
     role:
       name: project_name-backend-role
-      # statements:
-      #   - Effect: Allow
-      #     Action: 'dynamodb:*'
-      #     Resource:
-      #       - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/LeaveACommentUsers'
-      #       - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/LeaveACommentComments'
-      #   - Effect: Allow
-      #     Action: 'secretsmanager:GetSecretValue'
-      #     Resource: 'arn:aws:secretsmanager:ap-southeast-2:290153383648:secret:Secrets-K5NU5a'
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'
+          Resource:
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/project_nameUsers'
+        - Effect: Allow
+          Action: 'secretsmanager:GetSecretValue'
+          Resource: 'arn:aws:secretsmanager:ap-southeast-2:290153383648:secret:Secrets-K5NU5a'
 
 functions:
   api:

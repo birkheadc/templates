@@ -15,6 +15,12 @@ export class AuthController {
     return jwt;
   }
 
+  @Post()
+  @UseGuards(AuthGuard)
+  async changePassword() {
+    console.log('Able to change password but who is this?');
+  }
+
   @Get()
   @UseGuards(AuthGuard)
   async verifyToken() { }

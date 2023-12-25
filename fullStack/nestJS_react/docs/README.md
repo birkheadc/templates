@@ -28,6 +28,10 @@ This is my current working template for creating full stack applications. It use
 
 - Replace all instances of `project_name` in all files with the name of the new project.
 
+- Create a DynamoDB with the name `project_nameUsers` and Partition Key `id`
+  - Add a user with username `admin` and no password
+  - A user with no password will have their password reset to `password` on first login attempt.
+
 - Make sure the app works.
   - Grant executable permission to `start.sh` in the root directory, then run it with `./start.sh`.
   - Attempt to login with the credentials `admin`/`password`. If it works, the front- and back-end are connecting properly.
