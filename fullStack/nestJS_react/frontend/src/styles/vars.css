@@ -13,4 +13,6 @@
 
   --box-shadow-normal: 2px 2px 2px var(--clr-black);
   --box-shadow-small: 1px 1px 1px var(--clr-black);
+
+  --bg-gradient: linear-gradient(127deg, var(--clr-accent-dark) 0%, var(--clr-accent-light) 60%);
 }

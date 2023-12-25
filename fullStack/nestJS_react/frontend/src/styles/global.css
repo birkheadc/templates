@@ -5,25 +5,33 @@ html {
 
 body {
   background: var(--clr-accent-dark);
-  background: linear-gradient(127deg, var(--clr-accent-dark) 20%, var(--clr-accent-light) 200%);
-  height: 100vh;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 main {
   background-color: var(--clr-white);
-  min-width: 600px;
-  max-width: 980px;
+  min-width: min(600px, 90%);
+  max-width: min(980px, 90%);
   margin: 30px auto;
   padding: 20px;
+
+  min-height: 400px;
+
   box-shadow: var(--box-shadow-normal);
 }
 
 h1 {
   text-align: center;
-  display: block;
-  width: 100%;
   font-size: 1.7em;
   font-weight: 700;
+  padding: 20px;
+}
+
+span.center {
+  display: block;
+  text-align: center;
 }
 
 .error {
@@ -32,4 +40,14 @@ h1 {
 
 .success {
   color: var(--clr-success);
+}
+
+.heavy {
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  :root {
+    font-size: 1.5rem;
+  }
 }

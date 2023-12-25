@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DEFAULT_SESSION, Session, SessionStatus } from '../../../types/session/session';
 import { LoadingSpinnerContext } from '../loadingSpinner/LoadingSpinnerContext';
 import api from '../../../api';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   children: React.ReactNode
@@ -10,16 +11,19 @@ type Props = {
 type State = {
   session: Session,
   login: (token: string | undefined) => void,
-  logout: () => void
+  logout: () => void,
+  expire: () => void
 }
 
 const LOCAL_STORAGE_TOKEN_KEY = "token";
 
-export const SessionContext = React.createContext<State>({ session: DEFAULT_SESSION, login: () => {}, logout: () => {} });
+export const SessionContext = React.createContext<State>({ session: DEFAULT_SESSION, login: () => {}, logout: () => {}, expire: () => {} });
 export const SessionProvider = ({ children }: Props) => {
-  const [ session, setSession ] = React.useState<Session>(DEFAULT_SESSION);
 
+  const [ session, setSession ] = React.useState<Session>(DEFAULT_SESSION);
   const { setLoading } = React.useContext(LoadingSpinnerContext);
+
+  const nav = useNavigate();
 
   React.useEffect(() => {
     (async function automaticallyLoginOnMount() {
@@ -34,7 +38,7 @@ export const SessionProvider = ({ children }: Props) => {
       if (result.wasSuccess) {
         login(token);
       } else {
-        logout();
+        expire();
       }
     })();
   }, []);
@@ -54,8 +58,16 @@ export const SessionProvider = ({ children }: Props) => {
       token: undefined
     });
   }
+  const expire = () => {
+    window.localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+    setSession({
+      status: SessionStatus.EXPIRED,
+      token: undefined
+    });
+    nav('/login');
+  }
   return (
-    <SessionContext.Provider value={{ session, login, logout }} >
+    <SessionContext.Provider value={{ session, login, logout, expire }} >
       { children }
     </SessionContext.Provider>
   );

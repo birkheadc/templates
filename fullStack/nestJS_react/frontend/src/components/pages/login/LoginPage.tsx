@@ -8,6 +8,7 @@ import api from '../../../api';
 import ResultDisplay from '../../resultDisplay/ResultDisplay';
 import { Result } from '../../../types/result/result';
 import { SessionContext } from '../../../app/contexts/session/SessionContext';
+import { SessionStatus } from '../../../types/session/session';
 
 interface ILoginPageProps {
 
@@ -21,7 +22,7 @@ export default function LoginPage(props: ILoginPageProps): JSX.Element | null {
 
   const [ recentResult, setRecentResult ] = React.useState<Result | undefined>(undefined);
   const { setLoading } = React.useContext(LoadingSpinnerContext);
-  const { login } = React.useContext(SessionContext);
+  const { session, login } = React.useContext(SessionContext);
 
   const submit = async (request: LoginCredentials) => {
     setLoading(true);
@@ -36,7 +37,8 @@ export default function LoginPage(props: ILoginPageProps): JSX.Element | null {
   return (
     <main className='login-page-wrapper'>
       <h1>Login</h1>
-      <ResultDisplay result={recentResult} displayErrors/>
+      {session.status === SessionStatus.EXPIRED && <span className='login-expired-message'>Your session has expired. Please log in again.</span>}
+      <ResultDisplay result={recentResult} />
       <LoginForm submit={submit} />
     </main>
   );

@@ -1,0 +1,6 @@
+span.login-expired-message {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: var(--clr-error);
+}

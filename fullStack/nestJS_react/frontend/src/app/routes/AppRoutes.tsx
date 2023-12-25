@@ -5,6 +5,8 @@ import { SessionContext } from '../contexts/session/SessionContext';
 import { SessionStatus } from '../../types/session/session';
 import LogoutPage from '../../components/pages/logout/LogoutPage';
 import LoginPage from '../../components/pages/login/LoginPage';
+import SettingsPage from '../../components/pages/settings/SettingsPage';
+import LoadingPage from '../../components/pages/loading/LoadingPage';
 
 interface IAppRoutesProps {
 
@@ -17,6 +19,14 @@ interface IAppRoutesProps {
 export default function AppRoutes(props: IAppRoutesProps): JSX.Element | null {
 
   const { session } = React.useContext(SessionContext);
+
+  if (session.status === SessionStatus.CHECKING) {
+    return (
+      <Routes>
+        <Route path='*' element={<LoadingPage />} />
+      </Routes>
+    )
+  }
 
   return (
     <Routes>
@@ -31,6 +41,7 @@ export default function AppRoutes(props: IAppRoutesProps): JSX.Element | null {
 
 const LoggedInRoutes = (
   <>
+    <Route path='/settings' element={<SettingsPage />} />
     <Route path='/logout' element={<LogoutPage />} />
   </>
 );

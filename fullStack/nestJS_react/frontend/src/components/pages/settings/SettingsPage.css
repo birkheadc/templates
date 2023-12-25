@@ -1,0 +1,20 @@
+section.settings-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+  margin: 0 auto;
+  padding: 20px;
+
+  border-width: 2px 0 0 0;
+  border-style: solid;
+  border-color: var(--clr-black);
+}
+
+section.settings-section h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+

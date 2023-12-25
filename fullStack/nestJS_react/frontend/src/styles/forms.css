@@ -9,6 +9,7 @@ form.standard-form {
   gap: 20px;
 
   width: fit-content;
+  max-width: 100%;
   margin: auto;
 }
 
@@ -34,11 +35,13 @@ button.standard-button {
   border: var(--border-pri);
   padding: 4px 8px;
   text-transform: capitalize;
+
+  user-select: none;
 }
 
 button.standard-button:hover, button.standard-button:focus {
   box-shadow: var(--box-shadow-normal);
-  background-color: var(--clr-accent-light);
+  color: var(--clr-accent-dark);
 }
 
 button.standard-button:active {

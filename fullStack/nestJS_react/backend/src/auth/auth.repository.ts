@@ -5,7 +5,7 @@ import { hashSync } from "bcrypt";
 
 @Injectable()
 export class AuthRepository {
-  private readonly tableName: string = 'project_nameUsers';
+  private readonly tableName: string = 'nextjsreacttemplateUsers';
   constructor(private readonly client: DynamoDBClient) { }
 
   async getUserCredentialsById(id: string): Promise<Credentials> {

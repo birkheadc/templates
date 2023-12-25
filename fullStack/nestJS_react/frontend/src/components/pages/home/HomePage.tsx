@@ -12,7 +12,7 @@ interface IHomePageProps {
 function HomePage(props: IHomePageProps): JSX.Element | null {
 
   return (
-    <main>
+    <main className='home-page-wrapper'>
       <h1>Home</h1>
     </main>
   );

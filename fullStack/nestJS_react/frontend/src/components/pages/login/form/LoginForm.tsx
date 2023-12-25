@@ -32,7 +32,7 @@ export default function LoginForm(props: ILoginFormProps): JSX.Element | null {
 
   return (
     <form className='login-form-wrapper standard-form' onSubmit={handleSubmit}>
-      <StandardFormLabeledInput label={'username'} name={'username'} value={request.username} handleChange={handleChange} />
+      <StandardFormLabeledInput autofocus label={'username'} name={'username'} value={request.username} handleChange={handleChange} />
       <StandardFormLabeledInput label={'password'} name={'password'} type='password' value={request.password} handleChange={handleChange} />
       <button type='submit' className='standard-button'>submit</button>
     </form>

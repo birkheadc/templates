@@ -1,5 +1,5 @@
 {
-  "name": "project_name-frontend",
+  "name": "nextjsreacttemplate-frontend",
   "version": "1.0.0",
   "description": "The React front end for my NestJS + React full-stack template.",
   "main": "index.tsx",

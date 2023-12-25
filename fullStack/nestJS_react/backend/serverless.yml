@@ -1,4 +1,4 @@
-service: project_name_backend
+service: nextjsreacttemplate_backend
 
 frameworkVersion: '3'
 
@@ -11,12 +11,12 @@ provider:
   region: ap-southeast-2
   iam:
     role:
-      name: project_name-backend-role
+      name: nextjsreacttemplate-backend-role
       statements:
         - Effect: Allow
           Action: 'dynamodb:*'
           Resource:
-            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/project_nameUsers'
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nextjsreacttemplateUsers'
         - Effect: Allow
           Action: 'secretsmanager:GetSecretValue'
           Resource: 'arn:aws:secretsmanager:ap-southeast-2:290153383648:secret:Secrets-K5NU5a'

@@ -8,6 +8,6 @@ export default (): Configuration => ({
   auth: {
     region: 'ap-southeast-2',
     secretId: 'Secrets',
-    secretName: 'project_nameJwtKey'
+    secretName: 'nextjsreacttemplateJwtKey'
   }
 })

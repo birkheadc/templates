@@ -5,6 +5,7 @@ import { compareSync } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { Credentials } from './entities/credentials.entity';
 import { hashSync } from 'bcrypt';
+import { TokenPayload } from './payload/tokenPayload';
 
 
 @Injectable()
@@ -17,7 +18,7 @@ export class AuthService {
     let validCredentials = await this.getValidCredentials(dto);
     
     if (this.verifyPassword(dto.password, validCredentials.password)) {
-      const payload = { sub: dto.username };
+      const payload: TokenPayload = { sub: dto.username };
       const token = await this.jwtService.signAsync(payload);
       return token;
     }

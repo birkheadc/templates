@@ -4,7 +4,7 @@ This is my current working template for creating full stack applications. It use
 
 ## How to Create
 
-- Copy all of the folders and files in the root `basic` directory to a new directory.
+- Copy all of the folders and files in the root directory to a new directory.
 
 - Create .env in the root directory (.env is not included in the repository as it is in .gitignore)
   - Lately I have begun to use .env only in development; I set environment variables differently in production
@@ -26,9 +26,9 @@ This is my current working template for creating full stack applications. It use
 
 <!-- - Run `npm run start` and confirm that `localhost:3000` displays the app. -->
 
-- Replace all instances of `project_name` in all files with the name of the new project.
+- Replace all instances of `nextjsreacttemplate` in all files with the name of the new project.
 
-- Create a DynamoDB with the name `project_nameUsers` and Partition Key `id`
+- Create a DynamoDB with the name `{project_name}Users` and Partition Key `id`
   - Add a user with username `admin` and no password
   - A user with no password will have their password reset to `password` on first login attempt.
 
