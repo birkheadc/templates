@@ -1,5 +1,7 @@
-import login from "./login"
+import login from "./login";
+import verifyToken from "./verifyToken";
 
 export default {
-  login
+  login,
+  verifyToken
 }
