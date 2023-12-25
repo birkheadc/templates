@@ -1,0 +1,16 @@
+:root {
+  --clr-white: white;
+  --clr-black: black;
+
+  --clr-accent-light: lightblue;
+  --clr-accent-dark: navy;
+
+  --clr-error: red;
+  --clr-success: green;
+
+  --border-pri: 1px solid var(--clr-black);
+  --border-loading-spinner: solid 5px var(--clr-white);
+
+  --box-shadow-normal: 2px 2px 2px var(--clr-black);
+  --box-shadow-small: 1px 1px 1px var(--clr-black);
+}

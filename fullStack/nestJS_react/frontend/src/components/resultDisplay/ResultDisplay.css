@@ -1,0 +1,14 @@
+div.result-display-wrapper {
+  width: fit-content;
+  margin: auto;
+}
+
+span.result-display-title {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+ul.result-display-errors-list {
+  list-style-type: disc;
+  list-style-position:inside;
+}
