@@ -6,8 +6,9 @@ type Configuration = {
 
 export default (): Configuration => ({
   auth: {
-    region: 'ap-southeast-2',
-    secretId: 'Secrets',
-    secretName: 'nextjsreacttemplateJwtKey'
+    region: process.env.AWS_REGION,
+    endpoint: process.env.AWS_DYNAMODB_ENDPOINT,
+    secretId: process.env.AWS_SECRET_ID,
+    secretName: process.env.AWS_AUTH_JWT_SECRET_NAME
   }
 })

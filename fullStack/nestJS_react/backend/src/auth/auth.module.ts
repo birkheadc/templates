@@ -12,8 +12,10 @@ import helpers from '../shared/helpers';
   controllers: [AuthController],
   providers: [AuthService, AuthRepository, AuthConfig, {
     provide: DynamoDBClient,
-    useFactory: () => {
-      return new DynamoDBClient({ region: 'ap-southeast-2' })
+    inject: [ ConfigService ],
+    useFactory: (configService: ConfigService) => {
+      const config = new AuthConfig(configService);
+      return new DynamoDBClient({ region: config.region, endpoint: config.endpoint })
     }
   }],
   imports: [

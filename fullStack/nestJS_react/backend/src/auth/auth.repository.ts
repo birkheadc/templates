@@ -1,7 +1,6 @@
-import { DynamoDBClient, GetItemCommand, PutItemCommand, QueryCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, GetItemCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import {HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { Credentials } from "./entities/credentials.entity";
-import { hashSync } from "bcrypt";
 
 @Injectable()
 export class AuthRepository {

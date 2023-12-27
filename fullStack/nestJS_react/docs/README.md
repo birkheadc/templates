@@ -28,12 +28,59 @@ This is my current working template for creating full stack applications. It use
 
 - Replace all instances of `nextjsreacttemplate` in all files with the name of the new project.
 
-- Create a DynamoDB with the name `{project_name}Users` and Partition Key `id`
-  - Add a user with username `admin` and no password
-  - A user with no password will have their password reset to `password` on first login attempt.
-
 - Make sure the app works.
   - Grant executable permission to `start.sh` in the root directory, then run it with `./start.sh`.
   - Attempt to login with the credentials `admin`/`password`. If it works, the front- and back-end are connecting properly.
 
 - Delete the contents of this README from the new project if you like.
+
+# Deployment
+
+## Backend
+Backend deployment is done with Serverless. `serverless.yml` in the backend's root directory contains all the instructions Serverless needs to deploy the backend, including creating API Gateway, Lambda, and DynamoDB tables.
+
+### Secrets
+The only thing that must be manually created are the Secrets used by the app.
+
+The template needs only one secret: the secret used to sign jwt tokens for authentication.
+
+Create secrets however you like on AWS Secret Manager. AuthConfig expects the name of the Secret as the `secretId`, and the name of the secret (the key on the secret object that pertains to the JWT signing key) as `secretName`.
+
+### Development
+Development also uses Serverless, serverless-offline to be exact. This replicates deployment on AWS, using a local instance of DynamoDB. Run `npm run start:serverless` to launch in this mode. `start.sh` in the root directory uses this command.
+
+### Packages
+There are a number of packages related to Serverless that I use in combination to create a more seamless development -> production pipeline.
+
+#### @codegenie/serverless-express
+The main package that handles deploying to AWS. Creates most necessary services automatically. Currently, AWS secrets must be created manually, though I hope to change that.
+
+#### serverless-offline
+Allows deploying to a local, offline simulation of AWS for development purposes.
+
+#### serverless-dynamodb
+Spins up and uses a local instance of DynamoDB when deploying offline. A fork of `serverless-dynamodb-local`, which is apparently no longer maintained.
+
+#### serverless-scriptable-plugin
+Allows the execution of arbitrary commands when deploying (does not work with serverless-offline). I use this mainly to run a script to seed the database after deploying.
+
+### Serverless Config
+My serverless configuration has gotten difficult to follow, so I'll explain it here before I forget.
+
+The `serverless` directory contains a script to seed the database after deploying (to AWS, not locally) and the data to be seeded (the data IS used both locally and on AWS)
+
+`serverless.yml.custom` contains instructions for plugins to help streamline deployment.
+
+`custom.serverless-dynamodb` contains information for the LOCAL instance of DynamoDB. `custom.serverless-dynamodb.seed` is where data to be seeded to the DynamoDB should be declared. Again, this section DOES NOT HAVE ANYTHING TO DO with production deployment to AWS.
+
+`custom.scriptable` is where custome scripts to be run when deploying to AWS can be configured. At the moment, the only one is a script that seeds the database after deployment is finalized.
+
+In `provider`, an IAM role is declared. This is the role that Serverless will create on our behalf. Any services not created by Serverless, that this role needs to access, should be declared here. Serverless will grant the newly created role the necessary permissions.
+
+`resources` are where additional services can be declared, and Serverless will create them. At the moment, the only one is the DynamoDB table for Users. This DynamoDB table is also created when deploying locally. I would like to declare Secrets here eventually as well.
+
+The `functions` section is simply where we declare the lambda handler function that is the entry point once deployed to lambda.
+
+## Frontend
+
+So far the front end is a pretty basic React SPA. Will write more here later if needed.

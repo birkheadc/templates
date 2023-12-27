@@ -4,6 +4,6 @@ echo ""
 echo "Starting NestJS_React_Template in Dev"
 echo ""
 npm run start --prefix frontend &
-npm run start:dev --prefix backend &
+npm run start:serverless --prefix backend &
 trap 'pkill -P $$' SIGINT SIGTERM
 wait
