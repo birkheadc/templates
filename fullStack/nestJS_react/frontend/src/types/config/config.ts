@@ -8,5 +8,8 @@ export type ApiConfig = {
   },
   authentication: {
     url: string
+  },
+  users: {
+    url: string
   }
 }

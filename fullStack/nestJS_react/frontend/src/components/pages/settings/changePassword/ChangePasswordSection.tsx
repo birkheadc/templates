@@ -28,7 +28,7 @@ export default function ChangePasswordSection(props: IChangePasswordSectionProps
       return;
     }
     setLoading(true);
-    const result = await api.auth.changePassword(session.token, request);
+    const result = await api.users.changePassword(session.token, request);
     setRecentResult(result);
     setLoading(false);
     if (result.errors.some(e => e.statusCode === 401)) expire();

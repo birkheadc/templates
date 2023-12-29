@@ -4,8 +4,6 @@ import { InjectableConfig } from "src/config/injectableConfig";
 
 @Injectable()
 export class AuthConfig extends InjectableConfig {
-  region: string | undefined;
-  endpoint: string | undefined;
   secretId: string | undefined;
   secretName: string | undefined;
   constructor(configService: ConfigService) {

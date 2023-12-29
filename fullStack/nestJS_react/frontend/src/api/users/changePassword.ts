@@ -4,7 +4,7 @@ import { ChangePasswordRequest } from "../../types/settings/changePassword";
 import helpers from "../helpers";
 
 export default async function changePassword(token: string, request: ChangePasswordRequest): Promise<Result> {
-  const url = config.api.authentication.url + '/change-password';
+  const url = config.api.users.url + '/change-password';
   const { signal, timeout } = helpers.getAbortSignal();
 
   try {

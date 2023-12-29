@@ -1,13 +1,13 @@
 import { DynamoDBClient, GetItemCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import {HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { Credentials } from "./entities/credentials.entity";
+import { User } from "./entities/user.entity";
 
 @Injectable()
-export class AuthRepository {
+export class UsersRepository {
   private readonly tableName: string = 'nextjsreacttemplateUsers';
   constructor(private readonly client: DynamoDBClient) { }
 
-  async getUserCredentialsById(id: string): Promise<Credentials> {
+  async getUserById(id: string): Promise<User> {
     const command = new GetItemCommand({
       TableName: this.tableName,
       Key: { id: { S: id } }
@@ -17,29 +17,28 @@ export class AuthRepository {
       const response = await this.client.send(command);
       if (!response.Item) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
 
-      const credentials = Credentials.fromDynamoDBObject(response.Item);
-      return credentials;
+      const user = User.fromDynamoDBObject(response.Item);
+      return user;
     } catch (error) {
-      console.log('Error in getUserCredentialsById', error);
+      console.log('Error in getUserById', error);
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
   }
 
-  async changePassword(newCredentials: Credentials): Promise<Credentials> {
+  async putUser(user: User): Promise<User> {
     const command = new PutItemCommand({
       TableName: this.tableName,
-      Item: Credentials.toItemObject(newCredentials),
+      Item: User.toItemObject(user),
       ReturnValues: 'ALL_OLD'
-    })
+    });
     try {
       const response = await this.client.send(command);
+      // TODO: This is attempting to check whether the command failed, and throw if it did. But I'm not sure if that's what is actually happening.
       if (response.Attributes == null) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-      return newCredentials;
+      return user;
     } catch (error) {
-      console.log('Error in changePassword', error);
+      console.log('Error in putUser', error);
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-    }
-
-    
+    }    
   }
 }
