@@ -1,4 +1,4 @@
-import { configure as serverlessExpress } from '@vendia/serverless-express';
+import { configure as serverlessExpress } from '@codegenie/serverless-express';
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./src/app.module";
 

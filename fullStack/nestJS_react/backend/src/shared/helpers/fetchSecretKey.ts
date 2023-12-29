@@ -3,6 +3,7 @@ import { HttpException, HttpStatus } from "@nestjs/common";
 import { AuthConfig } from "src/auth/auth.config";
 
 export const fetchSecretKey = async (config: AuthConfig) => {
+  console.log('Fetch secret key: ', { region: config.region, secretId: config.secretId, secretName: config.secretName });
   const client = new SecretsManagerClient({
     region: config.region
   });
@@ -14,7 +15,7 @@ export const fetchSecretKey = async (config: AuthConfig) => {
     const response = await client.send(command);
     const secrets = response.SecretString;
     if (secrets == null) throw new HttpException('Error', HttpStatus.INTERNAL_SERVER_ERROR);
-    const secret = JSON.parse(secrets)[config.secretName];
+    const secret = JSON.parse(secrets)[config.secretName ?? ''];
     return secret;
   } catch (error) {
     console.log('Error while fetching secret key: ', error);
