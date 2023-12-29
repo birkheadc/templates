@@ -6,12 +6,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import helpers from '../shared/helpers';
 import { UsersModule } from '../users/users.module';
-import { AuthGuard } from './auth.guard';
+import { PassportModule } from '@nestjs/passport';
+import { HttpStrategy } from './strategies/http.strategy';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, AuthConfig, ],
-  imports: [ UsersModule, JwtModule.registerAsync({
+  providers: [AuthService, AuthConfig, HttpStrategy, ],
+  imports: [ UsersModule, PassportModule, JwtModule.registerAsync({
     inject: [ ConfigService ],
     useFactory: async (configService: ConfigService) => {
       const config = new AuthConfig(configService);

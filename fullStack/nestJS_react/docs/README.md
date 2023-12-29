@@ -83,4 +83,4 @@ The `functions` section is simply where we declare the lambda handler function t
 
 ## Frontend
 
-So far the front end is a pretty basic React SPA. Will write more here later if needed.
+So far the front end is a pretty basic React SPA. Will write more here later if needed. 

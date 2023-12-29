@@ -1,4 +1,4 @@
-import { DynamoDBClient, GetItemCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, GetItemCommand, PutItemCommand, ScanCommand, ScanCommandInput } from "@aws-sdk/client-dynamodb";
 import {HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { User } from "./entities/user.entity";
 
@@ -18,6 +18,24 @@ export class UsersRepository {
       if (!response.Item) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
 
       const user = User.fromDynamoDBObject(response.Item);
+      return user;
+    } catch (error) {
+      console.log('Error in getUserById', error);
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+  }
+
+  async getUserByUsername(username: string): Promise<User> {
+    const command = new ScanCommand({
+      TableName: this.tableName,
+      IndexName: 'username'
+    });
+
+    try {
+      const response = await this.client.send(command);
+      if (!response.Items) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+
+      const user = User.fromDynamoDBObject(response.Items[0]);
       return user;
     } catch (error) {
       console.log('Error in getUserById', error);

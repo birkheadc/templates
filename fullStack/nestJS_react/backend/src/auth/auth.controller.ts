@@ -1,21 +1,21 @@
-import { Controller, Post, Get, Headers, UseGuards } from '@nestjs/common';
+import { Controller, Post, Get, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { GetTokenDto } from './dto/get-token.dto';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
 
   constructor(private readonly service: AuthService) { }
 
-  @Post()
-  async getToken(@Headers('authorization') authorization: string): Promise<string> {
-    const dto: GetTokenDto = GetTokenDto.fromBasicAuth(authorization);
-    const jwt: string = await this.service.getToken(dto);
-    return jwt;
+  @Post('login')
+  @UseGuards(AuthGuard('basic'))
+  async login(@Request() request: any): Promise<string> {
+    const user = request.user;
+    console.log('User:', user);
+    return 'ok';
   }
 
   @Get()
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   async verifyToken() { }
 }

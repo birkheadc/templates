@@ -7,7 +7,6 @@ import { UsersModule } from './users/users.module';
 import configuration from './config/configuration';
 
 const ENV = process.env.NODE_ENV;
-console.log(`Environment: ${ENV}`);
 @Module({
   imports: [ConfigModule.forRoot({
     load: [ configuration ],

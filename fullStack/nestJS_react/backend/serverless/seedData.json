@@ -1,6 +1,9 @@
 [
   {
     "id": {
+      "S": "000"
+    },
+    "username": {
       "S": "admin"
     },
     "password": {

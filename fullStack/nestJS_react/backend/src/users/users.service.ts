@@ -11,8 +11,12 @@ export class UsersService {
     return this.repository.getUserById(id);
   }
 
-  async changePassword(user: User): Promise<User> {
-    const hash = hashSync(user.password, 10);
+  async getUserByUsername(username: string): Promise<User> {
+    return this.repository.getUserByUsername(username);
+  }
+
+  async changePassword(user: User, newPassword: string): Promise<User> {
+    const hash = hashSync(newPassword, 10);
     return await this.repository.putUser({ ...user, password: hash });
   }
 }

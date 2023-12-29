@@ -27,3 +27,7 @@
 - Readme needs a lot of updating. Best do it while I still remember what I've done and why
 
 - @vendia/serverless-express is now @codegenie/serverless-express. Haven't even tested if the old code still works! So do that!
+
+- Moving to passport for authentication
+  - Main stuff is done, need to fix and clean up now
+  - then add authentication for bearer

@@ -1,37 +1,32 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { GetTokenDto } from './dto/get-token.dto';
 import { compareSync } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { Credentials } from './entities/credentials.entity';
-import { hashSync } from 'bcrypt';
-import { TokenPayload } from './payload/tokenPayload';
 import { UsersService } from '../users/users.service';
+import { User } from 'src/users/entities/user.entity';
 
 
 @Injectable()
 export class AuthService {
   constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService ) { }
 
-  async getToken(dto: GetTokenDto): Promise<string> {
-    if (dto.id === '' || dto.password === '') throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+  async validateUser(username: string, password: string): Promise<Omit<User, 'password'>> {
+    const user = await this.usersService.getUserByUsername(username);
+    if (compareSync(password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    const { password: _, ...result } = user;
+    return result;
+  }
 
-    let validCredentials = await this.getValidCredentials(dto);
+  // async getToken(dto: GetTokenDto): Promise<string> {
+  //   if (dto.username === '' || dto.password === '') throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+
+  //   let validCredentials = await this.getValidCredentials(dto);
     
-    if (this.verifyPassword(dto.password, validCredentials.password)) {
-      const payload: TokenPayload = { sub: dto.id };
-      const token = await this.jwtService.signAsync(payload);
-      return token;
-    }
+  //   if (this.verifyPassword(dto.password, validCredentials.password)) {
+  //     const payload: TokenPayload = { sub: dto.username };
+  //     const token = await this.jwtService.signAsync(payload);
+  //     return token;
+  //   }
 
-    throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-  }
-
-  private async getValidCredentials(dto: GetTokenDto): Promise<Credentials> {
-    const user = await this.usersService.getUser(dto.id);
-    return { id: user.id, password: user.password };
-  }
-
-  verifyPassword(password: string, hash: string): boolean {
-    return compareSync(password, hash);
-  }
+  //   throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+  // }
 }
