@@ -7,6 +7,9 @@ import { SecretsConfig } from './secrets.config';
     provide: SecretsService,
     inject: [ SecretsConfig ],
     useFactory: async (config: SecretsConfig) => {
+      if (process.env.NODE_ENV === 'development') {
+        return SecretsService.createDev(config);
+      }
       const service = await SecretsService.createAsync(config);
       return service;
     }

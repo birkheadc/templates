@@ -6,6 +6,8 @@ import { ConfigService } from "@nestjs/config";
 export class SecretsConfig extends InjectableConfig {
   region: string | undefined;
   secretId: string | undefined;
+  secretNames: (string | undefined)[];
+  devSecretValue: string | undefined;
   constructor(configService: ConfigService) {
     super(configService, 'secrets');
   }

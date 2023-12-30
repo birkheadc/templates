@@ -18,6 +18,8 @@ export default (): Configuration => ({
   },
   secrets: {
     region: process.env.AWS_REGION,
-    secretId: process.env.AWS_SECRET_ID
+    secretId: process.env.AWS_SECRET_ID,
+    secretNames: [ process.env.AWS_AUTH_JWT_SECRET_NAME ],
+    devSecretValue: process.env.AWS_DEV_SECRET_VALUE
   }
 })
