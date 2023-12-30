@@ -31,3 +31,5 @@
 - Moving to passport for authentication
   - Main stuff is done, need to fix and clean up now
   - then add authentication for bearer
+
+- JWT (Bearer) Auth is now working, need to add it to password changing endpoints, and make sure it works
