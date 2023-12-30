@@ -1,8 +1,9 @@
 import { Body, Controller, Post, UseGuards, Request } from '@nestjs/common';
-import { AuthenticatedRequest } from '../auth/request/authenticatedRequest';
+import { BearerAuthenticatedRequest } from '../auth/request/bearerAuthenticatedRequest';
 import { ChangePasswordDto } from './dtos/change-password.dto';
 import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('users')
 export class UsersController {
@@ -10,7 +11,8 @@ export class UsersController {
   constructor(private readonly service: UsersService) { }
 
   @Post('change-password')
-  async changePassword(@Request() request: AuthenticatedRequest, @Body() dto: ChangePasswordDto) {
+  @UseGuards(AuthGuard('jwt'))
+  async changePassword(@Request() request: BearerAuthenticatedRequest, @Body() dto: ChangePasswordDto) {
     const user = new User();
     await this.service.changePassword(user, dto.password);
   }

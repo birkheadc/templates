@@ -6,6 +6,7 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { ConfigService } from '@nestjs/config';
 import { UsersController } from './users.controller';
 import { AuthModule } from '../auth/auth.module';
+import { JwtStrategy } from '../auth/strategies/jwt.strategy';
 
 @Module({
   providers: [UsersService, UsersRepository, UsersConfig, {
@@ -17,7 +18,7 @@ import { AuthModule } from '../auth/auth.module';
     }
   }],
   controllers: [UsersController],
-  imports: [ ],
+  imports: [ forwardRef(() => AuthModule) ],
   exports: [ UsersService ]
 })
 export class UsersModule {}

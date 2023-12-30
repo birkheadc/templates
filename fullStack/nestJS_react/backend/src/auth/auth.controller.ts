@@ -1,6 +1,8 @@
-import { Controller, Post, Get, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Get, UseGuards, Request, HttpException, HttpStatus } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
+import { BearerAuthenticatedRequest } from './request/bearerAuthenticatedRequest';
+import { BasicAuthenticatedRequest } from './request/basicAuthenticatedRequest';
 
 @Controller('auth')
 export class AuthController {
@@ -9,13 +11,15 @@ export class AuthController {
 
   @Post('login')
   @UseGuards(AuthGuard('basic'))
-  async login(@Request() request: any): Promise<string> {
+  async login(@Request() request: BasicAuthenticatedRequest): Promise<string> {
     const user = request.user;
-    console.log('User:', user);
-    return 'ok';
+    const token = await this.service.getToken(user);
+    return token;
   }
 
   @Get()
-  // @UseGuards(AuthGuard)
-  async verifyToken() { }
+  @UseGuards(AuthGuard('jwt'))
+  async verifyToken(@Request() request: BearerAuthenticatedRequest) {
+    console.log('Token is good probably.');
+  }
 }

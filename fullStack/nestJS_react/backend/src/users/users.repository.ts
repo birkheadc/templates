@@ -1,4 +1,4 @@
-import { DynamoDBClient, GetItemCommand, PutItemCommand, ScanCommand, ScanCommandInput } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, GetItemCommand, PutItemCommand, QueryCommand, ScanCommand, ScanCommandInput } from "@aws-sdk/client-dynamodb";
 import {HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { User } from "./entities/user.entity";
 
@@ -8,6 +8,7 @@ export class UsersRepository {
   constructor(private readonly client: DynamoDBClient) { }
 
   async getUserById(id: string): Promise<User> {
+    console.log(`looking for user: (${id})`);
     const command = new GetItemCommand({
       TableName: this.tableName,
       Key: { id: { S: id } }
@@ -15,7 +16,10 @@ export class UsersRepository {
 
     try {
       const response = await this.client.send(command);
-      if (!response.Item) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+      if (!response.Item) {
+        console.log('no item in response:', response);
+        throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+      }
 
       const user = User.fromDynamoDBObject(response.Item);
       return user;
@@ -26,9 +30,13 @@ export class UsersRepository {
   }
 
   async getUserByUsername(username: string): Promise<User> {
-    const command = new ScanCommand({
+    const command = new QueryCommand({
       TableName: this.tableName,
-      IndexName: 'username'
+      IndexName: 'username',
+      KeyConditionExpression: 'username = :username',
+      ExpressionAttributeValues: {
+        ':username': { S: username }
+      }
     });
 
     try {

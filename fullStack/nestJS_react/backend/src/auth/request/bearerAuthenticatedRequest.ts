@@ -1,4 +1,4 @@
 import { Request } from "express";
 import { TokenPayload } from "../payload/tokenPayload";
 
-export type AuthenticatedRequest = Request & { user: TokenPayload }
+export type BearerAuthenticatedRequest = Request & { user: TokenPayload }
