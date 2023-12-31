@@ -1,13 +1,13 @@
 [
   {
     "id": {
-      "S": "000"
+      "S": ""
     },
     "username": {
       "S": "admin"
     },
     "password": {
-      "S": "$2b$10$Wx0gnpqACZYOP21tPhoreuYOWYqJO1vV8Wt2WXpOPgvCqzDqPZ8La"
+      "S": "password"
     }
   }
 ]

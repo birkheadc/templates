@@ -22,7 +22,7 @@ custom:
       domain:
         sources:
           - table: nextjsreacttemplateUsers
-            rawsources: [./serverless/seedData.json]
+            rawsources: [./serverless/seedData.dev.json]
   scriptable:
     hooks:
       after:aws:deploy:finalize:cleanup: node ./dist/serverless/seed.js ap-southeast-2
