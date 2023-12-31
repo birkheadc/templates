@@ -82,5 +82,21 @@ In `provider`, an IAM role is declared. This is the role that Serverless will cr
 The `functions` section is simply where we declare the lambda handler function that is the entry point once deployed to lambda.
 
 ## Frontend
-
-So far the front end is a pretty basic React SPA. Will write more here later if needed. 
+Frontend deployment is done through AWS Amplify. For now this is done manually, but only needs to be done once. Then continuous deployment is setup to update with every push to the repository.
+  - Create a new app on Amplify. Select 'Host we app'
+  - Select Github
+  - Select the repository
+    - If using a monorepo:
+      - Check the box and type in the root directory of the app
+      - Make sure `appRoot` in `amplify.yml` and what you type here match exactly
+  - In Advanced Settings, add any necessary environment variables
+    - If using a monorepo:
+      - Check again to make sure `AMPLIFY_MONOREPO_APP_ROOT` matches `appRoot` in `amplify.yml`
+  - Save and Deploy
+  - Go to Domain management to configure a custom domain
+  - Go to Rewrites and redirects. Add the following rule to make React's SPA routing work:
+    - Source address: `</^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>`
+    - Target address: `/index.html`
+    - Type: `200 (Rewrite)`
+  - From now on, every time there is a push to the repository, the app should update automatically.
+  
