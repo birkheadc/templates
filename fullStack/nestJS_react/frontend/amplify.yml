@@ -1,7 +1,7 @@
 version: 1
 applications:
   - frontend:
-      appRoot: /fullStack/nestJS_react/frontend
+      appRoot: fullStack/nestJS_react/frontend
       phases:
         preBuild:
           commands:
