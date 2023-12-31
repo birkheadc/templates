@@ -20,3 +20,18 @@ div.standard-form-labeled-input-wrapper>input:hover, div.standard-form-labeled-i
   color: var(--clr-accent-dark);
   box-shadow: var(--box-shadow-normal);
 }
+
+div.standard-form-labeled-input-outer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content:baseline;
+  align-items: flex-start;
+  height: 100%;
+}
+
+span.standard-form-labeleed-input-error-message {
+  color: var(--clr-error);
+  font-size: 0.7em;
+  min-height: 2.3em;
+  padding: 0.5em 0;
+}

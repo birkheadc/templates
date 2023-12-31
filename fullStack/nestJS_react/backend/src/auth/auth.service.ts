@@ -1,43 +1,25 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { AuthRepository } from './auth.repository';
-import { GetTokenDto } from './dto/get-token.dto';
 import { compareSync } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { Credentials } from './entities/credentials.entity';
-import { hashSync } from 'bcrypt';
+import { UsersService } from '../users/users.service';
+import { UserOmitPassword } from './entities/userOmitPassword';
 import { TokenPayload } from './payload/tokenPayload';
 
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly repository: AuthRepository, private readonly jwtService: JwtService ) { }
+  constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService ) { }
 
-  async getToken(dto: GetTokenDto): Promise<string> {
-    if (dto.username === '' || dto.password === '') throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-
-    let validCredentials = await this.getValidCredentials(dto);
-    
-    if (this.verifyPassword(dto.password, validCredentials.password)) {
-      const payload: TokenPayload = { sub: dto.username };
-      const token = await this.jwtService.signAsync(payload);
-      return token;
-    }
-
-    throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+  async validateUser(username: string, password: string): Promise<UserOmitPassword> {
+    const user = await this.usersService.getUserByUsername(username);
+    if (compareSync(password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    const { password: _, ...result } = user;
+    return result;
   }
 
-  private async getValidCredentials(dto: GetTokenDto): Promise<Credentials> {
-    let validCredentials = await this.repository.getUserCredentialsById(dto.username);
-    if (validCredentials.password === '') validCredentials = await this.changePassword({ ...validCredentials, password: 'password' });
-    return validCredentials;
-  }
-
-  verifyPassword(password: string, hash: string): boolean {
-    return compareSync(password, hash);
-  }
-
-  async changePassword(user: Credentials): Promise<Credentials> {
-    const hash = hashSync(user.password, 10);
-    return await this.repository.changePassword({ ...user, password: hash });
+  async getToken(user: UserOmitPassword): Promise<string> {
+    const payload: TokenPayload = { sub: user.id };
+    const token = await this.jwtService.signAsync(payload);
+    return token;
   }
 }

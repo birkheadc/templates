@@ -4,7 +4,7 @@ import { Result } from "../../types/result/result";
 import helpers from "../helpers";
 
 export default async function login(credentials: LoginCredentials):Promise<Result<string>> {
-  const url = config.api.authentication.url;
+  const url = config.api.authentication.url + '/login';
 
   const { signal, timeout } = helpers.getAbortSignal();
   

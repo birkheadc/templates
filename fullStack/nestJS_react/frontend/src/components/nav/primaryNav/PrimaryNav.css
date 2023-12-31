@@ -4,7 +4,7 @@ nav.primary-nav-wrapper {
 }
 
 div.primary-nav-inner-wrapper {
-  max-width: 980px;
+  max-width: min(980px, 90%);
 
   display: flex;
   flex-direction: row;

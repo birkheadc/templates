@@ -1,5 +1,6 @@
 export type Config = {
-  api: ApiConfig
+  api: ApiConfig,
+  validation: ValidationConfig
 }
 
 export type ApiConfig = {
@@ -8,5 +9,17 @@ export type ApiConfig = {
   },
   authentication: {
     url: string
+  },
+  users: {
+    url: string
+  }
+}
+
+export type ValidationConfig = {
+  settings: {
+    password: {
+      minChars: number,
+      maxChars: number
+    }
   }
 }

@@ -1,29 +1,24 @@
-import { Controller, Post, Get, Headers, UseGuards, Body, Request } from '@nestjs/common';
+import { Controller, Post, Get, UseGuards, Request, HttpException, HttpStatus } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { GetTokenDto } from './dto/get-token.dto';
-import { AuthGuard } from './auth.guard';
-import { ChangePasswordDto } from './dto/change-password.dto';
-import { AuthenticatedRequest } from './request/authenticatedRequest';
+import { BearerAuthenticatedRequest } from './request/bearerAuthenticatedRequest';
+import { BasicAuthenticatedRequest } from './request/basicAuthenticatedRequest';
+import { JwtGuard } from './guards/jwt.guard';
+import { BasicGuard } from './guards/basic.guard';
 
 @Controller('auth')
 export class AuthController {
 
   constructor(private readonly service: AuthService) { }
 
-  @Post()
-  async getToken(@Headers('authorization') authorization: string): Promise<string> {
-    const dto: GetTokenDto = GetTokenDto.fromBasicAuth(authorization);
-    const jwt: string = await this.service.getToken(dto);
-    return jwt;
-  }
-
-  @Post('change-password')
-  @UseGuards(AuthGuard)
-  async changePassword(@Request() request: AuthenticatedRequest, @Body() dto: ChangePasswordDto) {
-    await this.service.changePassword({ id: request.user.sub, password: dto.password });
+  @Post('login')
+  @UseGuards(BasicGuard)
+  async login(@Request() request: BasicAuthenticatedRequest): Promise<string> {
+    const user = request.user;
+    const token = await this.service.getToken(user);
+    return token;
   }
 
   @Get()
-  @UseGuards(AuthGuard)
+  @UseGuards(JwtGuard)
   async verifyToken() { }
 }

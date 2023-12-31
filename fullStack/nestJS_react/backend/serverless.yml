@@ -22,10 +22,10 @@ custom:
       domain:
         sources:
           - table: nextjsreacttemplateUsers
-            rawsources: [./serverless/seedData.json]
+            rawsources: [./serverless/seedData.dev.json]
   scriptable:
     hooks:
-      after:aws:deploy:finalize:cleanup: node ./dist/serverless/seed.js
+      after:aws:deploy:finalize:cleanup: node ./dist/serverless/seed.js ap-southeast-2
 
 provider:
   environment:
@@ -41,7 +41,7 @@ provider:
           Action: 'secretsmanager:GetSecretValue'
           Resource: 'arn:aws:secretsmanager:ap-southeast-2:290153383648:secret:Secrets-K5NU5a'
 
-resources: # CloudFormation template syntax
+resources:
   Resources:
     usersTable:
       Type: AWS::DynamoDB::Table
@@ -50,9 +50,18 @@ resources: # CloudFormation template syntax
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
+          - AttributeName: username
+            AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: username
+            KeySchema:
+              - AttributeName: username
+                KeyType: HASH
+            Projection:
+              ProjectionType: 'ALL'
         BillingMode: PAY_PER_REQUEST
 
 

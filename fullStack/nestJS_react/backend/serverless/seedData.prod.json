@@ -1,0 +1,13 @@
+[
+  {
+    "id": {
+      "S": ""
+    },
+    "username": {
+      "S": "admin"
+    },
+    "password": {
+      "S": "password"
+    }
+  }
+]

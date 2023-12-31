@@ -1,35 +1,30 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { AuthRepository } from './auth.repository';
 import { AuthConfig } from './auth.config';
-import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { JwtModule } from '@nestjs/jwt';
+import { UsersModule } from '../users/users.module';
+import { PassportModule } from '@nestjs/passport';
+import { HttpStrategy } from './strategies/http.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { SecretsModule } from '../secrets/secrets.module';
+import { SecretsService } from '../secrets/secrets.service';
 import { ConfigService } from '@nestjs/config';
-import helpers from '../shared/helpers';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, AuthRepository, AuthConfig, {
-    provide: DynamoDBClient,
-    inject: [ ConfigService ],
-    useFactory: (configService: ConfigService) => {
-      const config = new AuthConfig(configService);
-      return new DynamoDBClient({ region: config.region, endpoint: config.endpoint })
-    }
-  }],
-  imports: [
-    JwtModule.registerAsync({
-      inject: [ ConfigService ],
-      useFactory: async (configService: ConfigService) => {
-        const config = new AuthConfig(configService);
-        return {
-          secret: await helpers.fetchSecretKey(config),
-          global: true,
-          signOptions: { expiresIn: '1h' }
-        }
+  providers: [AuthService, AuthConfig, HttpStrategy, JwtStrategy],
+  imports: [ SecretsModule, UsersModule, PassportModule, JwtModule.registerAsync({
+    imports: [ SecretsModule ],
+    inject: [ SecretsService, ConfigService ],
+    useFactory: (secretsService: SecretsService, config: ConfigService) => {
+      const authConfig = new AuthConfig(config);
+      const secret = secretsService.getSecret(authConfig.secretName);
+      return {
+        secret: secret,
+        signOptions: { expiresIn: '1h' }
       }
-    })
-  ]
+    }
+  }) ]
 })
-export class AuthModule {}
+export class AuthModule { }
