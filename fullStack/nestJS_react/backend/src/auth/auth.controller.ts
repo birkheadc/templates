@@ -20,7 +20,5 @@ export class AuthController {
 
   @Get()
   @UseGuards(JwtGuard)
-  async verifyToken(@Request() request: BearerAuthenticatedRequest) {
-    console.log('Token is good probably.');
-  }
+  async verifyToken() { }
 }

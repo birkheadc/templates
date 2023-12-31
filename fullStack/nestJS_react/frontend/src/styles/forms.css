@@ -16,7 +16,7 @@ form.standard-form {
 div.standard-form-row {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   width: 100%;
 }
@@ -47,4 +47,10 @@ button.standard-button:hover, button.standard-button:focus {
 button.standard-button:active {
   scale: 0.95;
   box-shadow: var(--box-shadow-small);
+}
+
+button.standard-button:disabled {
+  color: var(--clr-accent-light);
+  border-color: var(--clr-accent-light);
+  pointer-events: none;
 }

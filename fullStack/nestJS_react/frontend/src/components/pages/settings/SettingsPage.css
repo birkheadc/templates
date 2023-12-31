@@ -4,13 +4,14 @@ section.settings-section {
   justify-content: center;
   align-items: center;
 
-  width: fit-content;
   margin: 0 auto;
   padding: 20px;
 
   border-width: 2px 0 0 0;
   border-style: solid;
   border-color: var(--clr-black);
+
+  max-width: fit-content;
 }
 
 section.settings-section h2 {
