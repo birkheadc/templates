@@ -2,7 +2,8 @@ import * as seedData from './seedData.json';
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 
 (async function seed() {
-  const client = new DynamoDBClient({ region: 'ap-southeast-2' });
+  const region = process.argv[0];
+  const client = new DynamoDBClient({ region: region });
   seedData.forEach(async (element) => {
     const command = new PutItemCommand({
       TableName: 'nextjsreacttemplateUsers',

@@ -25,7 +25,7 @@ custom:
             rawsources: [./serverless/seedData.json]
   scriptable:
     hooks:
-      after:aws:deploy:finalize:cleanup: node ./dist/serverless/seed.js
+      after:aws:deploy:finalize:cleanup: node ./dist/serverless/seed.js ap-southeast-2
 
 provider:
   environment:
