@@ -40,6 +40,11 @@ provider:
         - Effect: Allow
           Action: 'secretsmanager:GetSecretValue'
           Resource: 'arn:aws:secretsmanager:ap-southeast-2:290153383648:secret:Secrets-K5NU5a'
+        - Effect: Allow
+          Action: dynamodb:*
+          Resource:
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nextjsreacttemplateUsers/index/*'
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nextjsreacttemplateUsers'
 
 resources:
   Resources:

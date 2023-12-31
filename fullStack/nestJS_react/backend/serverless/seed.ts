@@ -4,7 +4,7 @@ import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { hashSync } from 'bcrypt';
 
 (async function seed() {
-  const region = process.argv[0];
+  const region = process.argv[2];
   const client = new DynamoDBClient({ region: region });
   seedData.forEach(async (element) => {
     element.id.S = randomUUID();

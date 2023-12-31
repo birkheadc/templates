@@ -99,4 +99,3 @@ Frontend deployment is done through AWS Amplify. For now this is done manually, 
     - Target address: `/index.html`
     - Type: `200 (Rewrite)`
   - From now on, every time there is a push to the repository, the app should update automatically.
-  
