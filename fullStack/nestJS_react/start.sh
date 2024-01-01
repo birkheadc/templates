@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo ""
-echo "Starting NestJS_React_Template in Dev"
+echo "Starting Dev environment"
 echo ""
 npm run start --prefix frontend &
 npm run start:serverless --prefix backend &
