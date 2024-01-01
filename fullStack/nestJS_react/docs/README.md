@@ -21,7 +21,7 @@ This is my current working template for creating full stack applications. It use
 - Initialize the git repo if using git: `git init`
 
 - Install node packages in frontend and backend
-  - `npm install`
+  - `npm install --prefix frontend && npm install --prefix backend`
 
 - Make sure the app works.
   - Grant executable permission to `start.sh` in the root directory, then run it with `./start.sh`.

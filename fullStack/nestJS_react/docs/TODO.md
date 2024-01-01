@@ -7,3 +7,5 @@
 - Font size / overall style on mobile needs work. More padding / bigger nav links / further from edge of screen. Maybe slightly bigger font.
 
 - Add link to the template github / info on the template / the template's readme to home might be nifty.
+
+- Work on table seeding more, allow multiple tables to be declared in seedData.json
