@@ -95,7 +95,6 @@ export const SessionProvider = ({ children }: any) => {
   }
 
   const loginLocal = () => {
-    console.log('local');
     window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, LOCAL_TOKEN_VALUE);
     setSession({ status: SessionStatus.LOCAL, token: undefined });
   }
