@@ -12,7 +12,7 @@ interface ILoadingPageProps {
 export default function LoadingPage(props: ILoadingPageProps): JSX.Element | null {
   return (
     <main className='loading-page-wrapper'>
-      <h1>Verifying Session</h1>
+      <h1>verifying session</h1>
     </main>
   );
 }

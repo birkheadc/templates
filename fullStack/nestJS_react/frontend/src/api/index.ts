@@ -1,7 +1,7 @@
-import auth from "./auth";
-import users from "./users";
+import live from "./live";
+import local from "./local";
 
 export default {
-  auth,
-  users
+  live,
+  local
 }

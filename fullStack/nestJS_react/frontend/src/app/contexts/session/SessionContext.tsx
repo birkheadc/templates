@@ -1,27 +1,47 @@
 import * as React from 'react';
 import { DEFAULT_SESSION, Session, SessionStatus } from '../../../types/session/session';
-import { LoadingSpinnerContext } from '../loadingSpinner/LoadingSpinnerContext';
-import api from '../../../api';
+import { LoadingContext } from '../loading/LoadingContext';
 import { useNavigate } from 'react-router-dom';
+import { LoginCredentials } from '../../../types/credentials/loginCredentials';
+import { Result } from '../../../types/result/result';
+import { useApi } from '../../../hooks/useApi/useApi';
 
-type Props = {
-  children: React.ReactNode
+type SessionContextState = {
+  session: Session,
+  login: (credentials: LoginCredentials) => Promise<Result>,
+  logout: () => void,
+  expire: () => void,
+  loginLocal: () => void
 }
 
-type State = {
-  session: Session,
-  login: (token: string | undefined) => void,
-  logout: () => void,
-  expire: () => void
+const DEFAULT_SESSION_CONTEXT_STATE: SessionContextState = {
+  session: {
+    status: SessionStatus.CHECKING,
+    token: undefined
+  },
+  logout: function (): void {
+    throw new Error('Function not implemented.');
+  },
+  expire: function (): void {
+    throw new Error('Function not implemented.');
+  },
+  loginLocal: function (): void {
+    throw new Error('Function not implemented.');
+  },
+  login: function (credentials: LoginCredentials): Promise<Result<any>> {
+    throw new Error('Function not implemented.');
+  }
 }
 
 const LOCAL_STORAGE_TOKEN_KEY = "token";
 
-export const SessionContext = React.createContext<State>({ session: DEFAULT_SESSION, login: () => {}, logout: () => {}, expire: () => {} });
-export const SessionProvider = ({ children }: Props) => {
+export const SessionContext = React.createContext<SessionContextState>(DEFAULT_SESSION_CONTEXT_STATE);
+export const SessionProvider = ({ children }: any) => {
 
   const [ session, setSession ] = React.useState<Session>(DEFAULT_SESSION);
-  const { setLoading } = React.useContext(LoadingSpinnerContext);
+  const { useLoading } = React.useContext(LoadingContext);
+  
+  const { api } = useApi();
 
   const nav = useNavigate();
 
@@ -32,25 +52,32 @@ export const SessionProvider = ({ children }: Props) => {
         setSession({ status: SessionStatus.LOGGED_OUT });
         return;
       };
-      setLoading(true);
-      const result = await api.auth.verifyToken(token);
-      setLoading(false);
-      if (result.wasSuccess) {
-        login(token);
-      } else {
-        expire();
+      if (token === LOCAL_TOKEN_VALUE) {
+        loginLocal();
+        return;
       }
+      await useLoading(async () => {
+        const result = await api.auth.verifyToken(token);
+        if (result.wasSuccess) {
+          storeToken(token);
+        } else {
+          expire();
+        }
+      })
     })();
   }, []);
 
-  const login = (token: string | undefined) => {
-    if (token == null) return;
-    window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
-    setSession({
-      status: SessionStatus.LOGGED_IN,
-      token: token
-    });
+  const login = async (credentials: LoginCredentials) => {
+    const result = await useLoading(async () => {
+      return await api.auth.login(credentials);
+    })
+    if (result.wasSuccess && result.body) {
+      const token = result.body;
+      storeToken(token);
+    }
+    return result;
   }
+
   const logout = () => {
     window.localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
     setSession({
@@ -66,9 +93,26 @@ export const SessionProvider = ({ children }: Props) => {
     });
     nav('/login');
   }
+
+  const loginLocal = () => {
+    console.log('local');
+    window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, LOCAL_TOKEN_VALUE);
+    setSession({ status: SessionStatus.LOCAL, token: undefined });
+  }
+
+  const storeToken = (token: string) => {
+    window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+    setSession({
+      status: SessionStatus.LOGGED_IN,
+      token: token
+    });
+  }
+
   return (
-    <SessionContext.Provider value={{ session, login, logout, expire }} >
+    <SessionContext.Provider value={{ session, login, logout, expire, loginLocal }} >
       { children }
     </SessionContext.Provider>
   );
 }
+
+const LOCAL_TOKEN_VALUE = 'LOCAL';

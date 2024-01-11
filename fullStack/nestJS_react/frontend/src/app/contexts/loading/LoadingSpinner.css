@@ -7,14 +7,6 @@
   }
 }
 
-div.loading-spinner-modal-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  pointer-events: all;
-}
-
 div.loading-spinner-wrapper {
   margin: auto;
   width: 200px;

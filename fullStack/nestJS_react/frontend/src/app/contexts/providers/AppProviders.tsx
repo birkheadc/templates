@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { LoadingSpinnerProvider } from '../loadingSpinner/LoadingSpinnerContext';
+import { LoadingProvider } from '../loading/LoadingContext';
 import { SessionProvider } from '../session/SessionContext';
 
 interface IAppProvidersProps {
@@ -13,10 +13,10 @@ interface IAppProvidersProps {
 */
 export default function AppProviders(props: IAppProvidersProps): JSX.Element | null {
   return (
-    <LoadingSpinnerProvider>
+    <LoadingProvider>
       <SessionProvider>
         {props.children}
       </SessionProvider>
-    </LoadingSpinnerProvider>
+    </LoadingProvider>
   );
 }

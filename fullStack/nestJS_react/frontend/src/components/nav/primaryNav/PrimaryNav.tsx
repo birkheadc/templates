@@ -19,7 +19,7 @@ export default function PrimaryNav(props: IPrimaryNavProps): JSX.Element | null 
   return (
     <nav className='primary-nav-wrapper'>
       <div className='primary-nav-inner-wrapper'>
-        { session.status === SessionStatus.LOGGED_IN
+        { session.status === SessionStatus.LOGGED_IN || session.status === SessionStatus.LOCAL
         ? LoggedInLinks
         : LoggedOutLinks
         }

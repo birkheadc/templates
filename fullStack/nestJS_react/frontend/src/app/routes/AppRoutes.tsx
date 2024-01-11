@@ -30,7 +30,7 @@ export default function AppRoutes(props: IAppRoutesProps): JSX.Element | null {
 
   return (
     <Routes>
-      { session.status === SessionStatus.LOGGED_IN
+      { session.status === SessionStatus.LOGGED_IN || session.status === SessionStatus.LOCAL
       ? LoggedInRoutes
       : LoggedOutRoutes
       }

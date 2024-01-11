@@ -2,7 +2,8 @@ export enum SessionStatus {
   CHECKING = 0,
   LOGGED_OUT = 1,
   LOGGED_IN = 2,
-  EXPIRED = 3
+  EXPIRED = 3,
+  LOCAL = 4
 }
 
 export type Session = {

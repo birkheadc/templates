@@ -14,7 +14,7 @@ interface ISettingsPageProps {
 export default function SettingsPage(props: ISettingsPageProps): JSX.Element | null {
   return (
     <main className='settings-page-wrapper'>
-      <h1>Settings</h1>
+      <h1>settings</h1>
       <ChangePasswordSection />
     </main>
   );

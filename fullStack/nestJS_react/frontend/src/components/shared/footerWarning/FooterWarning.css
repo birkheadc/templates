@@ -1,0 +1,11 @@
+footer.footer-warning-wrapper {
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: var(--clr-white);
+  text-align: center;
+  background-color: var(--clr-translucent-medium);
+  padding: 10px;
+  font-weight: 700;
+}

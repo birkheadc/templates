@@ -10,8 +10,7 @@ import { SecretsConfig } from './secrets.config';
       if (process.env.NODE_ENV === 'development') {
         return SecretsService.createDev(config);
       }
-      const service = await SecretsService.createAsync(config);
-      return service;
+      return await SecretsService.createAsync(config);
     }
   } ],
   exports: [ SecretsService ]

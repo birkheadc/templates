@@ -20,7 +20,7 @@ export default function LogoutPage(props: ILogoutPageProps): JSX.Element | null 
 
   return (
     <main className='logout-page-wrapper'>
-      <span>Logging you out...</span>
+      <span>logging you out...</span>
     </main>
   );
 }

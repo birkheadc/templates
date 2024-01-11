@@ -3,10 +3,14 @@
   --clr-black: black;
 
   --clr-accent-light: lightblue;
+  --clr-accent-medium: blue;
   --clr-accent-dark: navy;
 
   --clr-error: red;
   --clr-success: green;
+
+  --clr-translucent-light: rgba(0, 0, 0, 0.1);
+  --clr-translucent-medium: rgba(0, 0, 0, 0.4);
 
   --border-pri: 1px solid var(--clr-black);
   --border-loading-spinner: solid 5px var(--clr-white);

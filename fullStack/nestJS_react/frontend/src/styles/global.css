@@ -34,6 +34,15 @@ span.center {
   text-align: center;
 }
 
+a {
+  color: var(--clr-accent-dark);
+  text-decoration: underline;
+}
+
+a:focus, a:hover {
+  color: var(--clr-accent-medium)
+}
+
 .error {
   color: var(--clr-error);
 }

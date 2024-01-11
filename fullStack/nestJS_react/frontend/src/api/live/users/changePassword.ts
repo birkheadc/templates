@@ -1,9 +1,9 @@
-import config from "../../config";
-import { Result } from "../../types/result/result";
-import { ChangePasswordRequest } from "../../types/settings/changePassword";
-import helpers from "../helpers";
+import config from "../../../config";
+import { Result } from "../../../types/result/result";
+import { ChangePasswordRequest } from "../../../types/settings/changePassword";
+import helpers from "../../helpers";
 
-export default async function changePassword(token: string, request: ChangePasswordRequest): Promise<Result> {
+export default async function changePassword(token: string | null | undefined, request: ChangePasswordRequest): Promise<Result> {
   const url = config.api.users.url + '/change-password';
   const { signal, timeout } = helpers.getAbortSignal();
 

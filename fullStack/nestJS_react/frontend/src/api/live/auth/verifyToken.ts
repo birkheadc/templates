@@ -1,6 +1,6 @@
-import config from "../../config";
-import { Result } from "../../types/result/result";
-import helpers from "../helpers";
+import config from "../../../config";
+import { Result } from "../../../types/result/result";
+import helpers from "../../helpers";
 
 export default async function verifyToken(token: string): Promise<Result> {
   const url = config.api.authentication.url;

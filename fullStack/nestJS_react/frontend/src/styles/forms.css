@@ -54,3 +54,13 @@ button.standard-button:disabled {
   border-color: var(--clr-accent-light);
   pointer-events: none;
 }
+
+.link-button {
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--clr-accent-dark);
+}
+
+.link-button:hover {
+  color: var(--clr-accent-medium);
+}

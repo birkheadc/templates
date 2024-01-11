@@ -4,3 +4,9 @@ span.login-expired-message {
   text-align: center;
   color: var(--clr-error);
 }
+
+span.local-login-invitation {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+}

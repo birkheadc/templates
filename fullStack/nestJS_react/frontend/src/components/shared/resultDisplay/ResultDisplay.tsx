@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './ResultDisplay.css'
-import { Result, ResultError } from '../../types/result/result';
+import { Result, ResultError } from '../../../types/result/result';
 
 interface IResultDisplayProps {
   result: Result | undefined,
@@ -13,6 +13,7 @@ interface IResultDisplayProps {
 */
 export default function ResultDisplay(props: IResultDisplayProps): JSX.Element | null {
   if (props.result == null) return null;
+  if (!anythingToDisplay(props.result, props.displayErrors)) return null;
   return (
     <div className={`${props.result.wasSuccess ? 'success' : 'error'} result-display-wrapper`}>
       <span className={'center result-display-title'}>{props.result.message}</span>
@@ -32,4 +33,10 @@ function ResultDisplayErrors(props: { errors: ResultError[] }): JSX.Element {
       )}
     </ul>
   );
+}
+
+function anythingToDisplay(result: Result, displayErrors: boolean | undefined): boolean {
+  if (displayErrors === true && result.errors.length > 0) return true;
+  if (result.message) return true;
+  return false;
 }

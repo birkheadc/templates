@@ -25,6 +25,7 @@ nav.primary-nav-wrapper ul {
 nav.primary-nav-wrapper a {
   color: var(--clr-white);
   user-select: none;
+  text-decoration: none;
 }
 
 nav.primary-nav-wrapper a>span {

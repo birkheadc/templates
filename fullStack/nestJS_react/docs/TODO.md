@@ -1,13 +1,17 @@
 # Todo
 
-- Maybe create integration tests?
-
 - Readme needs a lot of updating. Best do it while I still remember what I've done and why
 
 - Font size / overall style on mobile needs work. More padding / bigger nav links / further from edge of screen. Maybe slightly bigger font.
 
-- Add link to the template github / info on the template / the template's readme to home might be nifty.
+- Fluent testing
+  - Create basic integration testing that can be built off of
 
-- Work on table seeding more, allow multiple tables to be declared in seedData.json
-
-- LoadingContext should use a number rather than a boolean in case multiple things are loading at once
+- Fluent development
+  - At the moment, backend development is painful because of the need to constantly rebuild and redeploy serverless.
+  - Need to reconfigure webpack dev server to work without serverless
+    - Either mock the database when doing so, or manually launch dynamodb container and configure dev env to connect to it
+  - Frontend with local login seems to be a good solution that fixes a few problems
+    - Produces a 'demo-mode' for free that I can use to show off the app even if it is single-user
+    - Works on mobile without any port-forwarding pain which makes responsive UI easier
+    - Works as a dev environment that I can build without worrying about the backend
