@@ -1,9 +1,9 @@
-import { randomUUID } from 'crypto';
-import * as seedData from './seedData.prod.json';
-import { DynamoDBClient, PutItemCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
-import { hashSync } from 'bcrypt';
+import { DynamoDBClient, ScanCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { hashSync } from "bcrypt";
+import { randomUUID } from "crypto";
+import * as seedData from './users/data.prod.json';
 
-(async function seed() {
+async function seedUsers() {
   const region = process.argv[2];
   const tableName = 'nextjsreacttemplateUsers';
   const client = new DynamoDBClient({ region: region });
@@ -24,4 +24,8 @@ import { hashSync } from 'bcrypt';
     });
     await client.send(command);
   });
+}
+
+(async function seed() {
+  await seedUsers();
 })();

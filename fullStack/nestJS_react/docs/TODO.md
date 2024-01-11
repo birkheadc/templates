@@ -9,3 +9,5 @@
 - Add link to the template github / info on the template / the template's readme to home might be nifty.
 
 - Work on table seeding more, allow multiple tables to be declared in seedData.json
+
+- LoadingContext should use a number rather than a boolean in case multiple things are loading at once
