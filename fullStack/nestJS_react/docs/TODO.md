@@ -15,3 +15,7 @@
     - Produces a 'demo-mode' for free that I can use to show off the app even if it is single-user
     - Works on mobile without any port-forwarding pain which makes responsive UI easier
     - Works as a dev environment that I can build without worrying about the backend
+
+- Debugging
+  - Need something to make debugging easier.
+  - Maybe a helper class that wraps console.log, at the very least this will make it easier to search for and delete them when done debugging. Could also have it not log when in production.
