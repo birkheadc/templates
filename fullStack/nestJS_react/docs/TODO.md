@@ -19,3 +19,17 @@
 - Debugging
   - Need something to make debugging easier.
   - Maybe a helper class that wraps console.log, at the very least this will make it easier to search for and delete them when done debugging. Could also have it not log when in production.
+
+- Model <-> DTO mapping
+  - Working on a nice way to map between the versions of the model that are used:
+    - In the front end
+    - DTO traveling between front- and backend
+    - In the back end
+    - In the database
+
+  - I like the syntax of being able to, for instance, `Person.from(personDto)` or `person.toDto()` a lot. But having all those functions defined in the model brings with it a number of issues, mainly related to clutter and separation of concerns.
+
+  - My latest thought is to have a static `from()` on `Person` that returns a `PersonMapper`, so you can still call `Person.from().dto(personDto)`, which is also very satisfying. Needs more thinking.
+
+- ResultError standardization
+  - Right now, when a Result fails, I instantiate it with `Result.Fail().WithMessage('<reason for failure here>')`. I could use a few standardized failure enums, instead of having dozens of variations of 'failed to connect to server' everywhere. Custom message capability should still be maintained.
