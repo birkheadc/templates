@@ -38,3 +38,9 @@
   - Need to add `<meta name="viewport" content="width=device-width, initial-scale=1 interactive-widget=resizes-content" />` to index.html, and fix styles to account for this change.
   - Fix more styles to use 'em' rather than 'px'. Will need far fewer @media tags this way (almost none)
   - Consider removing 1px borders, they don't display right in firefox mobile. Bump everything up to at least 2px.
+
+- Common code
+  - Is there a way to create a third directory beside front- and backend, a common directory, where both ends can pull common code; like types?
+
+- NextJS
+  - Is it time to move to next js for frontend?
