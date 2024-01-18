@@ -33,3 +33,6 @@
 
 - ResultError standardization
   - Right now, when a Result fails, I instantiate it with `Result.Fail().WithMessage('<reason for failure here>')`. I could use a few standardized failure enums, instead of having dozens of variations of 'failed to connect to server' everywhere. Custom message capability should still be maintained.
+
+- CSS / styling
+  - Need to add `<meta name="viewport" content="width=device-width, initial-scale=1" />` to index.html, and fix styles to account for this change.
