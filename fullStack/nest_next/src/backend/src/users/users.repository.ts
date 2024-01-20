@@ -4,7 +4,7 @@ import { User } from "./entities/user.entity";
 
 @Injectable()
 export class UsersRepository {
-  private readonly tableName: string = 'nextnesttemplateUsers';
+  private readonly tableName: string = 'nestnexttemplateUsers';
   constructor(private readonly client: DynamoDBClient) { }
 
   async getUserById(id: string): Promise<User> {

@@ -1,4 +1,4 @@
-service: nextnesttemplate-backend
+service: nestnexttemplate-backend
 
 frameworkVersion: '3'
 
@@ -21,7 +21,7 @@ custom:
     seed:
       domain:
         sources:
-          - table: nextnesttemplateUsers
+          - table: nestnexttemplateUsers
             rawsources: [./serverless/seed/users/data.dev.json]
   scriptable:
     hooks:
@@ -35,7 +35,7 @@ provider:
   region: ap-southeast-2
   iam:  
     role:
-      name: nextnesttemplate-backend-role
+      name: nestnexttemplate-backend-role
       statements:
         - Effect: Allow
           Action: 'secretsmanager:GetSecretValue'
@@ -43,15 +43,15 @@ provider:
         - Effect: Allow
           Action: dynamodb:*
           Resource:
-            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nextnesttemplateUsers/index/*'
-            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nextnesttemplateUsers'
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nestnexttemplateUsers/index/*'
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nestnexttemplateUsers'
 
 resources:
   Resources:
     usersTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: nextnesttemplateUsers
+        TableName: nestnexttemplateUsers
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S

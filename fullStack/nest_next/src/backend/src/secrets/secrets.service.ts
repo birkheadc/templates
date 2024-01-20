@@ -11,7 +11,6 @@ export class SecretsService {
     const client = new SecretsManagerClient({
       region: config.region
     });
-
     try {
       const command = new GetSecretValueCommand({
         SecretId: config.secretId

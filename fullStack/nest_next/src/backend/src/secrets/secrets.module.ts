@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { SecretsService } from './secrets.service';
 import { SecretsConfig } from './secrets.config';
 
+console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
+
 @Module({
   providers: [ SecretsConfig, {
     provide: SecretsService,

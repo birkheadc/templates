@@ -5,7 +5,7 @@ import * as seedData from './users/data.prod.json';
 
 async function seedUsers() {
   const region = process.argv[2];
-  const tableName = 'nextnesttemplateUsers';
+  const tableName = 'nestnexttemplateUsers';
   const client = new DynamoDBClient({ region: region });
 
   const command = new ScanCommand({

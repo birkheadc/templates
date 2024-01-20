@@ -1,5 +1,5 @@
 {
-  "name": "nextnesttemplate-backend",
+  "name": "nestnexttemplate-backend",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -10,7 +10,7 @@
     "deploy": "npm run build && serverless deploy --stage production",
     "undeploy": "serverless remove --stage production",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "NODE_ENV=development nest start",
     "start:dev": "NODE_ENV=development nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
