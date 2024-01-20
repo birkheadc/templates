@@ -1,0 +1,80 @@
+service: nextnesttemplate-backend
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-scriptable-plugin
+  - serverless-dynamodb
+  - serverless-offline
+
+custom:
+  serverless-dynamodb:
+    stages:
+      - development
+    start:
+      docker: true
+      port: 8000
+      inMemory: true # change to false if persistent data would be more convenient
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    seed:
+      domain:
+        sources:
+          - table: nextnesttemplateUsers
+            rawsources: [./serverless/seed/users/data.dev.json]
+  scriptable:
+    hooks:
+      after:aws:deploy:finalize:cleanup: node ./dist/serverless/seed/seed.js ap-southeast-2
+
+provider:
+  environment:
+    NODE_ENV: ${opt:stage, 'not_set'}
+  name: aws
+  runtime: nodejs20.x
+  region: ap-southeast-2
+  iam:  
+    role:
+      name: nextnesttemplate-backend-role
+      statements:
+        - Effect: Allow
+          Action: 'secretsmanager:GetSecretValue'
+          Resource: 'arn:aws:secretsmanager:ap-southeast-2:290153383648:secret:Secrets-K5NU5a'
+        - Effect: Allow
+          Action: dynamodb:*
+          Resource:
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nextnesttemplateUsers/index/*'
+            - 'arn:aws:dynamodb:ap-southeast-2:290153383648:table/nextnesttemplateUsers'
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: nextnesttemplateUsers
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: username
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: username
+            KeySchema:
+              - AttributeName: username
+                KeyType: HASH
+            Projection:
+              ProjectionType: 'ALL'
+        BillingMode: PAY_PER_REQUEST
+
+
+functions:
+  api:
+    handler: dist/lambda.handler
+    events:
+      - http:
+          method: any
+          path: /{proxy+}
+          cors: true

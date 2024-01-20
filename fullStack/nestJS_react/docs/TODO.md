@@ -44,3 +44,6 @@
 
 - NextJS
   - Is it time to move to next js for frontend?
+
+- React components returning null
+  - Let's stop doing this, creates strange issues
