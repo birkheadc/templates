@@ -1,9 +1,12 @@
-import React from 'react'
-import NavLink from './navLink/NavLink'
+import * as React from 'react';
+import NavLink from './navLink/NavLink';
 import { ArrowRightEndOnRectangleIcon, HomeIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
-const PrimaryNav = () => {
+type PrimaryNavProps = {
 
+}
+
+export default function PrimaryNav(props: PrimaryNavProps): JSX.Element {
   const className = 'flex items-center gap-2 hover:text-primary-50 text-primary-200';
   const activeClassName = 'text-primary-50 font-bold';
   const inactiveClassName = '';
@@ -28,5 +31,3 @@ const PrimaryNav = () => {
     </nav>
   )
 }
-
-export default PrimaryNav

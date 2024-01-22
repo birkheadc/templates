@@ -1,12 +1,20 @@
-import React from 'react'
-import { Input } from '../../../components/forms/input/Input'
+'use client';
 
-const RegistrationForm = () => {
-  return (
-    <form>
-      <Input />
-    </form>
-  )
+import * as React from 'react';
+import { RegisterUserRequest } from '../../../../../common/requests/register/registerUserRequest';
+
+type RegistrationFormProps = {
+
 }
 
-export default RegistrationForm
+export default function RegistrationForm(props: RegistrationFormProps): JSX.Element {
+
+  const [ request, setRequest ] = React.useState<RegisterUserRequest>({ emailAddress: 'test@example.com' });
+  console.log('Request:', request);
+
+  return (
+    <form>
+      
+    </form>
+  );
+}

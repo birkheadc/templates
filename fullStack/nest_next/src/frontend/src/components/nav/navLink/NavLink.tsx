@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React from 'react'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import * as React from 'react';
 
-type Props = {
+type NavLinkProps = {
   href: string,
   className?: string,
   activeClassName?: string,
@@ -12,8 +12,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-const NavLink = (props: Props) => {
-
+export default function NavLink(props: NavLinkProps): JSX.Element {
   const pathname = usePathname();
   const isActive = pathname === props.href;
 
@@ -21,5 +20,3 @@ const NavLink = (props: Props) => {
     <Link className={props.className + ' ' + (isActive ? props.activeClassName : props.inactiveClassName)} href={props.href}>{props.children}</Link>
   )
 }
-
-export default NavLink

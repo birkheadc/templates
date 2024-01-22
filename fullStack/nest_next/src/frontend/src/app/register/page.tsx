@@ -1,13 +1,15 @@
-import React from 'react'
-import RegistrationForm from './form/RegistrationForm'
+import * as React from 'react';
+import RegistrationForm from './form/RegistrationForm';
 
-const RegisterPage = () => {
+type pageProps = {
+
+}
+
+export default function page(props: pageProps): JSX.Element {
   return (
     <div>
       <h1>register</h1>
       <RegistrationForm />
     </div>
-  )
+  );
 }
-
-export default RegisterPage

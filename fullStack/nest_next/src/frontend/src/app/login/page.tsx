@@ -1,11 +1,13 @@
-import React from 'react'
+import * as React from 'react';
 
-const LoginPage = () => {
+type pageProps = {
+
+}
+
+export default function page(props: pageProps): JSX.Element {
   return (
     <div>
       <h1>login</h1>
     </div>
-  )
+  );
 }
-
-export default LoginPage
