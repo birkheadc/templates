@@ -84,6 +84,10 @@ Frontend deployment is done through AWS Amplify. For now this is done manually, 
     - If using a monorepo:
       - Check the box and type in the root directory of the app
       - Make sure `appRoot` in `amplify.yml` and what you type here match exactly
+  - Select Amazon Linux:2023 as the build image (required to build Next applications)
+    - Build settings
+    - Build image settings -> Edit
+      - Select Amazon Linux:2023
   - In Advanced Settings, add any necessary environment variables
     - If using a monorepo:
       - Check again to make sure `AMPLIFY_MONOREPO_APP_ROOT` matches `appRoot` in `amplify.yml`
