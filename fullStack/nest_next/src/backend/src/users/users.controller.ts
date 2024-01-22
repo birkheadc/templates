@@ -3,6 +3,7 @@ import { BearerAuthenticatedRequest } from '../auth/request/bearerAuthenticatedR
 import { ChangePasswordDto } from './dtos/change-password.dto';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
+import { RegisterUserRequest } from '../../../common/requests/register/registerUserRequest';
 
 @Controller('users')
 export class UsersController {
@@ -14,5 +15,10 @@ export class UsersController {
   async changePassword(@Request() request: BearerAuthenticatedRequest, @Body() dto: ChangePasswordDto) {
     const user = request.user;
     await this.service.changePassword(user, dto.password);
+  }
+
+  @Post('new')
+  async registerNewUser(@Body() request: RegisterUserRequest) {
+    console.log('Received new register user request:', request.emailAddress);
   }
 }
