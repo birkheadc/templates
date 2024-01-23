@@ -15,9 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='h-screen bg-primary-800'>
-        <PrimaryNav />
-        <main className='p-4 m-auto mt-6 bg-primary-50 text-primary-950 max-w-7xl'>
+      <body className='h-screen bg-neutral-50 bg-gradient-to-br from-accentA-400 via-neutral-50 to-accentB-200'>
+        <PrimaryNav />  
+        <main className='p-4 m-auto mt-4 border-2 rounded-lg border-neutral-950 bg-translucent-light w-fit text-neutral-950 max-w-7xl'>
           {children}
         </main>
       </body>

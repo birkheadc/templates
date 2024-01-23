@@ -7,24 +7,20 @@ type PrimaryNavProps = {
 }
 
 export default function PrimaryNav(props: PrimaryNavProps): JSX.Element {
-  const className = 'flex items-center gap-2 hover:text-primary-50 text-primary-200';
-  const activeClassName = 'text-primary-50 font-bold';
-  const inactiveClassName = '';
-
   return (
-    <nav className='bg-primary-900'>
+    <nav className='border-2 border-neutral-950 bg-translucent-medium'>
       <div className='flex justify-between p-4 px-6 m-auto max-w-7xl'>
         <ul className='flex gap-8'>
           <li>
-            <NavLink className={className} activeClassName={activeClassName} inactiveClassName={inactiveClassName} href='/'><HomeIcon width={'1.5em'} /><span className='hidden sm:inline-block'>home</span></NavLink>
+            <NavLink href='/'><HomeIcon width={'1.5em'} /><span className='hidden sm:inline-block'>home</span></NavLink>  
           </li>
         </ul>
         <ul className='flex gap-8'>
           <li>
-            <NavLink className={className} activeClassName={activeClassName} inactiveClassName={inactiveClassName} href='/register'><UserCircleIcon width={'1.5em'} /><span className='hidden sm:inline-block'>register</span></NavLink>
+            <NavLink href='/register'><UserCircleIcon width={'1.5em'} /><span className='hidden sm:inline-block'>register</span></NavLink>
           </li>
           <li>
-            <NavLink className={className} activeClassName={activeClassName} inactiveClassName={inactiveClassName} href='/login'><ArrowRightEndOnRectangleIcon width={'1.5em'} /><span className='hidden sm:inline-block'>login</span></NavLink>
+            <NavLink href='/login'><ArrowRightEndOnRectangleIcon width={'1.5em'} /><span className='hidden sm:inline-block'>login</span></NavLink>
           </li>
         </ul>
       </div>
