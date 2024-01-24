@@ -6,16 +6,16 @@
   --h-nav: 3em;
 }
 
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 3em;
+  background-color: theme('colors.primary.700');
+}
+
 @layer utilities {
   .text-17xl {
     font-size: 16rem;
     line-height: 1;
-  }
-  .mt-nav {
-    margin-top: var(--h-nav);
-  }
-  .pt-nav {
-    scroll-padding-top: 3em;
   }
   .h-nav {
     height: var(--h-nav);

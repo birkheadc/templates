@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth pt-nav bg-primary-700">
+    <html lang="en">
       <body className={inter.className}>
         <PrimaryNav />
         {children}

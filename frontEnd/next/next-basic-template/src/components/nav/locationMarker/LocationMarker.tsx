@@ -42,7 +42,7 @@ export default function LocationMarker(props: LocationMarkerProps): JSX.Element 
       return Math.min((windowHeight / maxY), 1);
     }
 
-    setWidth(calculateWidth);
+    setWidth(calculateWidth());
     const listener = () => {
       setWidth(calculateWidth());
     }
