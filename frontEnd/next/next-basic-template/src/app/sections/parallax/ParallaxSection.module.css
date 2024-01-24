@@ -1,0 +1,10 @@
+.background {
+  background: repeating-linear-gradient(
+    -45deg,
+    theme('colors.primary.700'),
+    theme('colors.primary.300') 200px,
+    theme('colors.secondary.700') 200px,
+    theme('colors.secondary.300') 400px
+  );
+  background-attachment: fixed;
+}
