@@ -7,7 +7,7 @@
 }
 
 html {
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
   scroll-padding-top: 3em;
   background-color: theme('colors.primary.700');
 }
@@ -16,6 +16,9 @@ html {
   .text-17xl {
     font-size: 16rem;
     line-height: 1;
+  }
+  .mt-nav {
+    margin-top: var(--h-nav);
   }
   .h-nav {
     height: var(--h-nav);
