@@ -9,8 +9,8 @@ type PrimaryNavProps = {
 
 export default function PrimaryNav(props: PrimaryNavProps): JSX.Element {
   return (
-    <nav className='p-4'>
-      <div className='flex justify-between m-auto max-w-7xl'>
+    <nav className='p-4 px-8 h-nav'>
+      <div className='flex h-full justify-between items-center m-auto'>
         <div className='flex gap-4'>
           <NavPageLinks />
         </div>

@@ -1,0 +1,20 @@
+{
+  "Home": {
+    "Section1": {
+      "header": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut minima explicabo et atque voluptate vero error dolor! In nesciunt odio quia officia laudantium facere soluta dolorum ut harum, modi suntLorem ipsum dolor sit amet consectetur, adipisicing elit. Error, ab? Libero illo ipsum cumque quam velit harum minus distinctio et officia sunt ad quasi mollitia saepe quia, odio reiciendis deserunt?! "
+    },
+    "Section2": {
+      "header": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut minima explicabo et atque voluptate vero error dolor! In nesciunt odio quia officia laudantium facere soluta dolorum ut harum, modi suntLorem ipsum dolor sit amet consectetur, adipisicing elit. Error, ab? Libero illo ipsum cumque quam velit harum minus distinctio et officia sunt ad quasi mollitia saepe quia, odio reiciendis deserunt?! "
+    },
+    "Section3": {
+      "header": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut minima explicabo et atque voluptate vero error dolor! In nesciunt odio quia officia laudantium facere soluta dolorum ut harum, modi suntLorem ipsum dolor sit amet consectetur, adipisicing elit. Error, ab? Libero illo ipsum cumque quam velit harum minus distinctio et officia sunt ad quasi mollitia saepe quia, odio reiciendis deserunt?! "
+    },
+    "Section4": {
+      "header": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut minima explicabo et atque voluptate vero error dolor! In nesciunt odio quia officia laudantium facere soluta dolorum ut harum, modi suntLorem ipsum dolor sit amet consectetur, adipisicing elit. Error, ab? Libero illo ipsum cumque quam velit harum minus distinctio et officia sunt ad quasi mollitia saepe quia, odio reiciendis deserunt?! "
+    }    
+  }
+}

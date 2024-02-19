@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import Input from '../../../components/forms/inputs/input/Input';
-import { LoginRequest } from '../../../../../common/requests/login/loginRequest';
-import PasswordInput from '../../../components/forms/inputs/passwordInput/PasswordInput';
-import PrimaryButton from '../../../components/forms/buttons/primary/PrimaryButton';
+import Input from '../../../../components/forms/inputs/input/Input';
+import { LoginRequest } from '../../../../../../common/requests/login/loginRequest';
+import PasswordInput from '../../../../components/forms/inputs/passwordInput/PasswordInput';
+import PrimaryButton from '../../../../components/forms/buttons/primary/PrimaryButton';
 
 type LoginFormProps = {
 

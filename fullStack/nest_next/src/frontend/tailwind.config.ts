@@ -9,7 +9,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        'nav': '4rem',
+        'svh-nav': 'calc(100svh - 4rem)'
+      }
+    },
     colors: {},
     themes: {}
   },

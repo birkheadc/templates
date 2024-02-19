@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { RegisterUserRequest } from '../../../../../common/requests/register/registerUserRequest';
+import { RegisterUserRequest } from '../../../../../../common/requests/register/registerUserRequest';
 
 type RegistrationFormProps = {
 

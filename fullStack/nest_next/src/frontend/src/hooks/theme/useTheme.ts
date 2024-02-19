@@ -30,6 +30,6 @@ export default function useTheme(): { theme: string, changeTheme: (theme: string
 const THEME_KEY = 'nest-next-template-theme';
 
 const VALID_THEMES = [
-  'light',
-  'dark'
+  'dark',
+  'light'
 ];
