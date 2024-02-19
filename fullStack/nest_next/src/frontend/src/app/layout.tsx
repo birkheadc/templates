@@ -14,10 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className='h-screen bg-neutral-50 bg-gradient-to-br from-accentA-400 via-neutral-50 to-accentB-200'>
-        <PrimaryNav />  
-        <main className='p-4 m-auto mt-4 border-2 rounded-lg border-neutral-950 bg-translucent-light w-fit text-neutral-950 max-w-7xl'>
+    <html lang='en' data-theme='light'>
+      <body className='flex flex-col h-svh bg-neutral-50 text-neutral-950'>
+        <PrimaryNav />    
+        <main className='flex-grow w-full p-4 m-auto overflow-x-hidden overflow-y-auto border-neutral-950 text-neutral-950'>
           {children}
         </main>
       </body>

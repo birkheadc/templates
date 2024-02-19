@@ -9,6 +9,6 @@ type BasicLinkProps = {
 
 export default function BasicLink(props: BasicLinkProps): JSX.Element {
   return (
-    <Link className={'text-primary-500 hover:text-pink-500' + (props.className ? ' ' + props.className : '')} href={props.href}>{props.children}</Link>
+    <Link className={'text-primary-700 hocus:text-primary-600 hocus:underline' + (props.className ? ' ' + props.className : '')} href={props.href}>{props.children}</Link>
   );
 }
