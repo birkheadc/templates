@@ -2,6 +2,21 @@
   outline: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px hsl(var(--twc-primary-50)) inset;
+  box-shadow: 0 0 0 1000px hsl(var(--twc-primary-50)) inset;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

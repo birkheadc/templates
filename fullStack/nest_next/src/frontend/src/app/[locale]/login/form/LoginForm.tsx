@@ -24,7 +24,7 @@ export default function LoginForm(props: LoginFormProps): JSX.Element {
 
   return (
     <form className='flex flex-col items-center gap-2 m-auto w-80' onSubmit={handleSubmit}>
-      <Input label='email address' value={request.emailAddress} change={(value: string) => setRequest(r => ({...r, emailAddress: value}))} />
+      <Input id='email-address' label='email address' value={request.emailAddress} change={(value: string) => setRequest(r => ({...r, emailAddress: value}))} />
       <PasswordInput id='password' forgotPasswordHref='/forgot-password' value={request.password} change={(value: string) => setRequest(r => ({...r, password: value}))} />
       <PrimaryButton>submit</PrimaryButton>
     </form>

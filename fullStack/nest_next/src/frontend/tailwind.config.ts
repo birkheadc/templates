@@ -13,6 +13,12 @@ const config: Config = {
       height: {
         'nav': '4rem',
         'svh-nav': 'calc(100svh - 4rem)'
+      },
+      boxShadow: {
+        'inner': '1px 1px 5px black inset'
+      },
+      padding: {
+        nav: '4rem 0 0 0'
       }
     },
     colors: {},
@@ -64,6 +70,11 @@ const config: Config = {
           '900': '#3d3d3d',
           '950': '#000000',
         },
+        transparent: {
+          'low': 'rgba(255,255,255,0.1)',
+          'med': 'rgba(255,255,255,0.2)',
+          'high': 'rgba(255,255,255,0.3)'
+        }
       },
       dark: {
         primary: {
@@ -105,6 +116,11 @@ const config: Config = {
           '100': '#3d3d3d',
           '50': '#000000',
         },
+        transparent: {
+          'low': 'rgba(0,0,0,0.1)',
+          'med': 'rgba(0,0,0,0.3)',
+          'high': 'rgba(0,0,0,0.5)'
+        }
       },
     })
   ]

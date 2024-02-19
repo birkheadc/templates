@@ -22,9 +22,9 @@ export default function RootLayout({
 
   return (
     <html lang={locale} data-theme='dark'>
-      <body className='flex flex-col transition-colors duration-700 bg-neutral-50 text-neutral-950'>
+      <body className='h-svh flex flex-col transition-colors duration-700 bg-neutral-50 text-neutral-950'>
         <PrimaryNav />
-        <main className='flex-grow w-full m-auto overflow-x-hidden overflow-y-auto text-neutral-950'>
+        <main className='p-nav w-full m-auto text-neutral-950'>
           {children}
         </main>
       </body>

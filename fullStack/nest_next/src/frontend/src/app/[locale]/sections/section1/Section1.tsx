@@ -12,7 +12,7 @@ export default function Section1(props: Section1Props): JSX.Element {
   const t = useRichTranslations('Home.Section1');
 
   return (
-    <Section className='bg-neutral-300'>
+    <Section className='bg-gradient-to-br from-neutral-50 to-primary-200'>
       <HeroHeader>{t('header')}</HeroHeader>
       <p>{t('body')}</p>
     </Section>

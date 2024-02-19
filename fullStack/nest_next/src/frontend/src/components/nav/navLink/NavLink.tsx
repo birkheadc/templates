@@ -1,7 +1,7 @@
 'use client';
 
 import {Link} from '@/navigation/navigation';
-import { usePathname } from 'next/navigation';
+import { usePathname } from '../../../navigation/navigation';
 import * as React from 'react';
 
 type NavLinkProps = {
