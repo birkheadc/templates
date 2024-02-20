@@ -1,30 +1,18 @@
 import { LoginCredentials } from "../../../types/auth/credentials/credentials";
+import { SessionToken } from "../../../types/auth/sessionToken/sessionToken";
 import { Result, ResultMessage } from "../../../types/result/result";
 import utils from "../../../utils";
 
-export default async function login(credentials: LoginCredentials): Promise<Result<string>> {
+export default async function login(credentials: LoginCredentials): Promise<Result<SessionToken>> {
   const url = 'http://localhost:3000/api/login';
-  const { abortSignal, clearAbortSignal } = utils.createAbortSignal();
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Authorization': encodeCredentials(credentials)
-      },
-      signal: abortSignal
-    });
-
-    if (!response.ok) return Result.Fail().WithError({ statusCode: response.status, message: 'Server refused request.' }).WithMessage(ResultMessage.CONNECTION_REFUSED);
-
-    const data = await response.text();
-    if (data === '') return Result.Fail().WithMessage(ResultMessage.UNEXPECTED_RESPONSE);
-    return Result.Succeed().WithBody(data).WithMessage(ResultMessage.LOGIN_SUCCESS);
-  } catch {
-    return Result.Fail().WithMessage(ResultMessage.CONNECTION_FAILED);
-  } finally {
-    clearAbortSignal();
-  }
+  const result = await utils.fetchResult(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': encodeCredentials(credentials)
+    }
+  });
+  if (!result.wasSuccess || result.body == null) return result;
+  return result.WithBody(SessionToken.fromJSON(result.body)).WithMessage(ResultMessage.LOGIN_SUCCESS);
 }
 
 function encodeCredentials(credentials: LoginCredentials): string {
