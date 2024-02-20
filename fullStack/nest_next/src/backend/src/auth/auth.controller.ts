@@ -1,6 +1,5 @@
-import { Controller, Post, Get, UseGuards, Request, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Get, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { BearerAuthenticatedRequest } from './request/bearerAuthenticatedRequest';
 import { BasicAuthenticatedRequest } from './request/basicAuthenticatedRequest';
 import { JwtGuard } from './guards/jwt.guard';
 import { BasicGuard } from './guards/basic.guard';

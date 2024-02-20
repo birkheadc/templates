@@ -55,15 +55,15 @@ resources:
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
-          - AttributeName: username
+          - AttributeName: emailAddress
             AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH
         GlobalSecondaryIndexes:
-          - IndexName: username
+          - IndexName: emailAddress
             KeySchema:
-              - AttributeName: username
+              - AttributeName: emailAddress
                 KeyType: HASH
             Projection:
               ProjectionType: 'ALL'

@@ -29,13 +29,13 @@ export class UsersRepository {
     }
   }
 
-  async getUserByUsername(username: string): Promise<User> {
+  async getUserByEmailAddress(emailAddress: string): Promise<User> {
     const command = new QueryCommand({
       TableName: this.tableName,
-      IndexName: 'username',
-      KeyConditionExpression: 'username = :username',
+      IndexName: 'emailAddress',
+      KeyConditionExpression: 'emailAddress = :emailAddress',
       ExpressionAttributeValues: {
-        ':username': { S: username }
+        ':emailAddress': { S: emailAddress }
       }
     });
 

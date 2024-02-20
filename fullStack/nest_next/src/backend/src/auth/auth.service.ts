@@ -10,8 +10,8 @@ import { TokenPayload } from './payload/tokenPayload';
 export class AuthService {
   constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService ) { }
 
-  async validateUser(username: string, password: string): Promise<UserOmitPassword> {
-    const user = await this.usersService.getUserByUsername(username);
+  async validateUser(emailAddress: string, password: string): Promise<UserOmitPassword> {
+    const user = await this.usersService.getUserByEmailAddress(emailAddress);
     if (compareSync(password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     const { password: _, ...result } = user;
     return result;

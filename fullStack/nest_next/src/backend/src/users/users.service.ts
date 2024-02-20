@@ -12,8 +12,8 @@ export class UsersService {
     return this.repository.getUserById(id);
   }
 
-  async getUserByUsername(username: string): Promise<User> {
-    return this.repository.getUserByUsername(username);
+  async getUserByEmailAddress(emailAddress: string): Promise<User> {
+    return this.repository.getUserByEmailAddress(emailAddress);
   }
 
   async changePassword(user: UserOmitPassword, newPassword: string): Promise<User> {

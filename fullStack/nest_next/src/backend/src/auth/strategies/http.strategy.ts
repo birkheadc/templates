@@ -10,8 +10,8 @@ export class HttpStrategy extends PassportStrategy(BasicStrategy) {
     super();
   }
   
-  async validate(username: string, password: string): Promise<UserOmitPassword> {
-    const user = await this.authService.validateUser(username, password);
+  async validate(emailAddress: string, password: string): Promise<UserOmitPassword> {
+    const user = await this.authService.validateUser(emailAddress, password);
     if (!user) {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }

@@ -3,8 +3,8 @@
     "id": {
       "S": ""
     },
-    "username": {
-      "S": "admin"
+    "emailAddress": {
+      "S": "admin@admin.admin"
     },
     "password": {
       "S": "password"
