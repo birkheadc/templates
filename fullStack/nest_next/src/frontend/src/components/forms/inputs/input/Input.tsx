@@ -6,12 +6,13 @@ type InputProps = {
   type?: React.HTMLInputTypeAttribute,
   label?: string,
   value: string,
-  change: (value: string) => void
+  change: (value: string) => void,
+  autocomplete?: string
 }
 
 export default function Input(props: InputProps): JSX.Element {
 
-  const { id, placeholder, type, label, value, change } = props;
+  const { id, placeholder, type, label, value, change, autocomplete } = props;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     change(event.currentTarget.value);
@@ -25,7 +26,7 @@ export default function Input(props: InputProps): JSX.Element {
         </div>
       }
       <div className='flex gap-2 p-1 px-3 border bg-primary-50 border-primary-500 focus-within:outline focus-within:outline-1'>
-        <input id={id} className='flex-grow outline-none bg-primary-50 text-primary-700' type={type} placeholder={placeholder} value={value} onChange={handleChange}></input>
+        <input autoComplete={autocomplete} id={id} className='flex-grow outline-none bg-primary-50 text-primary-700' type={type} placeholder={placeholder} value={value} onChange={handleChange}></input>
       </div>
     </div>
   );

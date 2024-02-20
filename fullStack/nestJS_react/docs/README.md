@@ -78,7 +78,7 @@ The `functions` section is simply where we declare the lambda handler function t
 
 ## Frontend
 Frontend deployment is done through AWS Amplify. For now this is done manually, but only needs to be done once. Then continuous deployment is setup to update with every push to the repository.
-  - Create a new app on Amplify. Select 'Host we app'
+  - Create a new app on Amplify. Select 'Host web app'
   - Select Github
   - Select the repository
     - If using a monorepo:

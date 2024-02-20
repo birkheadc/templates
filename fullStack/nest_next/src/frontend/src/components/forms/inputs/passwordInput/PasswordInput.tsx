@@ -25,7 +25,7 @@ export default function PasswordInput(props: PasswordInputProps): JSX.Element {
     <div className='flex flex-col w-full gap-1'>
       <label className='font-bold text-primary-700' htmlFor={id}>password</label>
       <div className='flex gap-2 p-1 px-3 border bg-primary-50 border-primary-500 focus-within:outline focus-within:outline-1'>
-        <input id={id} className='flex-grow outline-none bg-primary-50 text-primary-700' type={show ? 'text': 'password' } value={value} onChange={handleChange}></input>
+        <input autoComplete='current-password' id={id} className='flex-grow outline-none bg-primary-50 text-primary-700' type={show ? 'text': 'password' } value={value} onChange={handleChange}></input>
         <button className='bg-transparent' type='button' onClick={() => setShow(s => !s)}>{ show ? <EyeOff /> : <Eye /> }</button>
       </div>
       <div className='flex justify-end'>

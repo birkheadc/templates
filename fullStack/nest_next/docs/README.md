@@ -78,4 +78,48 @@ The `functions` section is simply where we declare the lambda handler function t
 
 # Frontend
 
-The frontend is where most of the new stuff is happening with this template, and is still a work in progress. I'm learning Next and Tailwind with this project.
+## Deployment
+Frontend deployment is done through AWS Amplify. For now this is done manually, but only needs to be done once. Then continuous deployment is setup to update with every push to the repository.
+  - Create a new app on Amplify. Select 'Host web app'
+  - Select Github
+  - Select the repository
+    - If using a monorepo:
+      - Check the box and type in the root directory of the app
+      - Make sure `appRoot` in `amplify.yml` and what you type here match exactly
+  - Select Amazon Linux:2023 as the build image (required to build Next applications)
+    - Build settings
+    - Build image settings -> Edit
+      - Select Amazon Linux:2023
+  - In Advanced Settings, add any necessary environment variables
+    - If using a monorepo:
+      - Check again to make sure `AMPLIFY_MONOREPO_APP_ROOT` matches `appRoot` in `amplify.yml`
+  - Save and Deploy
+  - Go to Domain management to configure a custom domain
+  - Go to Rewrites and redirects. Add the following rule to make React's SPA routing work:
+    - Source address: `</^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>`
+    - Target address: `/index.html`
+    - Type: `200 (Rewrite)`
+  - From now on, every time there is a push to the repository, the app should update automatically.
+
+## Environment Variables
+The following Environment Variables need to be set up for the application to work. In Amplify, this is easy to do through the console.
+
+- BACKEND_URL
+
+### Packages
+I use a few packages beyond what Next comes with out of the box.
+
+- clsx / tailwind-merge
+  - work together to merge class strings together
+
+- lucide-react
+  - large icon library
+
+- tw-colors
+  - allows creation of color themes in tailwind
+
+- react-country-flags
+  - used to create country flag icons for language changing
+
+- @radix-ui/react-switch
+  - used to create ui switches, like the one used to switch theme
