@@ -3,6 +3,7 @@ import "../globals.css";
 import PrimaryNav from "../../components/nav/PrimaryNav";
 import locales from '@/intl/locales.json';
 import { redirect } from "next/navigation";
+import Providers from "../../contexts/Providers";
 
 
 export const metadata: Metadata = {
@@ -22,12 +23,14 @@ export default function RootLayout({
 
   return (
     <html lang={locale} data-theme='dark'>
-      <body className='h-svh flex flex-col transition-colors duration-700 bg-neutral-50 text-neutral-950'>
-        <PrimaryNav />
-        <main className='p-nav w-full m-auto text-neutral-950'>
-          {children}
-        </main>
-      </body>
+      <Providers>
+        <body className='flex flex-col transition-colors duration-700 h-svh bg-gradient-to-br from-primary-50 to-primary-100 text-neutral-950'>
+          <PrimaryNav />
+          <main className='w-full m-auto p-nav text-neutral-950'>
+            {children}
+          </main>
+        </body>
+      </Providers>
     </html>
   );
 }

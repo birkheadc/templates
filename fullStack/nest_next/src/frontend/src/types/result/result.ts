@@ -11,7 +11,8 @@ export enum ResultMessage {
   CONNECTION_FAILED = 'failed to connect to server',
   POST_COMMENT_SUCCESS = 'comment recieved. thank you!',
   UNEXPECTED_RESPONSE = 'something unexpected happened',
-  LOGIN_SUCCESS = 'logged in successfully'
+  LOGIN_SUCCESS = 'logged in successfully',
+  GENERIC_SUCCESS = 'action successful'
 }
 
 export class Result<T = any> {
@@ -52,6 +53,7 @@ export class Result<T = any> {
     result.wasSuccess = this.wasSuccess;
     result.errors = this.errors;
     result.body = body;
+    result.message = this.message;
     return result;
   }
 

@@ -7,13 +7,13 @@ import { Eye, EyeOff } from 'lucide-react';
 type PasswordInputProps = {
   value: string,
   change: (value: string) => void,
-  forgotPasswordHref?: string,
-  id: string
+  id: string,
+  disabled?: boolean
 }
 
 export default function PasswordInput(props: PasswordInputProps): JSX.Element {
 
-  const { value, change, forgotPasswordHref, id } = props;
+  const { value, change, id, disabled } = props;
 
   const [ show, setShow ] = React.useState<boolean>(false);
 
@@ -25,11 +25,8 @@ export default function PasswordInput(props: PasswordInputProps): JSX.Element {
     <div className='flex flex-col w-full gap-1'>
       <label className='font-bold text-primary-700' htmlFor={id}>password</label>
       <div className='flex gap-2 p-1 px-3 border bg-primary-50 border-primary-500 focus-within:outline focus-within:outline-1'>
-        <input autoComplete='current-password' id={id} className='flex-grow outline-none bg-primary-50 text-primary-700' type={show ? 'text': 'password' } value={value} onChange={handleChange}></input>
+        <input autoComplete='current-password' disabled={disabled} id={id} className='flex-grow outline-none bg-primary-50 text-primary-700' type={show ? 'text': 'password' } value={value} onChange={handleChange}></input>
         <button className='bg-transparent' type='button' onClick={() => setShow(s => !s)}>{ show ? <EyeOff /> : <Eye /> }</button>
-      </div>
-      <div className='flex justify-end'>
-        { forgotPasswordHref && <BasicLink className='text-sm font-light' href={forgotPasswordHref} >forgot password?</BasicLink> }
       </div>
     </div>
   );

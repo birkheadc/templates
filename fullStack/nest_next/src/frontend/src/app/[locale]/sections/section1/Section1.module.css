@@ -1,0 +1,16 @@
+.section {
+  animation-name: scroll;
+  animation-duration: 64000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-size: 800px 800px;
+}
+
+@keyframes scroll {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: 1600px 800px;
+  }
+}

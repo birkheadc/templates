@@ -17,6 +17,12 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
+/* @-moz-document url-prefix() {
+  .ff-disable-bg-fixed {
+    background-attachment: scroll;
+  }
+} */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
