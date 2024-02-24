@@ -5,9 +5,6 @@ import Section3 from "./sections/section3/Section3";
 import Section4 from "./sections/section4/Section4";
 
 export default function Home() {
-
-  const t = useRichTranslations('Home');
-
   return (
     <>
       <Section1 />

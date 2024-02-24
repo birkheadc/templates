@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from '../../../navigation/navigation';
+import utils from '../../../utils';
 
 type BasicLinkProps = {
   href: string,
@@ -8,7 +9,10 @@ type BasicLinkProps = {
 }
 
 export default function BasicLink(props: BasicLinkProps): JSX.Element {
+
+  const { href, className, children } = props;
+
   return (
-    <Link className={'text-primary-700 hocus:text-primary-600 hocus:underline' + (props.className ? ' ' + props.className : '')} href={props.href}>{props.children}</Link>
+    <Link className={utils.mergeClass('text-primary-700 hocus:text-primary-600 hocus:underline', className)} href={href}>{children}</Link>
   );
 }

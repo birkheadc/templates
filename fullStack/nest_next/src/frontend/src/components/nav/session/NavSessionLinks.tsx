@@ -5,26 +5,24 @@ import NavLink from '../navLink/NavLink';
 import { LogInIcon, LogOutIcon, UserIcon, UserPlusIcon } from 'lucide-react';
 import { SessionContext } from '../../../contexts/session/SessionContext';
 import { SessionStatus } from '../../../types/session/session';
+import NavSessionLoggedInLinks, { NavSessionLoggedInLinksProps } from './loggedInLinks/NavSessionLoggedInLinks';
+import NavSessionLoggedOutLinks, { NavSessionLoggedOutLinksProps } from './loggedOutLinks/NavSessionLoggedOutLinks';
 
-type NavSessionLinksProps = {
-
+export type NavSessionLinksProps = {
+  loggedInLinks: React.ReactElement<NavSessionLoggedInLinksProps>,
+  loggedOutLinks: React.ReactElement<NavSessionLoggedOutLinksProps>
 }
 
 export default function NavSessionLinks(props: NavSessionLinksProps): JSX.Element {
 
+  const { loggedInLinks, loggedOutLinks } = props;
   const { session } = React.useContext(SessionContext);
 
   return (
     <ul className='flex h-full gap-6'>
       { session.status === SessionStatus.LOGGED_IN
-        ? <>
-            <li><NavLink href='/logout'><span className='hidden lg:block'>logout</span><LogOutIcon width={'1rem'} /></NavLink></li>
-            <li><NavLink href='/dashboard'><span className='hidden lg:block'>dashboard</span><UserIcon width={'1rem'} /></NavLink></li>
-          </>
-        : <>
-            <li><NavLink href='/login'><span className='hidden lg:block'>login</span><LogInIcon width={'1rem'} /></NavLink></li>
-            <li><NavLink href='/register'><span className='hidden lg:block'>register</span><UserPlusIcon width={'1rem'} /></NavLink></li>
-          </>
+        ? loggedInLinks
+        : loggedOutLinks
       }
     </ul>
   );

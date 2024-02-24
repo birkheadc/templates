@@ -10,7 +10,7 @@ type Section3Props = {
 
 export default function Section3(props: Section3Props): JSX.Element {
 
-  const t = useRichTranslations('Home.Section3');
+  const t = useRichTranslations('home.section3');
 
   return (
     <Section className='bg-fixed bg-gradient-to-br from-primary-300 to-primary-50'>

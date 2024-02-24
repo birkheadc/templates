@@ -10,7 +10,7 @@ type pageProps = {
 
 export default function page(props: pageProps): JSX.Element {
   return (
-    <RedirectWrapper mode={'excludes'} statuses={[ SessionStatus.LOGGED_IN ]}>
+    <RedirectWrapper mode={'excludes'} statuses={[ SessionStatus.LOGGED_IN ]} redirect='/dashboard'>
       <Section className='items-start'>
          <h1 className='text-3xl text-center'>register</h1>
       </Section>

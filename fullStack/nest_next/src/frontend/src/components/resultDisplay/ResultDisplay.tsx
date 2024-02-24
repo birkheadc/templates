@@ -12,7 +12,7 @@ export default function ResultDisplay(props: ResultDisplayProps): JSX.Element {
   const { result, displayErrors } = props;
 
   return (
-    <div>
+    <div className='w-full'>
       <NotificationBox type={ result.wasSuccess ? NotificationType.SUCCESS : NotificationType.ERROR }>
         {result.message}
       </NotificationBox>

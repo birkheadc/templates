@@ -21,6 +21,7 @@ export default function Form(props: FormProps): JSX.Element {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setRecentResult(undefined);
     setProcessing(true);
     const result = await submit();
     setRecentResult(result);
