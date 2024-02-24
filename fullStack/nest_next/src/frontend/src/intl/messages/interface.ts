@@ -26,8 +26,6 @@ export interface Messages {
   },
   login: {
     header: string,
-    emailAddress: string,
-    password: string,
     recoverAccount: string,
     registerNew: string
   },
@@ -43,7 +41,9 @@ export interface Messages {
   general: {
     signUp: string,
     signIn: string,
-    submit: string
+    submit: string,
+    emailAddress: string,
+    password: string,
   }
 }
 

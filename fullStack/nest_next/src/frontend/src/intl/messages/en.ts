@@ -28,8 +28,6 @@ const messages: Messages = {
   },
   login: {
     header: 'login',
-    emailAddress: 'email address',
-    password: 'password',
     recoverAccount: 'recover account',
     registerNew: 'register new'
   },
@@ -45,7 +43,9 @@ const messages: Messages = {
   general: {
     signUp: 'sign up',
     signIn: 'sign in',
-    submit: 'submit'
+    submit: 'submit',
+    emailAddress: 'email address',
+    password: 'password',
   }
 }
 

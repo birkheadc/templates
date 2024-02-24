@@ -2,6 +2,7 @@
   outline: none;
 }
 
+/* Hack to stop browser CSS ruining input styling when autofilling */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
@@ -14,14 +15,8 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px hsl(var(--twc-primary-50)) inset;
   box-shadow: 0 0 0 1000px hsl(var(--twc-primary-50)) inset;
-  transition: background-color 5000s ease-in-out 0s !important;
+  transition: background-color 600000s ease-in-out 0s, color 600000s ease-in-out 0s !important;
 }
-
-/* @-moz-document url-prefix() {
-  .ff-disable-bg-fixed {
-    background-attachment: scroll;
-  }
-} */
 
 @tailwind base;
 @tailwind components;

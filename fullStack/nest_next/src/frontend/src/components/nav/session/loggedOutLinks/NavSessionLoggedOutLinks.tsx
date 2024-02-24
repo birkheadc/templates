@@ -3,7 +3,7 @@ import * as React from 'react';
 import NavLink from '../../navLink/NavLink';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
 
-export type NavSessionLoggedOutLinksProps = {
+type NavSessionLoggedOutLinksProps = {
 
 }
 

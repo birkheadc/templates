@@ -28,8 +28,6 @@ const messages: Messages = {
   },
   login: {
     header: 'ログイン',
-    emailAddress: 'メールアドレス',
-    password: 'パスワード',
     recoverAccount: 'ログインできない場合',
     registerNew: '新規登録'
   },
@@ -45,7 +43,9 @@ const messages: Messages = {
   general: {
     signUp: '新規登録',
     signIn: 'ログイン',
-    submit: '送信'
+    submit: '送信',
+    emailAddress: 'メールアドレス',
+    password: 'パスワード',
   }
 }
 

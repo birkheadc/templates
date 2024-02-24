@@ -3,7 +3,7 @@ import NavLink from '../navLink/NavLink';
 import { HomeIcon } from 'lucide-react';
 import useRichTranslations from '../../../hooks/useRichTranslations/useRichTranslations';
 
-export type NavPageLinksProps = {
+type NavPageLinksProps = {
 
 }
 
