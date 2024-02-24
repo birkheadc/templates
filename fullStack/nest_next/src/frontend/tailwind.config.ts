@@ -10,12 +10,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'short': { 'raw': '(max-height: 640px)' }
+      },
       height: {
         nav: "4rem",
         "svh-nav": "calc(100svh - 4rem)",
       },
       minHeight: {
         "svh-nav": "calc(100svh - 4rem)",
+        "lvh-nav": "calc(100lvh - 4rem)"
       },
       boxShadow: {
         inner: "1px 1px 5px black inset",
