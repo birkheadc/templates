@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang={locale} data-theme='dark'>
       <Providers locale={locale} messages={messages}>
-        <body className='flex flex-col transition-colors duration-700 h-svh bg-gradient-to-br from-primary-50 to-primary-100 text-neutral-950'>
+        <body className='flex flex-col transition-colors duration-700 h-svh bg-neutral-50 text-neutral-950'>
           <PrimaryNav />
           <main className='w-full m-auto p-nav text-neutral-950'>
             {children}

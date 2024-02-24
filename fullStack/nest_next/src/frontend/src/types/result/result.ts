@@ -12,7 +12,8 @@ export enum ResultMessage {
   POST_COMMENT_SUCCESS = 'comment recieved. thank you!',
   UNEXPECTED_RESPONSE = 'something unexpected happened',
   LOGIN_SUCCESS = 'logged in successfully',
-  GENERIC_SUCCESS = 'action successful'
+  GENERIC_SUCCESS = 'action successful',
+  REGISTRATION_EMAIL_SENT = 'an email has been sent to your inbox with instructions on how to proceed'
 }
 
 export class Result<T = any> {

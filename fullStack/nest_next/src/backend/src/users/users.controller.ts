@@ -11,19 +11,19 @@ export class UsersController {
 
   constructor(private readonly service: UsersService) { }
 
-  @Post('change-password')
+  @Post('/me/change-password')
   @UseGuards(JwtGuard)
   async changePassword(@Request() request: BearerAuthenticatedRequest, @Body() dto: ChangePasswordDto) {
     const user = request.user;
     await this.service.changePassword(user, dto.password);
   }
 
-  @Post('new')
+  @Post('register')
   async registerNewUser(@Body() request: RegisterUserRequestDto) {
     console.log('Received new register user request:', request.emailAddress);
   }
 
-  @Get()
+  @Get('/me')
   @UseGuards(JwtGuard)
   async getUser(@Request() request: BearerAuthenticatedRequest) {
     const user = request.user;

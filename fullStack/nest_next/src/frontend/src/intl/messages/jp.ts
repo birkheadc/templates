@@ -32,7 +32,8 @@ const messages: Messages = {
     registerNew: '新規登録'
   },
   register: {
-    
+    header: '新規登録',
+    instructions: 'メールアドレスを入力してください。登録手続きのリンクをお送りいたします。'
   },
   logout: {
     

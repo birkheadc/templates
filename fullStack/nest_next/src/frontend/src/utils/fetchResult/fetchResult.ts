@@ -4,7 +4,13 @@ import { Result, ResultMessage } from "../../types/result/result";
 import createAbortSignal from "../createAbortSignal/createAbortSignal";
 
 export default async function fetchResult<T>(options: FetchResultOptions<T>): Promise<Result<T>> {
-  const { url, builder, successMessage, init } = options;
+
+  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  if (baseUrl == null) return Result.Fail().WithMessage(ResultMessage.URL_NOT_DEFINED);
+
+  const { route, builder, successMessage, init } = options;
+  const url = baseUrl + route;
+
   const { abortSignal, clearAbortSignal } = createAbortSignal();
   try {
     const response = await fetch(url, {...init, signal: abortSignal});

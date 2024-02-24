@@ -30,7 +30,8 @@ export interface Messages {
     registerNew: string
   },
   register: {
-
+    header: string,
+    instructions: string
   },
   logout: {
 
