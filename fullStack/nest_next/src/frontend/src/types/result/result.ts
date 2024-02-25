@@ -1,25 +1,15 @@
+import { ResultMessage } from "./resultMessage";
+
 export type ResultError = {
   statusCode?: number,
   field?: string,
   message?: string
 }
 
-export enum ResultMessage {
-  NOT_YET_IMPLEMENTED = 'not yet implemented',
-  URL_NOT_DEFINED = 'url not defined',
-  CONNECTION_REFUSED = 'connection refused by server',
-  CONNECTION_FAILED = 'failed to connect to server',
-  POST_COMMENT_SUCCESS = 'comment recieved. thank you!',
-  UNEXPECTED_RESPONSE = 'something unexpected happened',
-  LOGIN_SUCCESS = 'logged in successfully',
-  GENERIC_SUCCESS = 'action successful',
-  REGISTRATION_EMAIL_SENT = 'an email has been sent to your inbox with instructions on how to proceed'
-}
-
 export class Result<T = any> {
   wasSuccess: boolean = false;
   errors: ResultError[] = [];
-  message?: string | ResultMessage | undefined = undefined;
+  message?: ResultMessage | undefined = undefined;
   body?: T | undefined = undefined;
 
   static Fail<T>(): Result<T> {
@@ -34,7 +24,7 @@ export class Result<T = any> {
     return result;
   }
 
-  WithMessage(message: string | ResultMessage): Result {
+  WithMessage(message: ResultMessage): Result {
     this.message = message;
     return this;
   }

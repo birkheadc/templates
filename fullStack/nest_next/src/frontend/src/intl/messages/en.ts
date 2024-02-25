@@ -1,3 +1,4 @@
+import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from './interface';
 
 const messages: Messages = {
@@ -35,18 +36,24 @@ const messages: Messages = {
     header: 'register',
     instructions: "provide your email address below, and we'll send you a link to sign up"
   },
-  logout: {
-    
-  },
-  dashboard: {
-    
-  },
+  logout: {},
+  dashboard: {},
   general: {
     signUp: 'sign up',
     signIn: 'sign in',
     submit: 'submit',
     emailAddress: 'email address',
     password: 'password',
+  },
+  resultMessages: {
+    notYetImplemented: 'not yet implemented',
+    urlNotDefined: 'url not defined',
+    connectionRefused: 'connection refused',
+    connectionFailed: 'connection failed',
+    unexpectedResponse: 'something unexpected happened',
+    loginSuccess: 'logged in successfully',
+    genericSuccess: 'success',
+    registrationEmailSent: 'an email has been sent to your inbox with instructions on how to proceed'
   }
 }
 

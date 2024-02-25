@@ -1,7 +1,8 @@
 import { LoginCredentials } from "../../types/auth/credentials/credentials";
 import { SessionToken } from "../../types/session/sessionToken/sessionToken";
-import { Result, ResultMessage } from "../../types/result/result";
+import { Result } from "../../types/result/result";
 import utils from "../../utils";
+import { ResultMessage } from "@/types/result/resultMessage";
 
 export default async function login(credentials: LoginCredentials): Promise<Result<SessionToken>> {
   const result = await utils.fetchResult({

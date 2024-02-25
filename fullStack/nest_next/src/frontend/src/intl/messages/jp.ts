@@ -1,3 +1,4 @@
+import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from './interface';
 
 const messages: Messages = {
@@ -35,18 +36,24 @@ const messages: Messages = {
     header: '新規登録',
     instructions: 'メールアドレスを入力してください。登録手続きのリンクをお送りいたします。'
   },
-  logout: {
-    
-  },
-  dashboard: {
-    
-  },
+  logout: {},
+  dashboard: {},
   general: {
     signUp: '新規登録',
     signIn: 'ログイン',
     submit: '送信',
     emailAddress: 'メールアドレス',
     password: 'パスワード',
+  },
+  resultMessages: {
+    notYetImplemented: '未実装',
+    urlNotDefined: 'アドレス不定義',
+    connectionRefused: '切断',
+    connectionFailed: '拒否',
+    unexpectedResponse: '予定外エラー',
+    loginSuccess: 'ログイン成功',
+    genericSuccess: '成功',
+    registrationEmailSent: '登録手続きのメールを送信しました。ご確認ください。'
   }
 }
 

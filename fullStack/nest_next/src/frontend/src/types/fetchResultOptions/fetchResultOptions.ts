@@ -1,4 +1,4 @@
-import { ResultMessage } from "../result/result"
+import { ResultMessage } from "../result/resultMessage"
 
 export type FetchResultOptions<T> = {
   route: string,

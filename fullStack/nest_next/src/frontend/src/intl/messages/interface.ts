@@ -1,3 +1,5 @@
+import { ResultMessage } from "@/types/result/resultMessage"
+
 export interface Messages {
   home: {
     section1: {
@@ -45,6 +47,9 @@ export interface Messages {
     submit: string,
     emailAddress: string,
     password: string,
+  },
+  resultMessages: {
+    [key in ResultMessage ]: string
   }
 }
 

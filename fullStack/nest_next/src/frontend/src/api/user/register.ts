@@ -1,4 +1,5 @@
-import { Result, ResultMessage } from "../../types/result/result";
+import { ResultMessage } from "@/types/result/resultMessage";
+import { Result } from "../../types/result/result";
 import utils from "../../utils";
 
 export default async function register(request: { emailAddress: string }): Promise<Result> {

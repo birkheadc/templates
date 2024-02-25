@@ -1,6 +1,6 @@
+import { ResultMessage } from "@/types/result/resultMessage";
 import { FetchResultOptions } from "../../types/fetchResultOptions/fetchResultOptions";
-import { FromResponse } from "../../types/fromResponse/fromResponse";
-import { Result, ResultMessage } from "../../types/result/result";
+import { Result } from "../../types/result/result";
 import createAbortSignal from "../createAbortSignal/createAbortSignal";
 
 export default async function fetchResult<T>(options: FetchResultOptions<T>): Promise<Result<T>> {
