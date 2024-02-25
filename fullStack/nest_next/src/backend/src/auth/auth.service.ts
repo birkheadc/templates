@@ -12,7 +12,7 @@ export class AuthService {
 
   async validateUser(emailAddress: string, password: string): Promise<UserOmitPassword> {
     const user = await this.usersService.getUserByEmailAddress(emailAddress);
-    if (compareSync(password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    if (user == null || compareSync(password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     const { password: _, ...result } = user;
     return result;
   }

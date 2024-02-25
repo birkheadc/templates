@@ -29,7 +29,7 @@ export class UsersRepository {
     }
   }
 
-  async getUserByEmailAddress(emailAddress: string): Promise<User> {
+  async getUserByEmailAddress(emailAddress: string): Promise<User | null> {
     const command = new QueryCommand({
       TableName: this.tableName,
       IndexName: 'emailAddress',
@@ -41,8 +41,8 @@ export class UsersRepository {
 
     try {
       const response = await this.client.send(command);
-      if (!response.Items) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-
+      if (!response.Items || response.Items[0] == null) return null;
+      console.log({ items: response.Items});
       const user = User.fromDynamoDBObject(response.Items[0]);
       return user;
     } catch (error) {

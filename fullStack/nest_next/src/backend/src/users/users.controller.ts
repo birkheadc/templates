@@ -20,7 +20,7 @@ export class UsersController {
 
   @Post('register')
   async registerNewUser(@Body() request: RegisterUserRequestDto) {
-    console.log('Received new register user request:', request.emailAddress);
+    await this.service.registerNewUser(request);
   }
 
   @Get('/me')
