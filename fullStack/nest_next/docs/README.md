@@ -104,7 +104,7 @@ Frontend deployment is done through AWS Amplify. For now this is done manually, 
 ## Environment Variables
 The following Environment Variables need to be set up for the application to work. In Amplify, this is easy to do through the console.
 
-- BACKEND_URL
+- NEXT_PUBLIC_BACKEND_URL
 
 ### Packages
 I use a few packages beyond what Next comes with out of the box.

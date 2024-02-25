@@ -28,7 +28,7 @@ const config: Config = {
         nav: "4rem 0 0 0",
       },
       backgroundImage: {
-        hero: "url('https://picsum.photos/id/56/1920/1080')",
+        hero: "url('/images/hero-bg.png')",
       },
     },
     colors: {
