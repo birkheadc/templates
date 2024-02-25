@@ -16,8 +16,8 @@ export default function NotificationIcon(props: NotificationIconProps): JSX.Elem
 }
 
 const ICON: { [key: string]: JSX.Element } = {
-  basic: <CircleEllipsisIcon width={'4rem'} />,
-  success: <CheckCircle2Icon width={'4rem'} />,
-  warning: <AlertCircleIcon width={'4rem'} />,
-  error: <XCircleIcon width={'4rem'} />,
+  basic: <CircleEllipsisIcon />,
+  success: <CheckCircle2Icon />,
+  warning: <AlertCircleIcon />,
+  error: <XCircleIcon />,
 }

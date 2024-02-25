@@ -15,8 +15,10 @@ export default function NotificationBox(props: NotificationBoxProps): JSX.Elemen
 
   return (
     <div className={`${BORDER_COLOR[type]} ${COLOR[type]} ${BG_COLOR[type]} border-2 p-2 px-4 w-full flex justify-center items-center gap-4`}>
-      <NotificationIcon type={type} />
-      <span className='text-pretty'>{children}</span>
+      <div className='w-fit'>
+        <NotificationIcon type={type} />
+      </div>
+      <span className='text-pretty flex-grow'>{children}</span>
     </div>
   );
 }
