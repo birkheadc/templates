@@ -106,6 +106,18 @@ The following Environment Variables need to be set up for the application to wor
 
 - NEXT_PUBLIC_BACKEND_URL
 
+## Localization
+
+Next-intl is used for localization.
+
+I have created a custom hook `useRichTranslations` to wrap next-intl's `useTranslations` hook. `useRichTranslations` keeps track of mark-up tags and how they should be displayed.
+
+Translation injection is slightly different in client and server components. `useTranslations` can normally only be used in a server component, since client components do not have access to the full library of translations. I have remedied this by wrapping the application in a `<NextIntlClientProvider>` for now, but am also worried that this is not the best way to go about it.
+
+I have introduced type safety to translations via `intl/messages/interface.ts`. All languages implement this interface, and `useRichTranslations` understands all the possible keys of this interface, so incorrect values are flagged by the TypeScript compiler, both in the language files, and in components trying to display translations.
+
+In other words, messages can be extended by simply adding them to `interface.ts`. The compiler will tell the developer to add those messages in the language files. `useRichTranslations` will also only accept values that are included in the interface.
+
 ### Packages
 I use a few packages beyond what Next comes with out of the box.
 

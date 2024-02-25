@@ -1,5 +1,5 @@
-import en from './en';
-import jp from './jp';
+import en from './languages/en';
+import jp from './languages/jp';
 
 const messages: { [ key: string]: any } = {
   en,

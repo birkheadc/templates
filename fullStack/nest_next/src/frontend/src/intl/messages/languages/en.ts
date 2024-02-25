@@ -1,5 +1,5 @@
 import { ResultMessage } from '@/types/result/resultMessage';
-import { Messages } from './interface';
+import { Messages } from '../interface';
 
 const messages: Messages = {
   home: {
