@@ -1,3 +1,5 @@
 export type RegisterUserRequest = {
-  emailAddress: string
+  emailAddress: string;
+  language: string;
+  verifyUrl: string;
 }

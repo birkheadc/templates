@@ -2,7 +2,6 @@ import { Body, Controller, Post, UseGuards, Request, Get } from '@nestjs/common'
 import { BearerAuthenticatedRequest } from '../auth/request/bearerAuthenticatedRequest';
 import { ChangePasswordDto } from './dtos/change-password.dto';
 import { UsersService } from './users.service';
-import { AuthGuard } from '@nestjs/passport';
 import { RegisterUserRequestDto } from './dtos/register-user.dto';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 
