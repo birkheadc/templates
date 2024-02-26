@@ -1,4 +1,5 @@
 import { ResultMessage } from "@/types/result/resultMessage"
+import { ResultErrorMessage } from "../../types/result/resultErrorMessage"
 
 export interface Messages {
   home: {
@@ -33,7 +34,12 @@ export interface Messages {
   },
   register: {
     header: string,
-    instructions: string
+    instructions: string,
+    verified: {
+      checking: string,
+      failure: string,
+      instructions: string
+    }
   },
   logout: {
 
@@ -47,9 +53,13 @@ export interface Messages {
     submit: string,
     emailAddress: string,
     password: string,
-  },
+    confirmPassword: string
+  }
   resultMessages: {
     [key in ResultMessage ]: string
+  },
+  resultErrorMessages: {
+    [key in ResultErrorMessage]: string
   }
 }
 

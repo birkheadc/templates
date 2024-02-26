@@ -9,15 +9,16 @@ type FormProps = {
   children?: React.ReactNode,
   className?: string,
   classNameInner?: string,
+  initialResult?: Result,
   submit: () => Promise<Result>
 }
 
 export default function Form(props: FormProps): JSX.Element {
 
-  const { children, className, classNameInner, submit } = props;
+  const { children, className, classNameInner, initialResult, submit } = props;
 
   const [ isProcessing, setProcessing ] = React.useState<boolean>(false);
-  const [ recentResult, setRecentResult ] = React.useState<Result | undefined>();
+  const [ recentResult, setRecentResult ] = React.useState<Result | undefined>(initialResult);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();

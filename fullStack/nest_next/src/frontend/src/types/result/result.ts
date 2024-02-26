@@ -1,9 +1,10 @@
+import { ResultErrorMessage } from "./resultErrorMessage";
 import { ResultMessage } from "./resultMessage";
 
 export type ResultError = {
   statusCode?: number,
   field?: string,
-  message?: string
+  message?: ResultErrorMessage
 }
 
 export class Result<T = any> {
@@ -21,6 +22,12 @@ export class Result<T = any> {
   static Succeed<T>(): Result<T> {
     const result = new Result<T>();
     result.wasSuccess = true;
+    return result;
+  }
+
+  static WithSuccess<T>(wasSuccess: boolean): Result<T> {
+    const result = new Result<T>();
+    result.wasSuccess = wasSuccess;
     return result;
   }
 

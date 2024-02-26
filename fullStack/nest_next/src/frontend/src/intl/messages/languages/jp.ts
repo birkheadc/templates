@@ -1,5 +1,6 @@
 import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from '../interface';
+import { ResultErrorMessage } from '../../../types/result/resultErrorMessage';
 
 const messages: Messages = {
   home: {
@@ -34,7 +35,12 @@ const messages: Messages = {
   },
   register: {
     header: '新規登録',
-    instructions: 'メールアドレスを入力してください。登録手続きのリンクをお送りいたします。'
+    instructions: 'メールアドレスを入力してください。登録手続きのリンクをお送りいたします。',
+    verified: {
+      checking: '確認中。少々お待ちください。',
+      failure: '申し訳ございません。メールアドレスの確認が失敗しました。',
+      instructions: '引き続き以下のフォームをご記入ください。'
+    } 
   },
   logout: {},
   dashboard: {},
@@ -44,16 +50,23 @@ const messages: Messages = {
     submit: '送信',
     emailAddress: 'メールアドレス',
     password: 'パスワード',
+    confirmPassword: 'パスワード再入力'
   },
   resultMessages: {
-    notYetImplemented: '未実装',
-    urlNotDefined: 'アドレス不定義',
-    connectionRefused: '切断',
-    connectionFailed: '拒否',
-    unexpectedResponse: '予定外エラー',
-    loginSuccess: 'ログイン成功',
-    genericSuccess: '成功',
-    registrationEmailSent: '登録手続きのメールを送信しました。ご確認ください。'
+    [ResultMessage.NOT_YET_IMPLEMENTED]: '未実装',
+    [ResultMessage.URL_NOT_DEFINED]: 'アドレス不定義',
+    [ResultMessage.CONNECTION_REFUSED]: '切断',
+    [ResultMessage.CONNECTION_FAILED]: '拒否',
+    [ResultMessage.UNEXPECTED_RESPONSE]: '予定外エラー',
+    [ResultMessage.LOGIN_SUCCESS]: 'ログイン成功',
+    [ResultMessage.GENERIC_SUCCESS]: '成功',
+    [ResultMessage.REGISTRATION_EMAIL_SENT]: '登録手続きのメールを送信しました。ご確認ください。',
+    [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'ありがとうございます。メールアドレスの確認が完了しました。'
+  },
+  resultErrorMessages: {
+    [ResultErrorMessage.PASSWORD_TOO_SHORT]: '8文字以上',
+    [ResultErrorMessage.PASSWORD_TOO_LONG]: '64文字以下',
+    [ResultErrorMessage.PASSWORDS_DO_NOT_MATCH]: '一致していません'
   }
 }
 

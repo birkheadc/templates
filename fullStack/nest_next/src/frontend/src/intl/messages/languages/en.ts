@@ -1,5 +1,6 @@
 import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from '../interface';
+import { ResultErrorMessage } from '../../../types/result/resultErrorMessage';
 
 const messages: Messages = {
   home: {
@@ -34,7 +35,12 @@ const messages: Messages = {
   },
   register: {
     header: 'register',
-    instructions: "provide your email address below, and we'll send you a link to sign up"
+    instructions: "provide your email address below, and we'll send you a link to sign up",
+    verified: {
+      checking: 'verifying your email address. please wait.',
+      failure: 'sorry, something went wrong with your verification code',
+      instructions: 'please fill out this form to finalize creation of your new account'
+    }
   },
   logout: {},
   dashboard: {},
@@ -44,16 +50,23 @@ const messages: Messages = {
     submit: 'submit',
     emailAddress: 'email address',
     password: 'password',
+    confirmPassword: 'confirm password'
   },
   resultMessages: {
-    notYetImplemented: 'not yet implemented',
-    urlNotDefined: 'url not defined',
-    connectionRefused: 'connection refused',
-    connectionFailed: 'connection failed',
-    unexpectedResponse: 'something unexpected happened',
-    loginSuccess: 'logged in successfully',
-    genericSuccess: 'success',
-    registrationEmailSent: 'an email has been sent to your inbox with instructions on how to proceed'
+    [ResultMessage.NOT_YET_IMPLEMENTED]: 'not yet implemented',
+    [ResultMessage.URL_NOT_DEFINED]: 'url not defined',
+    [ResultMessage.CONNECTION_REFUSED]: 'connection refused',
+    [ResultMessage.CONNECTION_FAILED]: 'connection failed',
+    [ResultMessage.UNEXPECTED_RESPONSE]: 'something unexpected happened',
+    [ResultMessage.LOGIN_SUCCESS]: 'logged in successfully',
+    [ResultMessage.GENERIC_SUCCESS]: 'success',
+    [ResultMessage.REGISTRATION_EMAIL_SENT]: 'an email has been sent to your inbox with instructions on how to proceed',
+    [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'congratulations, your email address has been verified'
+  },
+  resultErrorMessages: {
+    [ResultErrorMessage.PASSWORD_TOO_SHORT]: 'must be at least 8 characters',
+    [ResultErrorMessage.PASSWORD_TOO_LONG]: 'must be at most 64 characters',
+    [ResultErrorMessage.PASSWORDS_DO_NOT_MATCH]: 'password must match'
   }
 }
 

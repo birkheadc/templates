@@ -5,6 +5,7 @@ import { hashSync } from 'bcrypt';
 import { UserOmitPassword } from '../auth/entities/userOmitPassword';
 import { RegisterUserRequestDto } from './dtos/register-user.dto';
 import { MailService } from 'src/mail/mail.service';
+import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
 
 @Injectable()
 export class UsersService {
@@ -31,5 +32,10 @@ export class UsersService {
     }
     // TODO: Create a temporary user with this email address
     await this.mailService.sendVerificationEmail(request);
+  }
+
+  async verifyUserEmailAddress(request: VerifyEmailRequestDto): Promise<string> {
+    const emailAddress = await this.mailService.verifyCode(request.code);
+    return emailAddress;
   }
 }

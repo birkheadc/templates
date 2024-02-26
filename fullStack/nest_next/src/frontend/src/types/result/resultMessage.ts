@@ -6,5 +6,6 @@ export enum ResultMessage {
   UNEXPECTED_RESPONSE = 'unexpectedResponse',
   LOGIN_SUCCESS = 'loginSuccess',
   GENERIC_SUCCESS = 'genericSuccess',
-  REGISTRATION_EMAIL_SENT = 'registrationEmailSent'
+  REGISTRATION_EMAIL_SENT = 'registrationEmailSent',
+  VERIFY_EMAIL_SUCCESS = 'verifyEmailSuccess'
 }

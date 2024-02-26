@@ -1,5 +1,5 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-import { Injectable } from "@nestjs/common";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { RegisterUserRequestDto } from "../users/dtos/register-user.dto";
 
 @Injectable()
@@ -13,6 +13,7 @@ export class MailService {
     // TODO: figure out how templates work
     // TODO: work out localization
     console.log(`Send verification email to ${request.emailAddress}`);
+    const verifyCode = this.generateVerifyCode();
     const command = new SendEmailCommand({
       Source: 'registration@mail.birkheadc.me',
       Destination: {
@@ -28,7 +29,7 @@ export class MailService {
         Body: {
           Text: {
             Charset: 'UTF-8',
-            Data: `Thank you for registering an account at Template Nest Next! Please click the link below, or copy and paste it into your browser, to continue the registration process. ${request.verifyUrl} (TODO: change language to ${request.language})`
+            Data: `Thank you for registering an account at Template Nest Next! Please click the link below, or copy and paste it into your browser, to continue the registration process. ${request.verifyUrl}?code=${verifyCode} (TODO: change language to ${request.language})`
           }
         }
       }
@@ -42,5 +43,19 @@ export class MailService {
 
   async sendSomeoneTriedToUseYourAddressEmail(emailAddress: string): Promise<void> {
     console.log(`Send warning (someone tried to register with your address) email to ${emailAddress}`);
+  }
+
+  async verifyCode(code: string): Promise<string> {
+    // TODO: Assume code is a jwt, verify it, and extract email address
+    if (code !== 'abcdefg') {
+      console.log(`Verification code ${code} was not recognized.`);
+      throw new UnauthorizedException();
+    }
+    return 'birkheadc@gmail.com';
+  }
+
+  generateVerifyCode(): string {
+    // TODO: Generate a jwt
+    return 'abcdefg';
   }
 }
