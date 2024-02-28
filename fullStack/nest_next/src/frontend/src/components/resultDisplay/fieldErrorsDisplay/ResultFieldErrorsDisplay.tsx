@@ -14,8 +14,8 @@ export default function ResultFieldErrorsDisplay(props: ResultFieldErrorsDisplay
   return (
     <ul className='flex flex-col text-error-500'>
       {errors && errors.map(
-        error =>
-        <>{error.message && <li>{t(error.message)}</li>}</>
+        (error, index) =>
+        <React.Fragment key={`result-field-errors-key-${index}`}>{error.message && <li>{t(error.message)}</li>}</React.Fragment>
       )}
     </ul>
   );

@@ -5,6 +5,7 @@ import { UsersService } from './users.service';
 import { RegisterUserRequestDto } from './dtos/register-user.dto';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
+import { CreateUserRequestDto } from './dtos/create-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -27,6 +28,11 @@ export class UsersController {
   async verifyUserEmailAddress(@Body() request: VerifyEmailRequestDto): Promise<string> {
     const emailAddress = await this.service.verifyUserEmailAddress(request);
     return emailAddress;
+  }
+
+  @Post()
+  async createUser(@Body() request: CreateUserRequestDto) {
+    await this.service.createNewUser(request);
   }
 
   @Get('/me')

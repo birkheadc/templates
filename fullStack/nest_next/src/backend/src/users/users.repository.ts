@@ -1,6 +1,7 @@
 import { DynamoDBClient, GetItemCommand, PutItemCommand, QueryCommand, ScanCommand, ScanCommandInput } from "@aws-sdk/client-dynamodb";
 import {HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { User } from "./entities/user.entity";
+import { UserDynamoDBObject } from "./dynamoDBObjects/UserDynamoDBObject";
 
 @Injectable()
 export class UsersRepository {
@@ -54,13 +55,10 @@ export class UsersRepository {
   async putUser(user: User): Promise<User> {
     const command = new PutItemCommand({
       TableName: this.tableName,
-      Item: User.toItemObject(user),
-      ReturnValues: 'ALL_OLD'
+      Item: UserDynamoDBObject.fromEntity(user),
     });
     try {
-      const response = await this.client.send(command);
-      // TODO: This is attempting to check whether the command failed, and throw if it did. But I'm not sure if that's what is actually happening.
-      if (response.Attributes == null) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+      await this.client.send(command);
       return user;
     } catch (error) {
       console.log('Error in putUser', error);

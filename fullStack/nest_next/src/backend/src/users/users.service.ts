@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { User } from './entities/user.entity';
 import { hashSync } from 'bcrypt';
@@ -6,6 +6,7 @@ import { UserOmitPassword } from '../auth/entities/userOmitPassword';
 import { RegisterUserRequestDto } from './dtos/register-user.dto';
 import { MailService } from 'src/mail/mail.service';
 import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
+import { CreateUserRequestDto } from './dtos/create-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -37,5 +38,22 @@ export class UsersService {
   async verifyUserEmailAddress(request: VerifyEmailRequestDto): Promise<string> {
     const emailAddress = await this.mailService.verifyCode(request.code);
     return emailAddress;
+  }
+
+  async createNewUser(request: CreateUserRequestDto): Promise<void> {
+    const verifiedEmailAddress = await this.mailService.verifyCode(request.emailVerificationToken);
+    if (verifiedEmailAddress !== request.emailAddress) {
+      console.log('Error in createNewUser: token payload does not match request email address');
+      throw new UnauthorizedException();
+    };
+
+    const preexistingUser = await this.getUserByEmailAddress(request.emailAddress);
+    if (preexistingUser != null) {
+      console.log('Error in createNewUser: email address is already in use. This should neven happen!');
+      throw new UnauthorizedException();
+    }
+
+    const user = User.fromCreateUserRequestDto(request);
+    await this.repository.putUser(user);
   }
 }

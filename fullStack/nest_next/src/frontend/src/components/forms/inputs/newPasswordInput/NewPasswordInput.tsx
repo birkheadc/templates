@@ -6,31 +6,37 @@ import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTr
 import ResultFieldErrorsDisplay from '../../../resultDisplay/fieldErrorsDisplay/ResultFieldErrorsDisplay';
 
 type NewPasswordInputProps = {
-
+  password: string,
+  changePassword: (password: string) => void,
+  passwordId?: string,
+  repeatPasswordId?: string
 }
 
 export default function NewPasswordInput(props: NewPasswordInputProps): JSX.Element {
 
-  const [ values, setValues ] = React.useState<{ password: string, repeat: string, [key: string]: string }>({ password: '', repeat: ''});
+  const { password, changePassword, passwordId, repeatPasswordId } = props;
+  const [ repeat, setRepeat ] = React.useState<string>('');
   const [ validationResult, setValidationResult ] = React.useState<Result | undefined>(undefined);
 
   const t = useRichTranslations('general');
 
-  const handleChange = (name: 'password' | 'repeat', value: string) => {
-    const newValues = {...values};
-    newValues[name] = value;
+  const handleChangePassword = (value: string) => {
+    changePassword(value);
+    const validationResult = validate({ password: value, repeat});
+    setValidationResult(validationResult);
+  }
 
-    setValues(newValues);
-    
-    const validationResult = validate(newValues);
+  const handleChangeRepeat = (value: string) => {
+    setRepeat(value);
+    const validationResult = validate({ password, repeat: value });
     setValidationResult(validationResult);
   }
   
   return (
-    <div className='w-full'>
-      <PasswordInput name={'password'} value={values.password} change={(value: string) => handleChange('password', value)} id={''} />
+    <div className='w-full flex flex-col gap-2'>
+      <PasswordInput autocomplete='new-password' name={'password'} value={password} change={(value: string) => handleChangePassword(value)} id={passwordId ?? 'password'} />
       <ResultFieldErrorsDisplay errors={validationResult?.errors.filter(e => e.field === 'password')} />
-      <PasswordInput label={t('confirmPassword') as string} name={'repeat'} value={values.repeat} change={(value: string) => handleChange('repeat', value)} id={''} />
+      <PasswordInput autocomplete='new-password' label={t('confirmPassword') as string} name={'repeat'} value={repeat} change={(value: string) => handleChangeRepeat(value)} id={repeatPasswordId ?? 'repeat-password'} />
       <ResultFieldErrorsDisplay errors={validationResult?.errors.filter(e => e.field === 'repeat')} />
     </div>
   );

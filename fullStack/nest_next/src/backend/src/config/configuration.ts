@@ -25,6 +25,7 @@ export default (): Configuration => ({
     devSecretValue: process.env.AWS_DEV_SECRET_VALUE
   },
   mail: {
-    region: process.env.AWS_REGION
+    region: process.env.AWS_REGION,
+    secretName: process.env.AWS_MAIL_JWT_SECRET_NAME
   }
 })

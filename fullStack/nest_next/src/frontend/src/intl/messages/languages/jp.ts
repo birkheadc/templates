@@ -61,7 +61,8 @@ const messages: Messages = {
     [ResultMessage.LOGIN_SUCCESS]: 'ログイン成功',
     [ResultMessage.GENERIC_SUCCESS]: '成功',
     [ResultMessage.REGISTRATION_EMAIL_SENT]: '登録手続きのメールを送信しました。ご確認ください。',
-    [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'ありがとうございます。メールアドレスの確認が完了しました。'
+    [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'メールアドレスの確認が完了しました。',
+    [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。'
   },
   resultErrorMessages: {
     [ResultErrorMessage.PASSWORD_TOO_SHORT]: '8文字以上',

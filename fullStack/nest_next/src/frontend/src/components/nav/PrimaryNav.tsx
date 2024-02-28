@@ -24,7 +24,7 @@ export default function PrimaryNav(props: PrimaryNavProps): JSX.Element {
   }, []);
 
   return (
-    <nav className={`fixed px-8 h-nav w-full transition-colors duration-300 backdrop-blur-sm border-b-2 ${isTop ? 'border-transparent-full bg-transparent-full' : 'border-primary-500 bg-transparent-theme-med'}`}>
+    <nav className={`z-20 fixed px-8 h-nav w-full transition-colors duration-300 backdrop-blur-sm border-b-2 ${isTop ? 'border-transparent-full bg-transparent-full' : 'border-primary-500 bg-transparent-theme-med'}`}>
       <div className='flex items-center justify-between h-full m-auto'>
         <div className='flex gap-4'>
           <NavPageLinks />

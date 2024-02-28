@@ -6,6 +6,7 @@ import { InjectableConfig } from "src/config/injectableConfig";
 export class MailConfig extends InjectableConfig {
 
   region: string | undefined;
+  secretName: string | undefined;
 
   constructor(configService: ConfigService) {
     super(configService, 'mail')

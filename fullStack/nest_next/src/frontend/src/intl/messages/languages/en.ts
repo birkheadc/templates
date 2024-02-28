@@ -61,7 +61,8 @@ const messages: Messages = {
     [ResultMessage.LOGIN_SUCCESS]: 'logged in successfully',
     [ResultMessage.GENERIC_SUCCESS]: 'success',
     [ResultMessage.REGISTRATION_EMAIL_SENT]: 'an email has been sent to your inbox with instructions on how to proceed',
-    [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'congratulations, your email address has been verified'
+    [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'your email address has been verified',
+    [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account'
   },
   resultErrorMessages: {
     [ResultErrorMessage.PASSWORD_TOO_SHORT]: 'must be at least 8 characters',

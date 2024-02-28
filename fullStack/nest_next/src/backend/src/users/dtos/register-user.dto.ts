@@ -1,5 +1,5 @@
 export class RegisterUserRequestDto {
-  emailAddress: string;
-  language: string;
-  verifyUrl: string;
+  emailAddress: string = '';
+  language: string = '';
+  verifyUrl: string = '';
 }

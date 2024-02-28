@@ -1,5 +1,7 @@
-import { AttributeValue } from "@aws-sdk/client-dynamodb";
-
+import { hashSync } from "bcrypt";
+import { CreateUserRequestDto } from "../dtos/create-user.dto";
+import { v4 as uuid } from 'uuid';
+ 
 export class User {
   id: string;
   emailAddress: string;
@@ -16,17 +18,13 @@ export class User {
     return user;
   }
 
-  static toItemObject(user: User): Record<string, AttributeValue> {
-    return {
-      id: {
-        S: user.id
-      },
-      emailAddress: {
-        S: user.emailAddress
-      },
-      password: {
-        S: user.password
-      }
-    }
+  static fromCreateUserRequestDto(dto: CreateUserRequestDto): User {
+    const user = new User();
+
+    user.id = uuid();
+    user.emailAddress = dto.emailAddress;
+    const hash = hashSync(dto.password, 10);
+    user.password = hash;
+    return user;
   }
 }

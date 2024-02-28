@@ -1,11 +1,13 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Injectable, UnauthorizedException, UnprocessableEntityException } from "@nestjs/common";
 import { RegisterUserRequestDto } from "../users/dtos/register-user.dto";
+import { JwtService } from "@nestjs/jwt";
+import { EmailVerificationTokenPayload } from "./payload/emailVerificationTokenPayload";
 
 @Injectable()
 export class MailService {
 
-  constructor(private readonly client: SESClient) {
+  constructor(private readonly client: SESClient, private readonly jwtService: JwtService) {
 
   }
 
@@ -13,7 +15,7 @@ export class MailService {
     // TODO: figure out how templates work
     // TODO: work out localization
     console.log(`Send verification email to ${request.emailAddress}`);
-    const verifyCode = this.generateVerifyCode();
+    const verifyCode = await this.generateVerifyCode(request);
     const command = new SendEmailCommand({
       Source: 'registration@mail.birkheadc.me',
       Destination: {
@@ -38,6 +40,7 @@ export class MailService {
       await this.client.send(command);
     } catch (error) {
       console.log('Error in sendVerificationEmail:', error);
+      throw new UnprocessableEntityException();
     }
   }
 
@@ -46,16 +49,19 @@ export class MailService {
   }
 
   async verifyCode(code: string): Promise<string> {
-    // TODO: Assume code is a jwt, verify it, and extract email address
-    if (code !== 'abcdefg') {
-      console.log(`Verification code ${code} was not recognized.`);
+    try {
+      const payload = EmailVerificationTokenPayload.fromJson(this.jwtService.verify(code));
+      if (payload.sub == null) throw new UnauthorizedException();
+      return payload.sub;
+    } catch (error) {
+      console.log(`Error in verifyCode: `, error);
       throw new UnauthorizedException();
     }
-    return 'birkheadc@gmail.com';
   }
 
-  generateVerifyCode(): string {
-    // TODO: Generate a jwt
-    return 'abcdefg';
+  async generateVerifyCode(request: RegisterUserRequestDto): Promise<string> {
+    const payload: EmailVerificationTokenPayload = { sub: request.emailAddress };
+    const token = await this.jwtService.signAsync(payload);
+    return token;
   }
 }
