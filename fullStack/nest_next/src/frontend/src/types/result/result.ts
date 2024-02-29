@@ -1,10 +1,10 @@
-import { ResultErrorMessage } from "./resultErrorMessage";
+import { FormValidationErrorMessage } from "../formValidation/formValidationErrorMessage";
 import { ResultMessage } from "./resultMessage";
 
 export type ResultError = {
   statusCode?: number,
   field?: string,
-  message?: ResultErrorMessage
+  message?: FormValidationErrorMessage
 }
 
 export class Result<T = any> {

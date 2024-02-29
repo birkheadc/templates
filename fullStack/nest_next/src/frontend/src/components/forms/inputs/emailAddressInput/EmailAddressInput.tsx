@@ -1,6 +1,7 @@
 import * as React from 'react';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
 import Input from '../input/Input';
+import { Result } from '../../../../types/result/result';
 
 type EmailAddressInputProps = {
   value: string,

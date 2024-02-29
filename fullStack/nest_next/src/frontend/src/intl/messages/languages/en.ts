@@ -1,6 +1,6 @@
 import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from '../interface';
-import { ResultErrorMessage } from '../../../types/result/resultErrorMessage';
+import { FormValidationErrorMessage } from '../../../types/formValidation/formValidationErrorMessage';
 
 const messages: Messages = {
   home: {
@@ -64,10 +64,10 @@ const messages: Messages = {
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'your email address has been verified',
     [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account'
   },
-  resultErrorMessages: {
-    [ResultErrorMessage.PASSWORD_TOO_SHORT]: 'must be at least 8 characters',
-    [ResultErrorMessage.PASSWORD_TOO_LONG]: 'must be at most 64 characters',
-    [ResultErrorMessage.PASSWORDS_DO_NOT_MATCH]: 'password must match'
+  formValidationErrorMessages: {
+    [FormValidationErrorMessage.PASSWORD_TOO_SHORT]: 'must be at least 8 characters',
+    [FormValidationErrorMessage.PASSWORD_TOO_LONG]: 'must be at most 64 characters',
+    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: 'password must match'
   }
 }
 

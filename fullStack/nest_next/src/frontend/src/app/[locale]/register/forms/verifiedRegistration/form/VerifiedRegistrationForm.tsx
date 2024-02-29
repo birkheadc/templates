@@ -2,12 +2,12 @@ import * as React from 'react';
 import Form from '../../../../../../components/forms/form/Form';
 import { Result } from '../../../../../../types/result/result';
 import { ResultMessage } from '../../../../../../types/result/resultMessage';
-import Input from '../../../../../../components/forms/inputs/input/Input';
 import EmailAddressInput from '../../../../../../components/forms/inputs/emailAddressInput/EmailAddressInput';
 import useRichTranslations from '../../../../../../hooks/useRichTranslations/useRichTranslations';
 import NewPasswordInput from '../../../../../../components/forms/inputs/newPasswordInput/NewPasswordInput';
 import { CreateUserRequest } from '../../../../../../types/requests/createUser/createUserRequest';
 import api from '../../../../../../api';
+import { FormValidation } from '../../../../../../types/formValidation/formValidation';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationCode: string,
@@ -16,6 +16,7 @@ type VerifiedRegistrationFormProps = {
 
 export default function VerifiedRegistrationForm(props: VerifiedRegistrationFormProps): JSX.Element {
 
+  const [ validation, setValidation ] = React.useState<FormValidation>({});
   const [ request, setRequest ] = React.useState<CreateUserRequest>({
     emailVerificationToken: props.emailVerificationCode,
     emailAddress: props.emailAddress,
@@ -38,9 +39,9 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
 
   return (
     <Form initialResult={Result.Succeed().WithMessage(ResultMessage.VERIFY_EMAIL_SUCCESS)} submit={handleSubmit}>
-      <span>{t('instructions')}</span>
+      {/* <span>{t('instructions')}</span>
       <EmailAddressInput value={request.emailAddress} disabled change={() => {}} />
-      <NewPasswordInput password={request.password} changePassword={handleChangePassword} />
+      <NewPasswordInput errors={} changePassword={handleChangePassword} /> */}
     </Form>
   );
 }

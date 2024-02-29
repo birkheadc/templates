@@ -25,7 +25,7 @@ export default function RootLayout({
   if (!locales.includes(locale)) redirect('/');
 
   return (
-    <html lang={locale} data-theme='dark'>
+    <html lang={locale} data-theme={'dark'}>
       <Providers locale={locale} messages={messages}>
         <body className='flex flex-col transition-colors duration-700 h-svh bg-neutral-50 text-neutral-950'>
           <PrimaryNav />

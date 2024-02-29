@@ -1,4 +1,3 @@
-import useRichTranslations from "../../hooks/useRichTranslations/useRichTranslations";
 import Section1 from './sections/section1/Section1';
 import Section2 from "./sections/section2/Section2";
 import Section3 from "./sections/section3/Section3";

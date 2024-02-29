@@ -1,6 +1,6 @@
 import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from '../interface';
-import { ResultErrorMessage } from '../../../types/result/resultErrorMessage';
+import { FormValidationErrorMessage } from '../../../types/formValidation/formValidationErrorMessage';
 
 const messages: Messages = {
   home: {
@@ -64,10 +64,10 @@ const messages: Messages = {
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'メールアドレスの確認が完了しました。',
     [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。'
   },
-  resultErrorMessages: {
-    [ResultErrorMessage.PASSWORD_TOO_SHORT]: '8文字以上',
-    [ResultErrorMessage.PASSWORD_TOO_LONG]: '64文字以下',
-    [ResultErrorMessage.PASSWORDS_DO_NOT_MATCH]: '一致していません'
+  formValidationErrorMessages: {
+    [FormValidationErrorMessage.PASSWORD_TOO_SHORT]: '8文字以上',
+    [FormValidationErrorMessage.PASSWORD_TOO_LONG]: '64文字以下',
+    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: '一致していません'
   }
 }
 

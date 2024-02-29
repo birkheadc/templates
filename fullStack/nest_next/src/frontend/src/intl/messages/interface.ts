@@ -1,5 +1,5 @@
 import { ResultMessage } from "@/types/result/resultMessage"
-import { ResultErrorMessage } from "../../types/result/resultErrorMessage"
+import { FormValidationErrorMessage } from "../../types/formValidation/formValidationErrorMessage"
 
 export interface Messages {
   home: {
@@ -58,8 +58,8 @@ export interface Messages {
   resultMessages: {
     [key in ResultMessage ]: string
   },
-  resultErrorMessages: {
-    [key in ResultErrorMessage]: string
+  formValidationErrorMessages: {
+    [key in FormValidationErrorMessage]: string
   }
 }
 

@@ -30,9 +30,9 @@ export default function PasswordInput(props: PasswordInputProps): JSX.Element {
   return (
     <div className='flex flex-col w-full gap-1'>
       <label className='font-bold text-primary-700' htmlFor={id}>{label ?? t('password')}</label>
-      <fieldset disabled={disabled} className='flex gap-2 p-1 px-3 border border-primary-500 focus-within:outline focus-within:outline-1 bg-primary-50 text-primary-700 disabled:bg-primary-700 disabled:text-primary-50'>
-        <input autoComplete={autocomplete ?? 'current-password'} id={id} className='flex-grow outline-none bg-transparent-full' type={show ? 'text': 'password' } name={name} value={value} onChange={handleChange}></input>
-        <button tabIndex={-1} className='bg-transparent hocus:text-primary-950' type='button' onClick={() => setShow(s => !s)}>{ show ? <EyeOff /> : <Eye /> }</button>
+      <fieldset disabled={disabled} className='relative flex items-center justify-center gap-2 border border-primary-500 focus-within:outline focus-within:outline-1 bg-primary-50 text-primary-700 disabled:border-0 disabled:bg-transparent-full'>
+        <input autoComplete={autocomplete ?? 'current-password'} id={id} className='p-1 pl-3 pr-12 flex-grow outline-none bg-transparent-full' type={show ? 'text': 'password' } name={name} value={value} onChange={handleChange}></input>
+        <button className='absolute right-2 top-0 bottom-0 bg-transparent hocus:text-primary-950' type='button' onClick={() => setShow(s => !s)}>{ show ? <EyeOff /> : <Eye /> }</button>
       </fieldset>
     </div>
   );
