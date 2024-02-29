@@ -1,26 +1,22 @@
 import * as React from 'react';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
 import Input from '../input/Input';
-import { Result } from '../../../../types/result/result';
+import { Path, UseFormRegister } from 'react-hook-form';
 
-type EmailAddressInputProps = {
-  value: string,
-  change: (value: string) => void,
-  disabled?: boolean
+type EmailAddressInputProps<T extends { emailAddress: any }> = {
+  register: UseFormRegister<T>,
+  required?: boolean,
+  disabled?: boolean,
+  name: Path<T>
 }
 
-export default function EmailAddressInput(props: EmailAddressInputProps): JSX.Element {
+export default function EmailAddressInput<T extends { 'emailAddress': any }>(props: EmailAddressInputProps<T>): JSX.Element {
 
-  const { value, change, disabled } = props;
+  const { register, disabled, name, required } = props;
 
   const t = useRichTranslations('general');
 
-  const handleChange = (value: string) => {
-    // TODO: add email validation
-    change(value);
-  }
-
   return (
-    <Input autocomplete='email' disabled={disabled} id='email' label={t('emailAddress') as string} value={value} change={handleChange} />
+    <Input autocomplete='email' disabled={disabled} id='email' label={t('emailAddress') as string} register={register} registerOptions={{ required: required }} name={name} />
   );
 }

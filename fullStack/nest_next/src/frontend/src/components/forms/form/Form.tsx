@@ -10,29 +10,25 @@ type FormProps = {
   className?: string,
   classNameInner?: string,
   initialResult?: Result,
-  submit: () => Promise<Result>
+  submit: () => Promise<void>,
+  result: Result | null | undefined
 }
 
 export default function Form(props: FormProps): JSX.Element {
 
-  const { children, className, classNameInner, initialResult, submit } = props;
+  const { children, className, classNameInner, submit, result } = props;
 
-  const [ isProcessing, setProcessing ] = React.useState<boolean>(false);
-  const [ recentResult, setRecentResult ] = React.useState<Result | undefined>(initialResult);
+  const isProcessing = result === null;
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setRecentResult(undefined);
-    setProcessing(true);
-    const result = await submit();
-    setRecentResult(result);
-    setProcessing(false);
+    await submit();
   }
 
   return (
     <WaitingOverlay isWaiting={isProcessing}>
       <form className={utils.mergeClass('flex flex-col items-center gap-4 p-8 m-auto w-96', className)} onSubmit={handleSubmit}>
-        { recentResult && <ResultDisplay result={recentResult} /> }
+        { result && <ResultDisplay result={result} /> }
         <fieldset className={utils.mergeClass('flex flex-col items-center w-full gap-4', classNameInner)} disabled={isProcessing}>
           { children }
           <SubmitButton />
