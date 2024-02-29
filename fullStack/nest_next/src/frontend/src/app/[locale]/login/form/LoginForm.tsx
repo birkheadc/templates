@@ -28,7 +28,7 @@ export default function LoginForm(props: LoginFormProps): JSX.Element {
 
   return (
     <Form className='' submit={handleSubmit(onSubmit)} result={result}>
-      <EmailAddressInput required register={register} name={'emailAddress'} />
+      <EmailAddressInput required register={register} errors={formState.errors} name={'emailAddress'} />
       <PasswordInput required register={register} id={'password'} name={'password'}/>
     </Form>
   );

@@ -67,7 +67,9 @@ const messages: Messages = {
   formValidationErrorMessages: {
     [FormValidationErrorMessage.PASSWORD_TOO_SHORT]: '8文字以上',
     [FormValidationErrorMessage.PASSWORD_TOO_LONG]: '64文字以下',
-    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: '一致していません'
+    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: '一致していません',
+    [FormValidationErrorMessage.REQUIRED]: '必要',
+    [FormValidationErrorMessage.EMAIL_INVALID]: '無効'
   }
 }
 

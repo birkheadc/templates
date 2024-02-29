@@ -9,7 +9,6 @@ type FormProps = {
   children?: React.ReactNode,
   className?: string,
   classNameInner?: string,
-  initialResult?: Result,
   submit: () => Promise<void>,
   result: Result | null | undefined
 }

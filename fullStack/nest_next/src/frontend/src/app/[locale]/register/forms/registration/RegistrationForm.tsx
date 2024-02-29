@@ -8,6 +8,9 @@ import useRichTranslations from '../../../../../hooks/useRichTranslations/useRic
 import api from '../../../../../api';
 import useLanguage from '../../../../../hooks/language/useLanguage';
 import EmailAddressInput from '../../../../../components/forms/inputs/emailAddressInput/EmailAddressInput';
+import useResult from '@/hooks/result/useResult';
+import { useForm } from 'react-hook-form';
+import { RegisterUserRequest } from '@/types/requests/register/registerUserRequest';
 
 type RegistrationFormProps = {
 
@@ -16,23 +19,22 @@ type RegistrationFormProps = {
 export default function RegistrationForm(props: RegistrationFormProps): JSX.Element {
 
   const t = useRichTranslations('register');
-  const { language } = useLanguage();
+  const {language} = useLanguage();
 
-  const [ emailAddress, setEmailAddress ] = React.useState<string>('');
+  const { result, awaitResult } = useResult();
 
-  const handleChange = (value: string) => {
-    setEmailAddress(value);
-  }
+  const { register, handleSubmit, watch, formState } = useForm<Omit<RegisterUserRequest, 'verifyUrl'>>();
 
-  const handleSubmit = async (): Promise<Result> => {
-    const result = await api.user.register({ emailAddress, language });
-    return result;
+  const onSubmit = async (request: Omit<RegisterUserRequest, 'verifyUrl'|'language'>) => {
+    awaitResult(async () => {
+      return await api.user.register({ emailAddress: request.emailAddress, language: language });
+    });
   }
 
   return (
-    <Form submit={handleSubmit}>
+    <Form submit={handleSubmit(onSubmit)} result={result}>
       <p>{t('instructions')}</p>
-      <EmailAddressInput value={emailAddress} change={handleChange} />
+      <EmailAddressInput required register={register} errors={formState.errors} name={'emailAddress'} />
     </Form>
   );
 }

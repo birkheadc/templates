@@ -8,40 +8,35 @@ import NewPasswordInput from '../../../../../../components/forms/inputs/newPassw
 import { CreateUserRequest } from '../../../../../../types/requests/createUser/createUserRequest';
 import api from '../../../../../../api';
 import { FormValidation } from '../../../../../../types/formValidation/formValidation';
+import useResult from '@/hooks/result/useResult';
+import { useForm } from 'react-hook-form';
 
 type VerifiedRegistrationFormProps = {
-  emailVerificationCode: string,
+  emailVerificationToken: string,
   emailAddress: string
 }
 
 export default function VerifiedRegistrationForm(props: VerifiedRegistrationFormProps): JSX.Element {
 
-  const [ validation, setValidation ] = React.useState<FormValidation>({});
-  const [ request, setRequest ] = React.useState<CreateUserRequest>({
-    emailVerificationToken: props.emailVerificationCode,
-    emailAddress: props.emailAddress,
-    password: ''
-  });
+  const { emailAddress, emailVerificationToken } = props;
 
-  const t = useRichTranslations('register.verified')
+  const t = useRichTranslations('register.verified');
 
-  const handleChangePassword = (value: string) => {
-    setRequest(r => ({
-      ...r,
-      password: value
-    }));
-  }
+  const { result, awaitResult } = useResult();
 
-  const handleSubmit = async (): Promise<Result> => {
-    const result = await api.user.createUser(request);
-    return result;
+  const { register, handleSubmit, watch, formState } = useForm<Omit<CreateUserRequest, 'emailVerificationCode'>>();
+
+  const onSubmit = async (request: Omit<CreateUserRequest, 'emailVerificationToken'>) => {
+    awaitResult(async () => {
+      return await api.user.createUser({...request, emailVerificationToken});
+    });
   }
 
   return (
-    <Form initialResult={Result.Succeed().WithMessage(ResultMessage.VERIFY_EMAIL_SUCCESS)} submit={handleSubmit}>
-      {/* <span>{t('instructions')}</span>
-      <EmailAddressInput value={request.emailAddress} disabled change={() => {}} />
-      <NewPasswordInput errors={} changePassword={handleChangePassword} /> */}
+    <Form submit={handleSubmit(onSubmit)} result={result}>
+      <span>{t('instructions')}</span>
+      <EmailAddressInput defaultValue={emailAddress} disabled required register={register} errors={formState.errors} name={'emailAddress'} />
+      {/* <NewPasswordInput errors={} changePassword={handleChangePassword} /> */}
     </Form>
   );
 }

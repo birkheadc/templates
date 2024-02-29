@@ -4,7 +4,6 @@ import { FormValidationErrorMessage } from '../../../../types/formValidation/for
 import PasswordInput from '../passwordInput/PasswordInput';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
 import { FormValidationError } from '../../../../types/formValidation/formValidation';
-import FormValidationErrorsDisplay from '../../validationDisplay/FormValidationErrorsDisplay';
 
 type NewPasswordInputProps = {
   password: string,
