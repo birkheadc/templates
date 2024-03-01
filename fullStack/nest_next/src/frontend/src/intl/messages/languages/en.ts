@@ -67,7 +67,9 @@ const messages: Messages = {
   formValidationErrorMessages: {
     [FormValidationErrorMessage.PASSWORD_TOO_SHORT]: 'must be at least 8 characters',
     [FormValidationErrorMessage.PASSWORD_TOO_LONG]: 'must be at most 64 characters',
-    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: 'password must match'
+    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: 'password must match',
+    [FormValidationErrorMessage.REQUIRED]: 'field is required',
+    [FormValidationErrorMessage.EMAIL_INVALID]: 'not a valid email'
   }
 }
 

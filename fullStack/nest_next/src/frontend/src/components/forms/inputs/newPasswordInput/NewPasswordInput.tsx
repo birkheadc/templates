@@ -1,53 +1,30 @@
 import * as React from 'react';
-import { Result, ResultError } from '../../../../types/result/result';
-import { FormValidationErrorMessage } from '../../../../types/formValidation/formValidationErrorMessage';
 import PasswordInput from '../passwordInput/PasswordInput';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
-import { FormValidationError } from '../../../../types/formValidation/formValidation';
-import FormValidationErrorsDisplay from '../../validationDisplay/FormValidationErrorsDisplay';
+import { FieldErrors, Path, UseFormRegister, UseFormWatch } from 'react-hook-form';
+import RepeatPasswordInput from '../passwordInput/RepeatPasswordInput';
 
-type NewPasswordInputProps = {
-  password: string,
-  changePassword: (password: string) => void,
-  passwordId?: string,
-  repeatPasswordId?: string,
-  errors: FormValidationError[],
+interface NewPasswordInputProps<T extends { password: any, repeat: any }> extends React.InputHTMLAttributes<HTMLInputElement> {
+  register: UseFormRegister<T>,
+  passwordName: Path<T>,
+  repeatName: Path<T>,
+  errors?: FieldErrors<T>,
+  watch: UseFormWatch<T>
 }
 
-export default function NewPasswordInput(props: NewPasswordInputProps): JSX.Element {
+export default function NewPasswordInput<T extends { password: any, repeat: any }>(props: NewPasswordInputProps<T>): JSX.Element {
 
-  const { password, changePassword, passwordId, repeatPasswordId, errors } = props;
-  const [ repeat, setRepeat ] = React.useState<string>('');
+  const { register, passwordName, repeatName, errors, watch } = props;
 
   const t = useRichTranslations('general');
-
-  const handleChangePassword = (value: string) => {
-    changePassword(value);
-  }
-
-  const handleChangeRepeat = (value: string) => {
-    setRepeat(value);
-  }
+  
+  const password = React.useRef('');
+  password.current = watch(passwordName);
   
   return (
     <div className='w-full flex flex-col gap-2'>
-      <PasswordInput autocomplete='new-password' name={'password'} value={password} change={(value: string) => handleChangePassword(value)} id={passwordId ?? 'password'} />
-      <FormValidationErrorsDisplay errors={errors} />
-      <PasswordInput autocomplete='new-password' label={t('confirmPassword') as string} name={'repeat'} value={repeat} change={(value: string) => handleChangeRepeat(value)} id={repeatPasswordId ?? 'repeat-password'} />
-      <FormValidationErrorsDisplay errors={password === repeat ? [] : [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]} />
+      <PasswordInput autocomplete='new-password' label={t('password').toString()} name={passwordName} id={'password'} register={register} errors={errors} />
+      <RepeatPasswordInput autocomplete='confirm-password' label={t('confirmPassword').toString()} name={repeatName} id={'repeat-password'} register={register} errors={errors} password={password.current} />
     </div>
   );
 }
-
-// function validate({ password, repeat }: { password: string, repeat: string }): ResultError[] {
-//   // TODO: get password min/max length from somewhere else
-//   const min = 8;
-//   const max = 64;
-
-//   const errors: ResultError[] = [];
-//   if (password.length < min) errors.push({ field: 'password', message: ResultErrorMessage.PASSWORD_TOO_SHORT});
-//   if (password.length > max) errors.push({ field: 'password', message: ResultErrorMessage.PASSWORD_TOO_LONG });
-//   if (password !== repeat) errors.push({ field: 'repeat', message: ResultErrorMessage.PASSWORDS_DO_NOT_MATCH });
-
-//   return errors;
-// }

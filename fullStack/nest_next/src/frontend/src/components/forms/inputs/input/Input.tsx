@@ -1,24 +1,19 @@
 import * as React from 'react';
+import { FieldErrors, FieldValues, Path, RegisterOptions, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
+import FieldErrorDisplay from '../../form/errorDisplay/FieldErrorDisplay';
+import BaseInput from './BaseInput';
 
-type InputProps = {
-  id?: string,
-  placeholder?: string,
-  type?: React.HTMLInputTypeAttribute,
+interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string,
-  disabled?: boolean,
-  value: string,
-  change: (value: string) => void,
-  autocomplete?: string
+  name: Path<T>,
+  register: UseFormRegister<T>,
+  registerOptions: RegisterOptions,
+  errors?: FieldErrors<T>,
 }
 
-export default function Input(props: InputProps): JSX.Element {
+export default function Input<T extends FieldValues>(props: InputProps<T>): JSX.Element {
 
-  const { id, placeholder, type, label, value, change, autocomplete, disabled } = props;
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    change(event.currentTarget.value);
-    console.log(event.currentTarget);
-  }
+  const { id, name, label, disabled, errors, readOnly } = props;
 
   return (
     <div className='flex flex-col w-full gap-1'>
@@ -27,9 +22,10 @@ export default function Input(props: InputProps): JSX.Element {
           <label className='font-bold text-primary-700' htmlFor={id}>{label}</label>
         </div>
       }
-      <fieldset disabled={disabled} className='flex gap-2 border text-primary-700 bg-primary-50 border-primary-500 focus-within:outline focus-within:outline-1 disabled:border-0 disabled:bg-transparent-full'>
-        <input autoComplete={autocomplete} disabled={disabled} id={id} className={'p-1 px-3 flex-grow outline-none bg-transparent-full shadow-none'} type={type} placeholder={placeholder} value={value} onChange={handleChange}></input>
+      <fieldset disabled={disabled} className={`flex gap-2 text-primary-700 border-primary-500 focus-within:outline focus-within:outline-1 ${readOnly ? 'border-0 bg-transparent-full outline-none' : 'border-2 bg-primary-50'}`}>
+        <BaseInput {...props} />
       </fieldset>
+      { errors && <FieldErrorDisplay>{errors[name]?.message as string}</FieldErrorDisplay> }
     </div>
   );
 }

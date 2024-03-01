@@ -1,26 +1,22 @@
 import * as React from 'react';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
 import Input from '../input/Input';
-import { Result } from '../../../../types/result/result';
+import { FieldErrors, Path, UseFormRegister } from 'react-hook-form';
 
-type EmailAddressInputProps = {
-  value: string,
-  change: (value: string) => void,
-  disabled?: boolean
+interface EmailAddressInputProps<T extends { emailAddress: any }> extends React.InputHTMLAttributes<HTMLInputElement> {
+  register: UseFormRegister<T>,
+  errors?: FieldErrors<T>,
+  name: Path<T>
 }
 
-export default function EmailAddressInput(props: EmailAddressInputProps): JSX.Element {
+export default function EmailAddressInput<T extends { 'emailAddress': any }>(props: EmailAddressInputProps<T>): JSX.Element {
 
-  const { value, change, disabled } = props;
+  const { required, errors } = props;
 
   const t = useRichTranslations('general');
-
-  const handleChange = (value: string) => {
-    // TODO: add email validation
-    change(value);
-  }
+  const tErrors = useRichTranslations('formValidationErrorMessages');
 
   return (
-    <Input autocomplete='email' disabled={disabled} id='email' label={t('emailAddress') as string} value={value} change={handleChange} />
+    <Input {...props} autoComplete='email' errors={errors} id='email' label={t('emailAddress') as string} registerOptions={{ required: { value: !!required, message: tErrors('required') as string }, pattern: { value: /\S+@\S+\.\S+/, message: tErrors('emailInvalid') as string, }, }} />
   );
 }

@@ -42,6 +42,6 @@ export default function VerifiedRegistration(props: VerifiedRegistrationProps): 
   )
 
   return (
-    <VerifiedRegistrationForm emailAddress={recentResult.body} emailVerificationCode={code} />
+    <VerifiedRegistrationForm emailAddress={recentResult.body} emailVerificationToken={code} />
   );
 }

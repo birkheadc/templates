@@ -12,6 +12,6 @@ export default function BasicButtonLink(props: BasicButtonLinkProps): JSX.Elemen
   const { href, className, children } = props;
 
   return (
-    <BasicLink className={utils.mergeClass('text-lg p-2 px-6 bg-primary-100 border-2 text-primary-700 font-bold hocus:bg-primary-400 hocus:text-primary-950 active:scale-90 hocus:no-underline', className)} href={href}>{children}</BasicLink>
+    <BasicLink className={utils.mergeClass('text-lg p-2 px-6 bg-neutral-50 border-2 text-primary-700 font-bold hocus:bg-primary-400 hocus:text-primary-950 active:scale-90 hocus:no-underline', className)} href={href}>{children}</BasicLink>
   );
 }
