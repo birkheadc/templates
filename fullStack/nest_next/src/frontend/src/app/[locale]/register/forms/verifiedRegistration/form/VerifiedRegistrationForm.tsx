@@ -35,7 +35,7 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
   return (
     <Form submit={handleSubmit(onSubmit)} result={result}>
       <span>{t('instructions')}</span>
-      <EmailAddressInput defaultValue={emailAddress} readonly required register={register} errors={formState.errors} name={'emailAddress'} />
+      <EmailAddressInput defaultValue={emailAddress} readOnly register={register} name={'emailAddress'} />
       <NewPasswordInput errors={formState.errors} register={register} passwordName={'password'} repeatName={'repeat'} watch={watch} />
     </Form>
   );
