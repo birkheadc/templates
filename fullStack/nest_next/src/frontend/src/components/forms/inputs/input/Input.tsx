@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FieldErrors, FieldValues, Path, RegisterOptions, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
+import { FieldErrors, FieldValues, Path, RegisterOptions, UseFormRegister } from 'react-hook-form';
 import FieldErrorDisplay from '../../form/errorDisplay/FieldErrorDisplay';
 import BaseInput from './BaseInput';
 
@@ -7,7 +7,7 @@ interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HT
   label?: string,
   name: Path<T>,
   register: UseFormRegister<T>,
-  registerOptions: RegisterOptions,
+  registeroptions: RegisterOptions,
   errors?: FieldErrors<T>,
 }
 

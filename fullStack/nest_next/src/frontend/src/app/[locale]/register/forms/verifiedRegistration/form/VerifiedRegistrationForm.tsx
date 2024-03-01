@@ -1,15 +1,12 @@
 import * as React from 'react';
 import Form from '../../../../../../components/forms/form/Form';
-import { Result } from '../../../../../../types/result/result';
-import { ResultMessage } from '../../../../../../types/result/resultMessage';
 import EmailAddressInput from '../../../../../../components/forms/inputs/emailAddressInput/EmailAddressInput';
 import useRichTranslations from '../../../../../../hooks/useRichTranslations/useRichTranslations';
 import NewPasswordInput from '../../../../../../components/forms/inputs/newPasswordInput/NewPasswordInput';
 import { CreateUserRequest } from '../../../../../../types/requests/createUser/createUserRequest';
 import api from '../../../../../../api';
-import { FormValidation } from '../../../../../../types/formValidation/formValidation';
 import useResult from '@/hooks/result/useResult';
-import { RegisterOptions, UseFormRegisterReturn, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationToken: string,

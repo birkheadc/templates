@@ -17,6 +17,6 @@ export default function EmailAddressInput<T extends { 'emailAddress': any }>(pro
   const tErrors = useRichTranslations('formValidationErrorMessages');
 
   return (
-    <Input {...props} autoComplete='email' errors={errors} id='email' label={t('emailAddress') as string} registerOptions={{ required: { value: !!required, message: tErrors('required') as string }, pattern: { value: /\S+@\S+\.\S+/, message: tErrors('emailInvalid') as string, }, }} />
+    <Input {...props} autoComplete='email' errors={errors} id='email' label={t('emailAddress') as string} registeroptions={{ required: { value: !!required, message: tErrors('required') as string }, pattern: { value: /\S+@\S+\.\S+/, message: tErrors('emailInvalid') as string, }, }} />
   );
 }

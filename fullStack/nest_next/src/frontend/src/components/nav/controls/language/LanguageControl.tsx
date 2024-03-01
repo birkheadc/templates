@@ -13,7 +13,7 @@ type LanguageControlProps = {
 export default function LanguageControl(props: LanguageControlProps): JSX.Element {
 
   const [ show, setShow ] = React.useState<boolean>(false);
-  const { language, changeLanguage } = useLanguage();
+  const { changeLanguage } = useLanguage();
 
   React.useEffect(function addCloseOnClickListener() {
     if (!show) return;
