@@ -2,6 +2,20 @@ import { createThemes } from "tw-colors";
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
+const primary = {
+  '50': '#ebeeff',
+  '100': '#dbe2ff',
+  '200': '#c3cdfe',
+  '300': '#a2aefb',
+  '400': '#7e86f7',
+  '500': '#6161ef',
+  '600': '#4537e1',
+  '700': '#392da4',
+  '800': '#2d247a',
+  '900': '#252159',
+  '950': '#100e25',
+};
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -86,17 +100,17 @@ const config: Config = {
     createThemes({
       light: {
         primary: {
-          "50": "#f9f6fd",
-          "100": "#f4edfa",
-          "200": "#e9daf4",
-          "300": "#d8bdea",
-          "400": "#c296dc",
-          "500": "#a66cc9",
-          "600": "#8248a2",
-          "700": "#733d8e",
-          "800": "#603375",
-          "900": "#512e61",
-          "950": "#31153d",
+          "50": primary['50'],
+          "100": primary['100'],
+          "200": primary['200'],
+          "300": primary['300'],
+          "400": primary['400'],
+          "500": primary['500'],
+          "600": primary['600'],
+          "700": primary['700'],
+          "800": primary['800'],
+          "900": primary['900'],
+          "950": primary['950'],
         },
         secondary: {
           "50": "#fcf5f4",
@@ -139,17 +153,17 @@ const config: Config = {
       },
       dark: {
         primary: {
-          "950": "#f9f6fd",
-          "900": "#f4edfa",
-          "800": "#e9daf4",
-          "700": "#d8bdea",
-          "600": "#c296dc",
-          "500": "#a66cc9",
-          "400": "#8248a2",
-          "300": "#733d8e",
-          "200": "#603375",
-          "100": "#512e61",
-          "50": "#31153d",
+          "50": primary['950'],
+          "100": primary['900'],
+          "200": primary['800'],
+          "300": primary['700'],
+          "400": primary['600'],
+          "500": primary['500'],
+          "600": primary['400'],
+          "700": primary['300'],
+          "800": primary['200'],
+          "900": primary['100'],
+          "950": primary['50'],
         },
         secondary: {
           "950": "#fcf5f4",

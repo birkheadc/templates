@@ -9,7 +9,7 @@ import { CreateUserRequest } from '../../../../../../types/requests/createUser/c
 import api from '../../../../../../api';
 import { FormValidation } from '../../../../../../types/formValidation/formValidation';
 import useResult from '@/hooks/result/useResult';
-import { useForm } from 'react-hook-form';
+import { RegisterOptions, UseFormRegisterReturn, useForm } from 'react-hook-form';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationToken: string,
@@ -24,19 +24,19 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
 
   const { result, awaitResult } = useResult();
 
-  const { register, handleSubmit, watch, formState } = useForm<Omit<CreateUserRequest, 'emailVerificationCode'>>();
+  const { register, handleSubmit, watch, formState } = useForm<Omit<CreateUserRequest, 'emailVerificationCode'> & { repeat: string }>();
 
   const onSubmit = async (request: Omit<CreateUserRequest, 'emailVerificationToken'>) => {
     awaitResult(async () => {
-      return await api.user.createUser({...request, emailVerificationToken});
+      return await api.user.createUser({ emailAddress: request.emailAddress, emailVerificationToken: emailVerificationToken, password: request.password });
     });
   }
 
   return (
     <Form submit={handleSubmit(onSubmit)} result={result}>
       <span>{t('instructions')}</span>
-      <EmailAddressInput defaultValue={emailAddress} disabled required register={register} errors={formState.errors} name={'emailAddress'} />
-      {/* <NewPasswordInput errors={} changePassword={handleChangePassword} /> */}
+      <EmailAddressInput defaultValue={emailAddress} readonly required register={register} errors={formState.errors} name={'emailAddress'} />
+      <NewPasswordInput errors={formState.errors} register={register} passwordName={'password'} repeatName={'repeat'} watch={watch} />
     </Form>
   );
 }

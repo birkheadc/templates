@@ -1,39 +1,34 @@
 import * as React from 'react';
-import { Result, ResultError } from '../../../../types/result/result';
-import { FormValidationErrorMessage } from '../../../../types/formValidation/formValidationErrorMessage';
 import PasswordInput from '../passwordInput/PasswordInput';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
-import { FormValidationError } from '../../../../types/formValidation/formValidation';
+import { FieldErrors, Path, RegisterOptions, UseFormRegister, UseFormRegisterReturn, UseFormWatch } from 'react-hook-form';
+import RepeatPasswordInput from '../passwordInput/RepeatPasswordInput';
 
-type NewPasswordInputProps = {
-  password: string,
-  changePassword: (password: string) => void,
+type NewPasswordInputProps<T extends { password: any, repeat: any }> = {
   passwordId?: string,
   repeatPasswordId?: string,
-  errors: FormValidationError[],
+  register: UseFormRegister<T>,
+  passwordName: Path<T>,
+  repeatName: Path<T>,
+  disabled?: boolean,
+  required?: boolean,
+  errors?: FieldErrors<T>,
+  readonly?: boolean,
+  watch: UseFormWatch<T>
 }
 
-export default function NewPasswordInput(props: NewPasswordInputProps): JSX.Element {
+export default function NewPasswordInput<T extends { password: any, repeat: any }>(props: NewPasswordInputProps<T>): JSX.Element {
 
-  const { password, changePassword, passwordId, repeatPasswordId, errors } = props;
-  const [ repeat, setRepeat ] = React.useState<string>('');
+  const { passwordId, repeatPasswordId, register, passwordName, repeatName, disabled, required, errors, readonly, watch } = props;
 
   const t = useRichTranslations('general');
-
-  const handleChangePassword = (value: string) => {
-    changePassword(value);
-  }
-
-  const handleChangeRepeat = (value: string) => {
-    setRepeat(value);
-  }
+  const password = React.useRef('');
+  password.current = watch(passwordName);
   
   return (
     <div className='w-full flex flex-col gap-2'>
-      <PasswordInput autocomplete='new-password' name={'password'} value={password} change={(value: string) => handleChangePassword(value)} id={passwordId ?? 'password'} />
-      <FormValidationErrorsDisplay errors={errors} />
-      <PasswordInput autocomplete='new-password' label={t('confirmPassword') as string} name={'repeat'} value={repeat} change={(value: string) => handleChangeRepeat(value)} id={repeatPasswordId ?? 'repeat-password'} />
-      <FormValidationErrorsDisplay errors={password === repeat ? [] : [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]} />
+      <PasswordInput autocomplete='new-password' disabled={disabled} readonly={readonly} name={passwordName} id={passwordId ?? 'password'} register={register} required errors={errors} />
+      <RepeatPasswordInput autocomplete='confirm-password' disabled={disabled} readonly={readonly} label={t('confirmPassword') as string} name={repeatName} id={repeatPasswordId ?? 'repeat-password'} register={register} required errors={errors} password={password.current} />
     </div>
   );
 }

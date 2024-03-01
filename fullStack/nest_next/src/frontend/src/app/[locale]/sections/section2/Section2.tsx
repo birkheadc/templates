@@ -14,7 +14,7 @@ export default function Section2(props: Section2Props): JSX.Element {
   const t = useRichTranslations('home.section2');
 
   return (
-    <Section className='bg-gradient-to-br from-primary-400 to-primary-200'>
+    <Section className='bg-gradient-to-br from-primary-300 to-primary-50'>
       <SectionHeader>{t('header')}</SectionHeader>
       <SectionBody className='gap-20 lg:flex-row lg:items-start short:flex-row short:items-start'>
         <p>{t('body')}</p>
