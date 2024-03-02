@@ -34,8 +34,24 @@ export class MailService {
     }
   }
 
-  async sendSomeoneTriedToUseYourAddressEmail(emailAddress: string): Promise<void> {
+  async sendSomeoneTriedToUseYourAddressEmail(emailAddress: string, language: string): Promise<void> {
     console.log(`Send warning (someone tried to register with your address) email to ${emailAddress}`);
+    const command = new SendTemplatedEmailCommand({
+      Source: 'registration@mail.birkheadc.me',
+      Destination: {
+        ToAddresses: [
+          emailAddress
+        ]
+      },
+      Template: `nestnexttemplate_EmailAddressInUse_${language}`,
+      TemplateData: '{}'
+    });
+    try {
+      await this.client.send(command);
+    } catch (error) {
+      console.log('Error in sendSomeoneTriedToUseYourAddressEmail:', error);
+      throw new UnprocessableEntityException();
+    }
   }
 
   async verifyCode(code: string): Promise<string> {

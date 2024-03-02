@@ -28,10 +28,9 @@ export class UsersService {
   async registerNewUser(request: RegisterUserRequestDto): Promise<void> {
     const user = await this.getUserByEmailAddress(request.emailAddress);
     if (user != null) {
-      await this.mailService.sendSomeoneTriedToUseYourAddressEmail(request.emailAddress);
+      await this.mailService.sendSomeoneTriedToUseYourAddressEmail(request.emailAddress, user.preferences.language);
       return;
     }
-    // TODO: Create a temporary user with this email address
     await this.mailService.sendVerificationEmail(request);
   }
 
