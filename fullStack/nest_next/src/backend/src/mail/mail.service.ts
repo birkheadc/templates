@@ -1,4 +1,4 @@
-import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+import { SESClient, SendEmailCommand, SendTemplatedEmailCommand } from "@aws-sdk/client-ses";
 import { Injectable, UnauthorizedException, UnprocessableEntityException } from "@nestjs/common";
 import { RegisterUserRequestDto } from "../users/dtos/register-user.dto";
 import { JwtService } from "@nestjs/jwt";
@@ -12,29 +12,19 @@ export class MailService {
   }
 
   async sendVerificationEmail(request: RegisterUserRequestDto): Promise<void> {
-    // TODO: figure out how templates work
-    // TODO: work out localization
     console.log(`Send verification email to ${request.emailAddress}`);
     const verifyCode = await this.generateVerifyCode(request);
-    const command = new SendEmailCommand({
+    const command = new SendTemplatedEmailCommand({
       Source: 'registration@mail.birkheadc.me',
       Destination: {
         ToAddresses: [
           request.emailAddress
         ]
       },
-      Message: {
-        Subject: {
-          Charset: 'UTF-8',
-          Data: `Template Nest Next Registration (TODO: change language to ${request.language})`
-        },
-        Body: {
-          Text: {
-            Charset: 'UTF-8',
-            Data: `Thank you for registering an account at Template Nest Next! Please click the link below, or copy and paste it into your browser, to continue the registration process. ${request.verifyUrl}?code=${verifyCode} (TODO: change language to ${request.language})`
-          }
-        }
-      }
+      Template: `nestnexttemplate_RegistrationEmail_${request.language}`,
+      TemplateData: JSON.stringify({
+        verifyLink: `${request.verifyUrl}?code=${verifyCode}`
+      })
     });
     try {
       await this.client.send(command);

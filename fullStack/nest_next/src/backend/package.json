@@ -27,6 +27,7 @@
     "@aws-sdk/client-secrets-manager": "^3.480.0",
     "@aws-sdk/client-ses": "^3.521.0",
     "@codegenie/serverless-express": "^4.13.0",
+    "@haftahave/serverless-ses-template": "^6.1.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^10.0.0",

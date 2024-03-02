@@ -59,6 +59,9 @@ Spins up and uses a local instance of DynamoDB when deploying offline. A fork of
 #### serverless-scriptable-plugin
 Allows the execution of arbitrary commands when deploying (does not work with serverless-offline). I use this mainly to run a script to seed the database after deploying.
 
+#### @haftahave/serverless-ses-template
+Allows Simple Email Service templates to be configured automatically by serverless. Templates are defined in `backend/serverless/sesEmailTemplates/index.mjs`
+
 ## Serverless Config
 My serverless configuration has gotten difficult to follow, so I'll explain it here before I forget.
 
@@ -135,3 +138,6 @@ I use a few packages beyond what Next comes with out of the box.
 
 - @radix-ui/react-switch
   - used to create ui switches, like the one used to switch theme
+
+- react-hook-form
+  - form framework, especially useful for validating form fields

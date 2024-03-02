@@ -6,8 +6,11 @@ plugins:
   - serverless-scriptable-plugin
   - serverless-dynamodb
   - serverless-offline
+  - '@haftahave/serverless-ses-template'
 
 custom:
+  sesTemplates:
+    configFile: './serverless/sesEmailTemplates/index.mjs'
   serverless-dynamodb:
     stages:
       - development
