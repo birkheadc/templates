@@ -52,6 +52,14 @@ provider:
           Action: ses:SendEmail
           Resource:
             - 'arn:aws:ses:ap-southeast-2:290153383648:identity/*'
+        - Effect: Allow
+          Action: ses:SendTemplatedEmail
+          Resource:
+            - 'arn:aws:ses:ap-southeast-2:290153383648:identity/*'
+        - Effect: Allow
+          Action: ses:SendTemplatedEmail
+          Resource:
+            - 'arn:aws:ses:ap-southeast-2:290153383648:template/*'
 
 resources:
   Resources:
