@@ -15,6 +15,8 @@ export default function Input<T extends FieldValues>(props: InputProps<T>): JSX.
 
   const { id, name, label, disabled, errors, readOnly } = props;
 
+  console.log({errors});
+
   return (
     <div className='flex flex-col w-full gap-1'>
       { label &&
@@ -25,7 +27,7 @@ export default function Input<T extends FieldValues>(props: InputProps<T>): JSX.
       <fieldset disabled={disabled} className={`flex gap-2 text-primary-700 border-primary-500 focus-within:outline focus-within:outline-1 ${readOnly ? 'border-0 bg-transparent-full outline-none' : 'border-2 bg-primary-50'}`}>
         <BaseInput {...props} />
       </fieldset>
-      { errors && <FieldErrorDisplay>{errors[name]?.message as string}</FieldErrorDisplay> }
+      <FieldErrorDisplay error={errors && errors[name]?.message as string} />
     </div>
   );
 }

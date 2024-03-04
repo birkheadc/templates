@@ -7,6 +7,7 @@ export class User {
   id: string;
   emailAddress: string;
   password: string;
+  displayName: string;
   preferences: UserPreferences;
 
   static fromDynamoDBObject(data: any): User {
@@ -16,6 +17,7 @@ export class User {
     user.id = data.id?.S ?? "";
     user.emailAddress = data.emailAddress?.S ?? "";
     user.password = data.password?.S ?? "";
+    user.displayName = data.displayName?.S ?? "";
     user.preferences = UserPreferences.fromDynamoDBObject(data.preferences);
 
     return user;
@@ -26,6 +28,7 @@ export class User {
 
     user.id = uuid();
     user.emailAddress = dto.emailAddress;
+    user.displayName = dto.displayName;
     const hash = hashSync(dto.password, 10);
     user.password = hash;
     user.preferences = UserPreferences.fromCreateUserRequestDto(dto);

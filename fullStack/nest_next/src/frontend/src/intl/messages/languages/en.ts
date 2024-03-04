@@ -49,6 +49,7 @@ const messages: Messages = {
     signIn: 'sign in',
     submit: 'submit',
     emailAddress: 'email address',
+    displayName: 'display name',
     password: 'password',
     confirmPassword: 'confirm password'
   },
@@ -69,7 +70,10 @@ const messages: Messages = {
     [FormValidationErrorMessage.PASSWORD_TOO_LONG]: 'must be at most 64 characters',
     [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: 'password must match',
     [FormValidationErrorMessage.REQUIRED]: 'field is required',
-    [FormValidationErrorMessage.EMAIL_INVALID]: 'not a valid email'
+    [FormValidationErrorMessage.EMAIL_INVALID]: 'not a valid email',
+    [FormValidationErrorMessage.DISPLAY_NAME_TOO_SHORT]: 'must be at least 4 characters',
+    [FormValidationErrorMessage.DISPLAY_NAME_TOO_LONG]: 'must be at most 16 characters',
+    [FormValidationErrorMessage.DISPLAY_NAME_INVALID]: 'must only contain letters and numbers'
   }
 }
 

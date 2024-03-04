@@ -23,8 +23,8 @@ export default function NewPasswordInput<T extends { password: any, repeat: any 
   
   return (
     <div className='w-full flex flex-col gap-2'>
-      <PasswordInput autocomplete='new-password' label={t('password').toString()} name={passwordName} id={'password'} register={register} errors={errors} />
-      <RepeatPasswordInput autocomplete='confirm-password' label={t('confirmPassword').toString()} name={repeatName} id={'repeat-password'} register={register} errors={errors} password={password.current} />
+      <PasswordInput autoComplete='new-password' label={t('password').toString()} name={passwordName} id={'password'} required register={register} errors={errors} />
+      <RepeatPasswordInput label={t('confirmPassword').toString()} name={repeatName} id={'repeat-password'} required register={register} errors={errors} password={password.current} />
     </div>
   );
 }

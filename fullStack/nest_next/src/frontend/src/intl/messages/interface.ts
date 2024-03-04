@@ -52,6 +52,7 @@ export interface Messages {
     signIn: string,
     submit: string,
     emailAddress: string,
+    displayName: string,
     password: string,
     confirmPassword: string
   }

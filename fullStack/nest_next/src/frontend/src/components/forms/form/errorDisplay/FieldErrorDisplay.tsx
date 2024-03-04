@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 interface FieldErrorDisplayProps {
-  children?: React.ReactNode
+  error?: string
 }
 
 export default function FieldErrorDisplay(props: FieldErrorDisplayProps): JSX.Element {
 
-  const { children } = props;
+  const { error } = props;
 
   return (
-    <span className='text-error-500'>
-      {children}
+    <span className='text-error-500 h-4'>
+      {error}
     </span>
   );
 }

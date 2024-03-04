@@ -24,7 +24,7 @@ import { SecretsService } from '../secrets/secrets.service';
       const secret = secretsService.getSecret(mailConfig.secretName);
       return {
         secret: secret,
-        signOptions: { expiresIn: '15m' }
+        signOptions: { expiresIn: '1h' }
       }
     }
   })],

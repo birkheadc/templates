@@ -49,6 +49,7 @@ const messages: Messages = {
     signIn: 'ログイン',
     submit: '送信',
     emailAddress: 'メールアドレス',
+    displayName: 'ユーザーネーム',
     password: 'パスワード',
     confirmPassword: 'パスワード再入力'
   },
@@ -69,7 +70,10 @@ const messages: Messages = {
     [FormValidationErrorMessage.PASSWORD_TOO_LONG]: '64文字以下',
     [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: '一致していません',
     [FormValidationErrorMessage.REQUIRED]: '必要',
-    [FormValidationErrorMessage.EMAIL_INVALID]: '無効'
+    [FormValidationErrorMessage.EMAIL_INVALID]: '無効',
+    [FormValidationErrorMessage.DISPLAY_NAME_TOO_SHORT]: '4文字以上',
+    [FormValidationErrorMessage.DISPLAY_NAME_TOO_LONG]: '16文字以下',
+    [FormValidationErrorMessage.DISPLAY_NAME_INVALID]: 'ローマ字またはローマ数字以外禁止'
   }
 }
 

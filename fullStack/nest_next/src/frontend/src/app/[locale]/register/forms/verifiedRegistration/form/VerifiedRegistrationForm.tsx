@@ -6,7 +6,10 @@ import NewPasswordInput from '../../../../../../components/forms/inputs/newPassw
 import { CreateUserRequest } from '../../../../../../types/requests/createUser/createUserRequest';
 import api from '../../../../../../api';
 import useResult from '@/hooks/result/useResult';
-import { useForm } from 'react-hook-form';
+import { FieldValues, RegisterOptions, SubmitHandler, UseFormRegisterReturn, useForm } from 'react-hook-form';
+import Input from '../../../../../../components/forms/inputs/input/Input';
+import { FormValidationErrorMessage } from '../../../../../../types/formValidation/formValidationErrorMessage';
+import DisplayNameInput from '../../../../../../components/forms/inputs/displayName/DisplayNameInput';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationToken: string,
@@ -21,18 +24,22 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
 
   const { result, awaitResult } = useResult();
 
-  const { register, handleSubmit, watch, formState } = useForm<Omit<CreateUserRequest, 'emailVerificationCode'> & { repeat: string }>();
+  const { register, handleSubmit, watch, formState, setError } = useForm<Omit<CreateUserRequest, 'emailVerificationCode'> & { repeat: string }>();
 
-  const onSubmit = async (request: Omit<CreateUserRequest, 'emailVerificationToken'>) => {
+  const onSubmit: SubmitHandler<Omit<CreateUserRequest, 'emailVerificationCode'>> = async (request: Omit<CreateUserRequest, 'emailVerificationToken'>) => {
     awaitResult(async () => {
-      return await api.user.createUser({ emailAddress: request.emailAddress, emailVerificationToken: emailVerificationToken, password: request.password });
+      const result = await api.user.createUser({ ...request, emailVerificationToken: emailVerificationToken });
+      console.log(result.errors);
+      return result;
     });
+    
   }
 
   return (
     <Form submit={handleSubmit(onSubmit)} result={result}>
       <span>{t('instructions')}</span>
-      <EmailAddressInput defaultValue={emailAddress} readOnly register={register} name={'emailAddress'} />
+      <EmailAddressInput errors={formState.errors} defaultValue={emailAddress} readOnly register={register} name={'emailAddress'} />
+      <DisplayNameInput required errors={formState.errors} register={register} name={'displayName'} />
       <NewPasswordInput errors={formState.errors} register={register} passwordName={'password'} repeatName={'repeat'} watch={watch} />
     </Form>
   );
