@@ -17,6 +17,17 @@ export default (): Configuration => ({
   users: {
     region: process.env.AWS_REGION,
     endpoint: process.env.AWS_DYNAMODB_ENDPOINT,
+    validation: {
+      password: {
+        minLength: 8,
+        maxLength: 64
+      },
+      displayName: {
+        minLength: 1,
+        maxLength: 32,
+        matches: /^[a-zA-Z0-9]+$/
+      }
+    }
   },
   secrets: {
     region: process.env.AWS_REGION,

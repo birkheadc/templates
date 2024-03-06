@@ -10,6 +10,7 @@ import { FieldValues, RegisterOptions, SubmitHandler, UseFormRegisterReturn, use
 import Input from '../../../../../../components/forms/inputs/input/Input';
 import { FormValidationErrorMessage } from '../../../../../../types/formValidation/formValidationErrorMessage';
 import DisplayNameInput from '../../../../../../components/forms/inputs/displayName/DisplayNameInput';
+import useLanguage from '../../../../../../hooks/language/useLanguage';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationToken: string,
@@ -24,12 +25,14 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
 
   const { result, awaitResult } = useResult();
 
+  const { language } = useLanguage();
+
   const { register, handleSubmit, watch, formState, setError } = useForm<Omit<CreateUserRequest, 'emailVerificationCode'> & { repeat: string }>();
 
   const onSubmit: SubmitHandler<Omit<CreateUserRequest, 'emailVerificationCode'>> = async (request: Omit<CreateUserRequest, 'emailVerificationToken'>) => {
     awaitResult(async () => {
-      const result = await api.user.createUser({ ...request, emailVerificationToken: emailVerificationToken });
-      console.log(result.errors);
+      const result = await api.user.createUser({ ...request, emailVerificationToken: emailVerificationToken, preferredLanguage: language });
+      console.log({ result });
       return result;
     });
     

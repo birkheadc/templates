@@ -15,8 +15,6 @@ export default function Input<T extends FieldValues>(props: InputProps<T>): JSX.
 
   const { id, name, label, disabled, errors, readOnly } = props;
 
-  console.log({errors});
-
   return (
     <div className='flex flex-col w-full gap-1'>
       { label &&

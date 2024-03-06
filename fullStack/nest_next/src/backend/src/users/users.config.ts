@@ -6,6 +6,17 @@ import { Injectable } from "@nestjs/common";
 export class UsersConfig extends InjectableConfig {
   region: string | undefined;
   endpoint: string | undefined;
+  validation: {
+    password: {
+      minLength: number,
+      maxLength: number
+    },
+    displayName: {
+      minLength: number,
+      maxLength: number,
+      matches: RegExp
+    }
+  }
   constructor(configService: ConfigService) {
     super(configService, 'users');
   }

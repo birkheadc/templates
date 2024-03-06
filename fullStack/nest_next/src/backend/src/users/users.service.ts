@@ -48,7 +48,7 @@ export class UsersService {
 
     const preexistingUser = await this.getUserByEmailAddress(request.emailAddress);
     if (preexistingUser != null) {
-      console.log('Error in createNewUser: email address is already in use. This should neven happen!');
+      console.log('Error in createNewUser: email address is already in use');
       throw new UnauthorizedException();
     }
     

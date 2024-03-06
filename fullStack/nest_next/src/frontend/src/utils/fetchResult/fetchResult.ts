@@ -15,7 +15,12 @@ export default async function fetchResult<T>(options: FetchResultOptions<T>): Pr
   try {
     const response = await fetch(url, {...init, signal: abortSignal});
 
-    if (!response.ok) return Result.Fail().WithError({ statusCode: response.status }).WithMessage(ResultMessage.CONNECTION_REFUSED);
+    if (!response.ok) {
+      console.log({response});
+      const body = await response.json();
+      console.log({body});
+      return Result.Fail().WithErrors().WithMessage(ResultMessage.CONNECTION_REFUSED)
+    }
 
     let result = Result.Succeed().WithMessage(successMessage ?? ResultMessage.GENERIC_SUCCESS);
     if (builder != null) {
