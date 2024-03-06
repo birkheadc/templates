@@ -7,7 +7,7 @@ interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HT
   label?: string,
   name: Path<T>,
   register: UseFormRegister<T>,
-  registeroptions: RegisterOptions,
+  registerOptions: RegisterOptions,
   errors?: FieldErrors<T>,
 }
 
