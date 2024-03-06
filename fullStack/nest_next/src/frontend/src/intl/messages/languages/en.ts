@@ -1,6 +1,7 @@
 import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from '../interface';
 import { FormValidationErrorMessage } from '../../../types/formValidation/formValidationErrorMessage';
+import { FormValidationErrorMatchesCriteria } from '../../../types/formValidation/formValidationErrorMatchesCriteria';
 
 const messages: Messages = {
   home: {
@@ -66,14 +67,15 @@ const messages: Messages = {
     [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account'
   },
   formValidationErrorMessages: {
-    [FormValidationErrorMessage.PASSWORD_TOO_SHORT]: 'must be at least 8 characters',
-    [FormValidationErrorMessage.PASSWORD_TOO_LONG]: 'must be at most 64 characters',
-    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: 'password must match',
-    [FormValidationErrorMessage.REQUIRED]: 'field is required',
-    [FormValidationErrorMessage.EMAIL_INVALID]: 'not a valid email',
-    [FormValidationErrorMessage.DISPLAY_NAME_TOO_SHORT]: 'must be at least 4 characters',
-    [FormValidationErrorMessage.DISPLAY_NAME_TOO_LONG]: 'must be at most 16 characters',
-    [FormValidationErrorMessage.DISPLAY_NAME_INVALID]: 'must only contain letters and numbers'
+    [FormValidationErrorMessage.MIN_LENGTH]: 'must be at least <min></min> characters',
+    [FormValidationErrorMessage.MAX_LENGTH]: 'must be at most <max></max> characters',
+    [FormValidationErrorMessage.MATCHES]: 'must meet the following criteria: <criteria></criteria>',
+    [FormValidationErrorMessage.REQUIRED]: 'required',
+    [FormValidationErrorMessage.EXACT_MATCH]: 'must match',
+    [FormValidationErrorMessage.IS_EMAIL]: 'must be a valid email address'
+  },
+  formValidationErrorMatchesCriteria: {
+    [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'must only include letters and numbers'
   }
 }
 

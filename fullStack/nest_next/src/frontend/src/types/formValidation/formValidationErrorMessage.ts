@@ -1,10 +1,8 @@
 export enum FormValidationErrorMessage {
-  PASSWORD_TOO_SHORT = 'passwordTooShort',
-  PASSWORD_TOO_LONG = 'passwordTooLong',
-  PASSWORDS_DO_NOT_MATCH = 'passwordsDoNotMatch',
+  MIN_LENGTH = 'minLength',
+  MAX_LENGTH = 'maxLength',
+  MATCHES = 'matches',
   REQUIRED = 'required',
-  EMAIL_INVALID = 'emailInvalid',
-  DISPLAY_NAME_TOO_SHORT = 'displayNameTooShort',
-  DISPLAY_NAME_TOO_LONG = 'displayNameTooLong',
-  DISPLAY_NAME_INVALID = 'displayNameInvalid'
+  EXACT_MATCH = 'exactMatch',
+  IS_EMAIL = 'isEmail'
 }

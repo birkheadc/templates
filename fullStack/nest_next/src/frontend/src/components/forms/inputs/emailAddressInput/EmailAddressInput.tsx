@@ -3,6 +3,7 @@ import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTr
 import Input from '../input/Input';
 import { FieldErrors, Path, UseFormRegister } from 'react-hook-form';
 import { FormValidationErrorMessage } from '../../../../types/formValidation/formValidationErrorMessage';
+import { validationConfig } from '../../../../config/config';
 
 interface EmailAddressInputProps<T extends { emailAddress: any }> extends React.InputHTMLAttributes<HTMLInputElement> {
   register: UseFormRegister<T>,
@@ -15,9 +16,8 @@ export default function EmailAddressInput<T extends { 'emailAddress': any }>(pro
   const { required, errors } = props;
 
   const t = useRichTranslations('general');
-  const tErrors = useRichTranslations('formValidationErrorMessages');
 
   return (
-    <Input {...props} autoComplete='email' errors={errors} label={t('emailAddress') as string} registeroptions={{ required: { value: !!required, message: tErrors(FormValidationErrorMessage.REQUIRED) as string }, pattern: { value: /\S+@\S+\.\S+/, message: tErrors(FormValidationErrorMessage.EMAIL_INVALID) as string, }, }} />
+    <Input {...props} autoComplete='email' errors={errors} label={t('emailAddress') as string} registeroptions={{ pattern: { value: /^.+\@.+\..+$/, message: FormValidationErrorMessage.IS_EMAIL } , required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }}} />
   );
 }

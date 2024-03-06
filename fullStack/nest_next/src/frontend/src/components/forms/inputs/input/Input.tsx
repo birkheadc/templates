@@ -16,16 +16,16 @@ export default function Input<T extends FieldValues>(props: InputProps<T>): JSX.
   const { id, name, label, disabled, errors, readOnly } = props;
 
   return (
-    <div className='flex flex-col w-full gap-1'>
+    <div className='flex flex-col w-full gap-0'>
       { label &&
         <div className=''>
           <label className='font-bold text-primary-700' htmlFor={id}>{label}</label>
         </div>
       }
-      <fieldset disabled={disabled} className={`flex gap-2 text-primary-700 border-primary-500 focus-within:outline focus-within:outline-1 ${readOnly ? 'border-0 bg-transparent-full outline-none' : 'border-2 bg-primary-50'}`}>
+      <fieldset disabled={disabled} className={`flex text-primary-700 border-primary-500 focus-within:outline focus-within:outline-1 border-2 ${readOnly ? 'border-primary-300 bg-primary-200 outline-none' : 'border-2 bg-primary-50'}`}>
         <BaseInput {...props} />
       </fieldset>
-      <FieldErrorDisplay error={errors && errors[name]?.message as string} />
+      <FieldErrorDisplay errors={errors} field={name} />
     </div>
   );
 }

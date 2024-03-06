@@ -22,8 +22,8 @@ export default function NewPasswordInput<T extends { password: any, repeat: any 
   password.current = watch(passwordName);
   
   return (
-    <div className='w-full flex flex-col gap-2'>
-      <PasswordInput autoComplete='new-password' label={t('password').toString()} name={passwordName} id={'password'} required register={register} errors={errors} />
+    <div className='w-full flex flex-col gap-4'>
+      <PasswordInput validate autoComplete='new-password' label={t('password').toString()} name={passwordName} id={'password'} required register={register} errors={errors} />
       <RepeatPasswordInput label={t('confirmPassword').toString()} name={repeatName} id={'repeat-password'} required register={register} errors={errors} password={password.current} />
     </div>
   );

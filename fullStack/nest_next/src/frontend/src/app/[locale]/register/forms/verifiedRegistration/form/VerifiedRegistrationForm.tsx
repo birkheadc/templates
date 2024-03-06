@@ -6,11 +6,10 @@ import NewPasswordInput from '../../../../../../components/forms/inputs/newPassw
 import { CreateUserRequest } from '../../../../../../types/requests/createUser/createUserRequest';
 import api from '../../../../../../api';
 import useResult from '@/hooks/result/useResult';
-import { FieldValues, RegisterOptions, SubmitHandler, UseFormRegisterReturn, useForm } from 'react-hook-form';
-import Input from '../../../../../../components/forms/inputs/input/Input';
-import { FormValidationErrorMessage } from '../../../../../../types/formValidation/formValidationErrorMessage';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import DisplayNameInput from '../../../../../../components/forms/inputs/displayName/DisplayNameInput';
 import useLanguage from '../../../../../../hooks/language/useLanguage';
+import { validationConfig } from '../../../../../../config/config';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationToken: string,
@@ -22,6 +21,7 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
   const { emailAddress, emailVerificationToken } = props;
 
   const t = useRichTranslations('register.verified');
+  const tCriteria = useRichTranslations('formValidationErrorMatchesCriteria');
 
   const { result, awaitResult } = useResult();
 
@@ -32,7 +32,10 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
   const onSubmit: SubmitHandler<Omit<CreateUserRequest, 'emailVerificationCode'>> = async (request: Omit<CreateUserRequest, 'emailVerificationToken'>) => {
     awaitResult(async () => {
       const result = await api.user.createUser({ ...request, emailVerificationToken: emailVerificationToken, preferredLanguage: language });
-      console.log({ result });
+      result.errors.forEach(error => {
+        if (error.field == null || error.message == null) return;
+        setError(error.field as keyof CreateUserRequest, { message: error.message });
+      });
       return result;
     });
     

@@ -1,5 +1,6 @@
 import { ResultMessage } from "@/types/result/resultMessage"
 import { FormValidationErrorMessage } from "../../types/formValidation/formValidationErrorMessage"
+import { FormValidationErrorMatchesCriteria } from "../../types/formValidation/formValidationErrorMatchesCriteria"
 
 export interface Messages {
   home: {
@@ -61,6 +62,9 @@ export interface Messages {
   },
   formValidationErrorMessages: {
     [key in FormValidationErrorMessage]: string
+  },
+  formValidationErrorMatchesCriteria: {
+    [key in FormValidationErrorMatchesCriteria]: string
   }
 }
 

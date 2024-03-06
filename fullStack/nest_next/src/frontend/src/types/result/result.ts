@@ -1,15 +1,10 @@
+import { FormValidationError } from "../formValidation/formValidation";
 import { FormValidationErrorMessage } from "../formValidation/formValidationErrorMessage";
 import { ResultMessage } from "./resultMessage";
 
-export type ResultError = {
-  statusCode?: number,
-  field?: string,
-  message?: FormValidationErrorMessage
-}
-
 export class Result<T = any> {
   wasSuccess: boolean = false;
-  errors: ResultError[] = [];
+  errors: FormValidationError[] = [];
   message?: ResultMessage | undefined = undefined;
   body?: T | undefined = undefined;
 
@@ -36,12 +31,12 @@ export class Result<T = any> {
     return this;
   }
 
-  WithError(error: ResultError): Result {
+  WithError(error: FormValidationError): Result {
     this.errors.push(error);
     return this;
   }
 
-  WithErrors(errors: ResultError[]): Result {
+  WithErrors(errors: FormValidationError[]): Result {
     this.errors = [...this.errors, ...errors];
     return this;
   }

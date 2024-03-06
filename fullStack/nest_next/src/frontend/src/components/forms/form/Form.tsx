@@ -26,7 +26,7 @@ export default function Form(props: FormProps): JSX.Element {
 
   return (
     <WaitingOverlay isWaiting={isProcessing}>
-      <form className={utils.mergeClass('flex flex-col items-center gap-4 p-8 m-auto w-96', className)} onSubmit={handleSubmit}>
+      <form className={utils.mergeClass('flex flex-col items-center gap-4 p-2 m-auto w-96', className)} onSubmit={handleSubmit}>
         { result && <ResultDisplay result={result} /> }
         <fieldset className={utils.mergeClass('flex flex-col items-center w-full gap-4', classNameInner)} disabled={isProcessing}>
           { children }

@@ -2,6 +2,7 @@ import { ResultMessage } from "@/types/result/resultMessage";
 import { FetchResultOptions } from "../../types/fetchResultOptions/fetchResultOptions";
 import { Result } from "../../types/result/result";
 import createAbortSignal from "../createAbortSignal/createAbortSignal";
+import { FormValidationError } from "../../types/formValidation/formValidation";
 
 export default async function fetchResult<T>(options: FetchResultOptions<T>): Promise<Result<T>> {
 
@@ -16,10 +17,9 @@ export default async function fetchResult<T>(options: FetchResultOptions<T>): Pr
     const response = await fetch(url, {...init, signal: abortSignal});
 
     if (!response.ok) {
-      console.log({response});
       const body = await response.json();
-      console.log({body});
-      return Result.Fail().WithErrors().WithMessage(ResultMessage.CONNECTION_REFUSED)
+      const validationErrors = FormValidationError.fromJson(body.message);
+      return Result.Fail().WithErrors(validationErrors).WithMessage(ResultMessage.CONNECTION_REFUSED)
     }
 
     let result = Result.Succeed().WithMessage(successMessage ?? ResultMessage.GENERIC_SUCCESS);
