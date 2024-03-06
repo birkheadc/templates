@@ -1,6 +1,7 @@
 import { ResultMessage } from '@/types/result/resultMessage';
 import { Messages } from '../interface';
 import { FormValidationErrorMessage } from '../../../types/formValidation/formValidationErrorMessage';
+import { FormValidationErrorMatchesCriteria } from '../../../types/formValidation/formValidationErrorMatchesCriteria';
 
 const messages: Messages = {
   home: {
@@ -66,14 +67,15 @@ const messages: Messages = {
     [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。'
   },
   formValidationErrorMessages: {
-    [FormValidationErrorMessage.PASSWORD_TOO_SHORT]: '8文字以上',
-    [FormValidationErrorMessage.PASSWORD_TOO_LONG]: '64文字以下',
-    [FormValidationErrorMessage.PASSWORDS_DO_NOT_MATCH]: '一致していません',
     [FormValidationErrorMessage.REQUIRED]: '必要',
-    [FormValidationErrorMessage.EMAIL_INVALID]: '無効',
-    [FormValidationErrorMessage.DISPLAY_NAME_TOO_SHORT]: '4文字以上',
-    [FormValidationErrorMessage.DISPLAY_NAME_TOO_LONG]: '16文字以下',
-    [FormValidationErrorMessage.DISPLAY_NAME_INVALID]: 'ローマ字またはローマ数字以外禁止'
+    [FormValidationErrorMessage.MIN_LENGTH]: '<min></min>文字以上',
+    [FormValidationErrorMessage.MAX_LENGTH]: '<max></max>文字以下',
+    [FormValidationErrorMessage.MATCHES]: '次の条件がそろっていない：<criteria></criteria>',
+    [FormValidationErrorMessage.EXACT_MATCH]: '一致していない',
+    [FormValidationErrorMessage.IS_EMAIL]: '無効'
+  },
+  formValidationErrorMatchesCriteria: {
+    [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'ローマ字またはローマ数字以外禁止'
   }
 }
 

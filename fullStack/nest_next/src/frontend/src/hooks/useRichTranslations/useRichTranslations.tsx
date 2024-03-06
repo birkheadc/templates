@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { NestedKeyOf, NestedValueOf, RichTranslationValues, useTranslations } from "next-intl";
+import { NestedKeyOf, RichTranslationValues, useTranslations } from "next-intl";
 import { Messages, NestedProperty } from '../../intl/messages/interface';
-import { Message } from 'postcss';
 
 export default function useRichTranslations<T extends NestedKeyOf<Messages>>(namespace?: T | undefined) {
   
