@@ -51,9 +51,7 @@ export class UsersService {
       console.log('Error in createNewUser: email address is already in use. This should neven happen!');
       throw new UnauthorizedException();
     }
-
-    throw new BadRequestException({ displayName: 'display name is not supported yet'});
-
+    
     const user = User.fromCreateUserRequestDto(request);
     await this.repository.putUser(user);
   }
