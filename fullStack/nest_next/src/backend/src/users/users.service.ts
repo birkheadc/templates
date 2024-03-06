@@ -36,6 +36,10 @@ export class UsersService {
 
   async verifyUserEmailAddress(request: VerifyEmailRequestDto): Promise<string> {
     const emailAddress = await this.mailService.verifyCode(request.code);
+    const user = await this.getUserByEmailAddress(emailAddress);
+    if (user != null) {
+      throw new UnauthorizedException();
+    }
     return emailAddress;
   }
 
