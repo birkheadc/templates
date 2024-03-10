@@ -43,7 +43,9 @@ const messages: Messages = {
       instructions: 'please fill out this form to finalize creation of your new account'
     }
   },
-  logout: {},
+  logout: {
+    header: 'logging out'
+  },
   dashboard: {
     changePassword: 'change password',
     nav: {
@@ -87,6 +89,9 @@ const messages: Messages = {
   },
   formValidationErrorMatchesCriteria: {
     [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'must only include letters and numbers'
+  },
+  accountRecovery: {
+    header: 'account recovery'
   }
 }
 

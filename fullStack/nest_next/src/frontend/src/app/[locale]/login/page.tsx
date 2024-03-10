@@ -5,6 +5,7 @@ import LoginHelp from './help/LoginHelp';
 import RedirectWrapper from '../../../components/redirectWrapper/RedirectWrapper';
 import { SessionStatus } from '../../../types/session/session';
 import useRichTranslations from '../../../hooks/useRichTranslations/useRichTranslations';
+import PageHeader from '../header/PageHeader';
 
 type LoginPageProps = {
 
@@ -17,7 +18,7 @@ export default function LoginPage(props: LoginPageProps): JSX.Element {
   return (
     <RedirectWrapper mode='excludes' statuses={[ SessionStatus.LOGGED_IN ]} redirect='/dashboard'>
       <Section className='items-start'>
-        <h1 className='text-3xl font-bold text-center'>{t('header')}</h1>
+        <PageHeader>{t('header')}</PageHeader>
         <LoginForm />
         <LoginHelp />
       </Section>

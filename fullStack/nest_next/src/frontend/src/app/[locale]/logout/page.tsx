@@ -4,12 +4,16 @@ import Section from '../sections/Section';
 import { SessionContext } from '../../../contexts/session/SessionContext';
 import RedirectWrapper from '../../../components/redirectWrapper/RedirectWrapper';
 import { SessionStatus } from '../../../types/session/session';
+import PageHeader from '../header/PageHeader';
+import useRichTranslations from '../../../hooks/useRichTranslations/useRichTranslations';
 
 type LogoutPageProps = {
 
 }
 
 export default function LogoutPage(props: LogoutPageProps): JSX.Element {
+
+  const t = useRichTranslations('logout');
 
   const { logout } = React.useContext(SessionContext);
 
@@ -20,7 +24,7 @@ export default function LogoutPage(props: LogoutPageProps): JSX.Element {
   return (
     <RedirectWrapper mode='includes' statuses={[ SessionStatus.LOGGED_IN ]}>
       <Section className='items-start'>
-        <h1 className='text-3xl text-center'>logging out</h1>
+        <PageHeader>{t('header')}</PageHeader>
       </Section>
     </RedirectWrapper>
   );

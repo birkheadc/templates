@@ -42,8 +42,11 @@ export interface Messages {
       instructions: string
     }
   },
+  accountRecovery: {
+    header: string
+  }
   logout: {
-
+    header: string
   },
   dashboard: {
     changePassword: string,

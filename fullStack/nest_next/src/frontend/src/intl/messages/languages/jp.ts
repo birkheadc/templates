@@ -41,9 +41,11 @@ const messages: Messages = {
       checking: '確認中。少々お待ちください。',
       failure: '申し訳ございません。メールアドレスの確認が失敗しました。',
       instructions: '引き続き以下のフォームをご記入ください。'
-    } 
+    }
   },
-  logout: {},
+  logout: {
+    header: 'ログアウト中'
+  },
   dashboard: {
     changePassword: 'パスワード更新',
     nav: {
@@ -87,6 +89,9 @@ const messages: Messages = {
   },
   formValidationErrorMatchesCriteria: {
     [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'ローマ字またはローマ数字以外禁止'
+  },
+  accountRecovery: {
+    header: 'アカウント復元'
   }
 }
 
