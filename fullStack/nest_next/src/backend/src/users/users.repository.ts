@@ -31,7 +31,6 @@ export class UsersRepository {
   }
 
   async getUserByEmailAddress(emailAddress: string): Promise<User | null> {
-    console.log({emailAddress});
     const command = new QueryCommand({
       TableName: this.tableName,
       IndexName: 'emailAddress',

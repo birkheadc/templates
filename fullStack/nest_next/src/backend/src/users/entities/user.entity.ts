@@ -12,7 +12,6 @@ export class User {
 
   static fromDynamoDBObject(data: any): User {
     const user = new User();
-    console.log(`Getting user from data:`, {data});
 
     user.id = data.id?.S ?? "";
     user.emailAddress = data.emailAddress?.S ?? "";

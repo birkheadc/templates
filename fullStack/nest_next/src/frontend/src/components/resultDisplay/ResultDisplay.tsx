@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Result, ResultError } from '../../types/result/result';
+import { Result } from '../../types/result/result';
 import NotificationBox from '../notification/NotificationBox';
 import { NotificationType } from '../../types/notification/notificationType';
 import useRichTranslations from '@/hooks/useRichTranslations/useRichTranslations';
+import { FormValidationError } from '../../types/formValidation/formValidation';
 
 type ResultDisplayProps = {
   result: Result,
@@ -24,7 +25,7 @@ export default function ResultDisplay(props: ResultDisplayProps): JSX.Element {
   );
 }
 
-function ResultDisplayErrors(props: { errors: ResultError[]}): JSX.Element {
+function ResultDisplayErrors(props: { errors: FormValidationError[]}): JSX.Element {
 
   const { errors } = props;
 
