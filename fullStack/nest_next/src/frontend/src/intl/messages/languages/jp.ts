@@ -74,7 +74,8 @@ const messages: Messages = {
     [ResultMessage.GENERIC_SUCCESS]: '成功',
     [ResultMessage.REGISTRATION_EMAIL_SENT]: '登録手続きのメールを送信しました。ご確認ください。',
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'メールアドレスの確認が完了しました。',
-    [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。'
+    [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。',
+    [ResultMessage.NOT_LOGGED_IN]: 'ログインしていません'
   },
   formValidationErrorMessages: {
     [FormValidationErrorMessage.REQUIRED]: '必要',

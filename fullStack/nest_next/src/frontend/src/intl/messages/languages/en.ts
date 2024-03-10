@@ -74,7 +74,8 @@ const messages: Messages = {
     [ResultMessage.GENERIC_SUCCESS]: 'success',
     [ResultMessage.REGISTRATION_EMAIL_SENT]: 'an email has been sent to your inbox with instructions on how to proceed',
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'your email address has been verified',
-    [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account'
+    [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account',
+    [ResultMessage.NOT_LOGGED_IN]: 'not logged in'
   },
   formValidationErrorMessages: {
     [FormValidationErrorMessage.MIN_LENGTH]: 'must be at least <min></min> characters',
