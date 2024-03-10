@@ -14,7 +14,7 @@ export default function NavSessionLoggedOutLinks(props: NavSessionLoggedOutLinks
   return (
     <>
       <NavLink href='/login'><span className='hidden lg:block'>{t('login')}</span><LogInIcon width={'1rem'} /></NavLink>
-      <NavLink href='/register'><span className='hidden lg:block'>{t('register')}</span><UserPlusIcon width={'1rem'} /></NavLink>
+      <NavLink href='/registration'><span className='hidden lg:block'>{t('register')}</span><UserPlusIcon width={'1rem'} /></NavLink>
     </>
   );
 }

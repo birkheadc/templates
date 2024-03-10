@@ -15,7 +15,7 @@ export default function LoginHelp(props: LoginHelpProps): JSX.Element {
     <div className='flex items-center justify-center w-full gap-4'>
       <BasicLink className='w-40 text-right' href='/account-recovery'>{t('recoverAccount')}</BasicLink>
       <span>|</span>
-      <BasicLink className='w-40' href='/register'>{t('registerNew')}</BasicLink>
+      <BasicLink className='w-40' href='/registration'>{t('registerNew')}</BasicLink>
     </div>
   );
 }
