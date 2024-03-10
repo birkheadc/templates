@@ -9,10 +9,10 @@ import BaseInput from '../input/BaseInput';
 import { validationConfig } from '../../../../config/config';
 import { FormValidationErrorMessage } from '../../../../types/formValidation/formValidationErrorMessage';
 
-type PasswordInputProps<T extends { password: any }> = {
+type PasswordInputProps<T extends { password: any } | { newPassword: any }> = {
   autoComplete?: string,
   className?: string,
-  label?: string,
+  label?: 'currentPassword' | 'password' | 'newPassword',
   id: string,
   register: UseFormRegister<T>,
   name: Path<T>,
@@ -23,7 +23,7 @@ type PasswordInputProps<T extends { password: any }> = {
   validate?: boolean
 }
 
-export default function PasswordInput<T extends { password: any }>(props: PasswordInputProps<T>): JSX.Element {
+export default function PasswordInput<T extends { password: any } | { newPassword: any }>(props: PasswordInputProps<T>): JSX.Element {
 
   const t = useRichTranslations('general');
 
@@ -32,7 +32,7 @@ export default function PasswordInput<T extends { password: any }>(props: Passwo
   
   return (
     <div className='flex flex-col w-full gap-1'>
-      <label className='font-bold text-primary-700' htmlFor={id}>{label ?? t('password')}</label>
+      <label className='font-bold text-primary-700' htmlFor={id}>{t(label ?? 'password')}</label>
       <fieldset disabled={disabled} className='relative flex items-center justify-center gap-2 border border-primary-500 focus-within:outline focus-within:outline-1 bg-primary-50 text-primary-700 disabled:border-0 disabled:bg-transparent-full'>
         <BaseInput {...props} type={show ? 'text': 'password' } register={register} registerOptions={validate ? { minLength: { value: validationConfig.password?.minLength ?? 0, message: FormValidationErrorMessage.MIN_LENGTH}, maxLength: { value: validationConfig.password?.maxLength ?? 1, message: FormValidationErrorMessage.MAX_LENGTH}, required: { value: true, message: FormValidationErrorMessage.REQUIRED}} : undefined} />
         <button className='absolute right-2 top-0 bottom-0 bg-transparent hocus:text-primary-950' type='button' onClick={() => setShow(s => !s)}>{ show ? <EyeOff /> : <Eye /> }</button>

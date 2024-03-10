@@ -1,4 +1,4 @@
 import { Request } from "express";
-import { UserOmitPassword } from "../entities/userOmitPassword";
+import { User } from "../../users/entities/user.entity";
 
-export type BearerAuthenticatedRequest = Request & { user: UserOmitPassword }
+export type BearerAuthenticatedRequest = Request & { user: User }

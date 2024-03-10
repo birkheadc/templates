@@ -8,6 +8,16 @@
     },
     "password": {
       "S": "$2b$10$Wx0gnpqACZYOP21tPhoreuYOWYqJO1vV8Wt2WXpOPgvCqzDqPZ8La"
+    },
+    "displayName": {
+      "S": "colby"
+    },
+    "preferences": {
+      "M": {
+        "language": {
+          "S": "en"
+        }
+      }
     }
   }
 ]

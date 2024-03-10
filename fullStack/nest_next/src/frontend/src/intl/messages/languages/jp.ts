@@ -44,7 +44,15 @@ const messages: Messages = {
     } 
   },
   logout: {},
-  dashboard: {},
+  dashboard: {
+    changePassword: 'パスワード更新',
+    nav: {
+      dashboard: 'ダッシュボード',
+      security: 'セキュリティ',
+      userPreferences: '設定',
+      profile: 'プロフィール'
+    }
+  },
   general: {
     signUp: '新規登録',
     signIn: 'ログイン',
@@ -52,7 +60,9 @@ const messages: Messages = {
     emailAddress: 'メールアドレス',
     displayName: 'ユーザーネーム',
     password: 'パスワード',
-    confirmPassword: 'パスワード再入力'
+    confirmPassword: 'パスワード再入力',
+    currentPassword: '現在パスワード',
+    newPassword: '新しいパスワード'
   },
   resultMessages: {
     [ResultMessage.NOT_YET_IMPLEMENTED]: '未実装',

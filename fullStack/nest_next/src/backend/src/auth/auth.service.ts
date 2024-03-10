@@ -10,7 +10,6 @@ import { TokenPayload } from './payload/tokenPayload';
 export class AuthService {
   constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService ) { }
 
-  // Todo: What the hell is this?
   async validateUser(emailAddress: string, password: string): Promise<UserOmitPassword> {
     const user = await this.usersService.getUserByEmailAddress(emailAddress);
     if (user == null || compareSync(password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);

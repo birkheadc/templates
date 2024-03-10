@@ -4,7 +4,7 @@ import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTr
 import { FieldErrors, Path, UseFormRegister, UseFormWatch } from 'react-hook-form';
 import RepeatPasswordInput from '../passwordInput/RepeatPasswordInput';
 
-interface NewPasswordInputProps<T extends { password: any, repeat: any }> extends React.InputHTMLAttributes<HTMLInputElement> {
+interface ConfirmNewPasswordInputProps<T extends { password: any, repeat: any }> extends React.InputHTMLAttributes<HTMLInputElement> {
   register: UseFormRegister<T>,
   passwordName: Path<T>,
   repeatName: Path<T>,
@@ -12,7 +12,7 @@ interface NewPasswordInputProps<T extends { password: any, repeat: any }> extend
   watch: UseFormWatch<T>
 }
 
-export default function NewPasswordInput<T extends { password: any, repeat: any }>(props: NewPasswordInputProps<T>): JSX.Element {
+export default function ConfirmNewPasswordInput<T extends { password: any, repeat: any }>(props: ConfirmNewPasswordInputProps<T>): JSX.Element {
 
   const { register, passwordName, repeatName, errors, watch } = props;
 
@@ -23,8 +23,8 @@ export default function NewPasswordInput<T extends { password: any, repeat: any 
   
   return (
     <div className='w-full flex flex-col gap-4'>
-      <PasswordInput validate autoComplete='new-password' label={t('password').toString()} name={passwordName} id={'password'} required register={register} errors={errors} />
-      <RepeatPasswordInput label={t('confirmPassword').toString()} name={repeatName} id={'repeat-password'} required register={register} errors={errors} password={password.current} />
+      <PasswordInput validate autoComplete='new-password' label={'newPassword'} name={passwordName} id={'new-password'} required register={register} errors={errors} />
+      <RepeatPasswordInput name={repeatName} id={'repeat-new-password'} required register={register} errors={errors} password={password.current} />
     </div>
   );
 }

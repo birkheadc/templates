@@ -8,5 +8,6 @@ export enum ResultMessage {
   GENERIC_SUCCESS = 'genericSuccess',
   REGISTRATION_EMAIL_SENT = 'registrationEmailSent',
   VERIFY_EMAIL_SUCCESS = 'verifyEmailSuccess',
-  CREATE_USER_SUCCESS = 'createUserSuccess'
+  CREATE_USER_SUCCESS = 'createUserSuccess',
+  NOT_LOGGED_IN ='notLoggedIn'
 }

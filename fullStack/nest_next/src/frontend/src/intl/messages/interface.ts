@@ -46,7 +46,13 @@ export interface Messages {
 
   },
   dashboard: {
-
+    changePassword: string,
+    nav: {
+      dashboard: string,
+      security: string,
+      userPreferences: string,
+      profile: string
+    }
   },
   general: {
     signUp: string,
@@ -55,7 +61,9 @@ export interface Messages {
     emailAddress: string,
     displayName: string,
     password: string,
-    confirmPassword: string
+    confirmPassword: string,
+    currentPassword: string,
+    newPassword: string
   }
   resultMessages: {
     [key in ResultMessage ]: string

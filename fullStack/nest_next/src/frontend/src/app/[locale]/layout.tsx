@@ -3,7 +3,7 @@ import "../globals.css";
 import PrimaryNav from "../../components/nav/PrimaryNav";
 import locales from '@/intl/locales.json';
 import { redirect } from "next/navigation";
-import Providers from "../../contexts/Providers";
+import Providers from '@/contexts/Providers';
 import { useMessages } from "next-intl";
 
 
@@ -23,7 +23,6 @@ export default function RootLayout({
   const messages = useMessages();
 
   if (!locales.includes(locale)) redirect('/');
-
   return (
     <html lang={locale} data-theme={'dark'}>
       <Providers locale={locale} messages={messages}>

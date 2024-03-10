@@ -6,7 +6,7 @@ import { FormValidationErrorMessage } from '../../../../types/formValidation/for
 import { validationConfig } from '../../../../config/config';
 
 interface EmailAddressInputProps<T extends { emailAddress: any }> extends React.InputHTMLAttributes<HTMLInputElement> {
-  register: UseFormRegister<T>,
+  register?: UseFormRegister<T>,
   errors?: FieldErrors<T>,
   name: Path<T>
 }
@@ -18,6 +18,6 @@ export default function EmailAddressInput<T extends { 'emailAddress': any }>(pro
   const t = useRichTranslations('general');
 
   return (
-    <Input {...props} autoComplete='email' errors={errors} label={t('emailAddress') as string} registeroptions={{ pattern: { value: /^.+\@.+\..+$/, message: FormValidationErrorMessage.IS_EMAIL } , required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }}} />
+    <Input {...props} autoComplete='email' errors={errors} label={t('emailAddress') as string} registerOptions={{ pattern: { value: /^.+\@.+\..+$/, message: FormValidationErrorMessage.IS_EMAIL } , required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }}} />
   );
 }

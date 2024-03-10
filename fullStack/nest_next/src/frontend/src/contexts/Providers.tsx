@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SessionProvider } from './session/SessionContext';
 import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl';
+import { UserProvider } from './user/UserContext';
 
 type ProvidersProps = {
   children?: React.ReactNode,
@@ -14,9 +15,11 @@ export default function Providers(props: ProvidersProps): JSX.Element {
   
   return (
     <SessionProvider>
-      <NextIntlClientProvider locale={locale} messages={messages} >
-        {children}
-      </NextIntlClientProvider>
+      <UserProvider>
+        <NextIntlClientProvider locale={locale} messages={messages} >
+          {children}
+        </NextIntlClientProvider>
+      </UserProvider>
     </SessionProvider>
   );
 }

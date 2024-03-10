@@ -44,7 +44,15 @@ const messages: Messages = {
     }
   },
   logout: {},
-  dashboard: {},
+  dashboard: {
+    changePassword: 'change password',
+    nav: {
+      dashboard: 'dashboard',
+      security: 'security',
+      userPreferences: 'user preferences',
+      profile: 'profile'
+    }
+  },
   general: {
     signUp: 'sign up',
     signIn: 'sign in',
@@ -52,7 +60,9 @@ const messages: Messages = {
     emailAddress: 'email address',
     displayName: 'display name',
     password: 'password',
-    confirmPassword: 'confirm password'
+    confirmPassword: 'confirm password',
+    currentPassword: 'current password',
+    newPassword: 'new password'
   },
   resultMessages: {
     [ResultMessage.NOT_YET_IMPLEMENTED]: 'not yet implemented',

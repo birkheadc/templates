@@ -13,7 +13,7 @@ export default function NavPageLinks(props: NavPageLinksProps): JSX.Element {
 
   return (
     <ul className='flex h-full gap-4'>
-      <li><NavLink href={'/'}><span className='hidden lg:block'>{t('home')}</span><HomeIcon width={'1rem'} /></NavLink></li>
+      <NavLink href={'/'}><span className='hidden lg:block'>{t('home')}</span><HomeIcon width={'1rem'} /></NavLink>
     </ul>
   );
 }

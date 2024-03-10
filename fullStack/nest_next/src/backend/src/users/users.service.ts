@@ -1,12 +1,13 @@
-import { BadRequestException, ConflictException, Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
+import { BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { User } from './entities/user.entity';
-import { hashSync } from 'bcrypt';
+import { compareSync, hashSync } from 'bcrypt';
 import { UserOmitPassword } from '../auth/entities/userOmitPassword';
 import { RegisterUserRequestDto } from './dtos/register-user.dto';
 import { MailService } from 'src/mail/mail.service';
 import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
 import { CreateUserRequestDto } from './dtos/create-user.dto';
+import { ChangePasswordRequestDto } from './dtos/change-password.dto';
 
 @Injectable()
 export class UsersService {
@@ -20,8 +21,9 @@ export class UsersService {
     return this.repository.getUserByEmailAddress(emailAddress);
   }
 
-  async changePassword(user: UserOmitPassword, newPassword: string): Promise<User> {
-    const hash = hashSync(newPassword, 10);
+  async changePassword(user: User, request: ChangePasswordRequestDto): Promise<User> {
+    if (compareSync(request.password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    const hash = hashSync(request.newPassword, 10);
     return await this.repository.putUser({ ...user, password: hash });
   }
 

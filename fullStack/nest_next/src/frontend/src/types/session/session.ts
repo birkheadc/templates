@@ -1,8 +1,9 @@
+import { User } from "../user/user"
 import { SessionToken } from "./sessionToken/sessionToken"
 
 export type Session = {
   status: SessionStatus,
-  token: SessionToken | undefined
+  token?: SessionToken,
 }
 
 export enum SessionStatus {

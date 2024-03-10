@@ -6,6 +6,8 @@ import { SessionToken } from "../../types/session/sessionToken/sessionToken";
 import { Result } from '../../types/result/result';
 import api from '../../api';
 import { Session, SessionStatus } from '../../types/session/session';
+import { ResultMessage } from '@/types/result/resultMessage';
+import { UserContext } from '../user/UserContext';
 
 type Data = {
   session: Session
@@ -22,7 +24,7 @@ const DEFAULT_DATA: Data = {
   },
   session: {
     status: SessionStatus.CHECKING,
-    token: undefined
+    token: undefined,
   }
 }
 
@@ -43,6 +45,26 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
     });
   }, []);
 
+  React.useEffect(() => {
+    (async function checkLocalStorageForToken() {
+      const token = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (token == null) {
+        logout();
+        return;
+      }
+      const sessionToken = new SessionToken(token);
+      const result = await api.user.getUser(sessionToken);
+      if (!result.wasSuccess || result.body == null) {
+        expire();
+        return;
+      }
+      setSession({
+        status: SessionStatus.LOGGED_IN,
+        token: sessionToken,
+      });
+    })();
+  }, []);
+
   const login = async (credentials: LoginCredentials): Promise<Result> => {
     await new Promise<void>((res, rej) => {
       setTimeout(() => {
@@ -50,12 +72,21 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
       }, 2000)
     })
     const result = await api.auth.login(credentials);
-    setSession(s => ({
-      ...s,
-      status: result.wasSuccess && result.body ? SessionStatus.LOGGED_IN : SessionStatus.LOGGED_OUT,
-      token: result.body
-    }))
-    if (result.wasSuccess && result.body) window.localStorage.setItem(LOCAL_STORAGE_KEY, result.body.value);
+    if (!result.wasSuccess || result.body == null) {
+      logout();
+      return Result.Fail().WithMessage(ResultMessage.CONNECTION_REFUSED);
+    }
+    const token = result.body;
+    const userResult = await api.user.getUser(token);
+    if (!userResult.wasSuccess || userResult.body == null) {
+      logout();
+      return Result.Fail().WithMessage(ResultMessage.UNEXPECTED_RESPONSE);
+    }
+    setSession({
+      status: SessionStatus.LOGGED_IN,
+      token: result.body,
+    })
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, token.value);
     return result.WithBody(undefined);
   }
 
@@ -65,6 +96,13 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
       token: undefined
     });
     window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+  }
+
+  const expire = () => {
+    setSession({
+      status: SessionStatus.EXPIRED,
+      token: undefined
+    });
   }
 
   return (

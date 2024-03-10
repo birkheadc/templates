@@ -2,7 +2,7 @@ import * as React from 'react';
 import Form from '../../../../../../components/forms/form/Form';
 import EmailAddressInput from '../../../../../../components/forms/inputs/emailAddressInput/EmailAddressInput';
 import useRichTranslations from '../../../../../../hooks/useRichTranslations/useRichTranslations';
-import NewPasswordInput from '../../../../../../components/forms/inputs/newPasswordInput/NewPasswordInput';
+import ConfirmNewPasswordInput from '../../../../../../components/forms/inputs/newPasswordInput/ConfirmNewPasswordInput';
 import { CreateUserRequest } from '../../../../../../types/requests/createUser/createUserRequest';
 import api from '../../../../../../api';
 import useResult from '@/hooks/result/useResult';
@@ -46,7 +46,7 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
       <span>{t('instructions')}</span>
       <EmailAddressInput errors={formState.errors} defaultValue={emailAddress} readOnly register={register} name={'emailAddress'} />
       <DisplayNameInput required errors={formState.errors} register={register} name={'displayName'} />
-      <NewPasswordInput errors={formState.errors} register={register} passwordName={'password'} repeatName={'repeat'} watch={watch} />
+      <ConfirmNewPasswordInput errors={formState.errors} register={register} passwordName={'password'} repeatName={'repeat'} watch={watch} />
     </Form>
   );
 }

@@ -1,11 +1,13 @@
 import { Body, Controller, Post, UseGuards, Request, Get } from '@nestjs/common';
 import { BearerAuthenticatedRequest } from '../auth/request/bearerAuthenticatedRequest';
-import { ChangePasswordDto } from './dtos/change-password.dto';
+import { ChangePasswordRequestDto } from './dtos/change-password.dto';
 import { UsersService } from './users.service';
 import { RegisterUserRequestDto } from './dtos/register-user.dto';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
 import { CreateUserRequestDto } from './dtos/create-user.dto';
+import { User } from './entities/user.entity';
+import { UserOmitPassword } from '../auth/entities/userOmitPassword';
 
 @Controller('users')
 export class UsersController {
@@ -14,9 +16,9 @@ export class UsersController {
 
   @Post('/me/change-password')
   @UseGuards(JwtGuard)
-  async changePassword(@Request() request: BearerAuthenticatedRequest, @Body() dto: ChangePasswordDto) {
+  async changePassword(@Request() request: BearerAuthenticatedRequest, @Body() dto: ChangePasswordRequestDto) {
     const user = request.user;
-    await this.service.changePassword(user, dto.password);
+    await this.service.changePassword(user, dto);
   }
 
   @Post('register')
@@ -37,8 +39,8 @@ export class UsersController {
 
   @Get('/me')
   @UseGuards(JwtGuard)
-  async getUser(@Request() request: BearerAuthenticatedRequest) {
-    const user = request.user;
+  async getUser(@Request() request: BearerAuthenticatedRequest): Promise<UserOmitPassword> {
+    const { password, ...user } = request.user;
     return user;
   }
 }

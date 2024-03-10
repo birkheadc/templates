@@ -6,17 +6,17 @@ import BaseInput from './BaseInput';
 interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string,
   name: Path<T>,
-  register: UseFormRegister<T>,
+  register?: UseFormRegister<T>,
   registerOptions: RegisterOptions,
   errors?: FieldErrors<T>,
 }
 
 export default function Input<T extends FieldValues>(props: InputProps<T>): JSX.Element {
 
-  const { id, name, label, disabled, errors, readOnly } = props;
+  const { id, name, label, disabled, errors, readOnly, hidden } = props;
 
   return (
-    <div className='flex flex-col w-full gap-0'>
+    <div className={`'flex flex-col w-full gap-0' ${hidden && 'hidden'}`}>
       { label &&
         <div className=''>
           <label className='font-bold text-primary-700' htmlFor={id}>{label}</label>
