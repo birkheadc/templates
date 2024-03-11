@@ -76,7 +76,7 @@ const messages: Messages = {
     [ResultMessage.GENERIC_SUCCESS]: '成功',
     [ResultMessage.REGISTRATION_EMAIL_SENT]: '登録手続きのメールを送信しました。ご確認ください。',
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'メールアドレスの確認が完了しました。',
-    [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。',
+    [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。ログインしてください。',
     [ResultMessage.NOT_LOGGED_IN]: 'ログインしていません'
   },
   formValidationErrorMessages: {
@@ -85,7 +85,8 @@ const messages: Messages = {
     [FormValidationErrorMessage.MAX_LENGTH]: '<max></max>文字以下',
     [FormValidationErrorMessage.MATCHES]: '次の条件がそろっていない：<criteria></criteria>',
     [FormValidationErrorMessage.EXACT_MATCH]: '一致していない',
-    [FormValidationErrorMessage.IS_EMAIL]: '無効'
+    [FormValidationErrorMessage.IS_EMAIL]: '無効',
+    [FormValidationErrorMessage.UNIQUE]: '現在使用中'
   },
   formValidationErrorMatchesCriteria: {
     [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'ローマ字またはローマ数字以外禁止'

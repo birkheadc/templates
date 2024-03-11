@@ -51,6 +51,28 @@ export class UsersRepository {
     }
   }
 
+  async getUserByDisplayName(displayName: string): Promise<User | null> {
+    console.log({displayName});
+    const command = new QueryCommand({
+      TableName: this.tableName,
+      IndexName: 'displayName',
+      KeyConditionExpression: 'displayName = :displayName',
+      ExpressionAttributeValues: {
+        ':displayName': { S: displayName }
+      }
+    });
+
+    try {
+      const response = await this.client.send(command);
+      if (!response.Items || Object.keys(response.Items).length < 1) return null;
+      const user = User.fromDynamoDBObject(response.Items.pop());
+      return user;
+    } catch (error) {
+      console.log('Error in getUserByDisplayName', error);
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+  }
+
   async putUser(user: User): Promise<User> {
     const command = new PutItemCommand({
       TableName: this.tableName,

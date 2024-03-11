@@ -20,5 +20,5 @@ export default async function register(request: Omit<RegisterUserRequest, 'verif
 }
 
 function getVerifyUrl(language: string): string {
-  return `${window.location.origin}/${language}/register`;
+  return `${window.location.origin}/${language}/registration`;
 }

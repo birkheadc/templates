@@ -76,7 +76,7 @@ const messages: Messages = {
     [ResultMessage.GENERIC_SUCCESS]: 'success',
     [ResultMessage.REGISTRATION_EMAIL_SENT]: 'an email has been sent to your inbox with instructions on how to proceed',
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'your email address has been verified',
-    [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account',
+    [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account. you may now login',
     [ResultMessage.NOT_LOGGED_IN]: 'not logged in'
   },
   formValidationErrorMessages: {
@@ -85,7 +85,8 @@ const messages: Messages = {
     [FormValidationErrorMessage.MATCHES]: 'must meet the following criteria: <criteria></criteria>',
     [FormValidationErrorMessage.REQUIRED]: 'required',
     [FormValidationErrorMessage.EXACT_MATCH]: 'must match',
-    [FormValidationErrorMessage.IS_EMAIL]: 'must be a valid email address'
+    [FormValidationErrorMessage.IS_EMAIL]: 'must be a valid email address',
+    [FormValidationErrorMessage.UNIQUE]: 'already in use'
   },
   formValidationErrorMatchesCriteria: {
     [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'must only include letters and numbers'

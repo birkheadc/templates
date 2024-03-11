@@ -4,5 +4,6 @@ export enum FormValidationErrorMessage {
   MATCHES = 'matches',
   REQUIRED = 'required',
   EXACT_MATCH = 'exactMatch',
-  IS_EMAIL = 'isEmail'
+  IS_EMAIL = 'isEmail',
+  UNIQUE = 'unique'
 }

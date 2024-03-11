@@ -10,6 +10,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import DisplayNameInput from '../../../../../../components/forms/inputs/displayName/DisplayNameInput';
 import useLanguage from '../../../../../../hooks/language/useLanguage';
 import { validationConfig } from '../../../../../../config/config';
+import { useRouter } from '@/navigation/navigation';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationToken: string,
@@ -21,7 +22,6 @@ export default function VerifiedRegistrationForm(props: VerifiedRegistrationForm
   const { emailAddress, emailVerificationToken } = props;
 
   const t = useRichTranslations('register.verified');
-  const tCriteria = useRichTranslations('formValidationErrorMatchesCriteria');
 
   const { result, awaitResult } = useResult();
 

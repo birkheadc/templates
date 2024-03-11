@@ -19,7 +19,6 @@ export class FormValidationError {
       error.message = element.message ?? undefined;
       errors.push(error);
     });
-
     return errors;
   }
 

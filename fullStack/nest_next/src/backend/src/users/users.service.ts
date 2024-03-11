@@ -1,8 +1,7 @@
-import { BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
+import { BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { User } from './entities/user.entity';
 import { compareSync, hashSync } from 'bcrypt';
-import { UserOmitPassword } from '../auth/entities/userOmitPassword';
 import { RegisterUserRequestDto } from './dtos/register-user.dto';
 import { MailService } from 'src/mail/mail.service';
 import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
@@ -19,6 +18,10 @@ export class UsersService {
 
   async getUserByEmailAddress(emailAddress: string): Promise<User | null> {
     return this.repository.getUserByEmailAddress(emailAddress);
+  }
+
+  async getUserByDisplayName(displayName: string): Promise<User | null> {
+    return this.repository.getUserByDisplayName(displayName);
   }
 
   async changePassword(user: User, request: ChangePasswordRequestDto): Promise<User> {
@@ -56,6 +59,11 @@ export class UsersService {
     if (preexistingUser != null) {
       console.log('Error in createNewUser: email address is already in use');
       throw new UnauthorizedException();
+    }
+
+    if (await this.getUserByDisplayName(request.displayName) != null) {
+      console.log('Error in createNewUser: display name is already in use');
+      throw new ConflictException({ message: { field: 'displayName', message: 'unique' } });
     }
     
     const user = User.fromCreateUserRequestDto(request);
