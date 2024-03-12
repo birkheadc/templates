@@ -25,14 +25,14 @@ export default function Form(props: FormProps): JSX.Element {
   }
 
   return (
-    <WaitingOverlay isWaiting={isProcessing}>
-      <form className={utils.mergeClass('flex flex-col items-center gap-4 m-auto w-full lg:w-96', className)} onSubmit={handleSubmit}>
+    <form className={utils.mergeClass('flex flex-col items-center gap-4 m-auto w-80', className)} onSubmit={handleSubmit}>
+      <WaitingOverlay isWaiting={isProcessing}>
         { result && <ResultDisplay result={result} /> }
-        <fieldset className={utils.mergeClass('flex flex-col items-center w-full gap-4', classNameInner)} disabled={isProcessing}>
+        <fieldset className={utils.mergeClass('flex flex-col items-center gap-4 w-full', classNameInner)} disabled={isProcessing}>
           { children }
           <SubmitButton />
         </fieldset>
-      </form>
-    </WaitingOverlay>
+      </WaitingOverlay>
+    </form>
   );
 }

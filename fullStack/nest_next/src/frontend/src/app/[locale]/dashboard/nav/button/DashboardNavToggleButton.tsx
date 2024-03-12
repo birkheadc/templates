@@ -11,8 +11,8 @@ export default function DashboardNavToggleButton(props: DashboardNavToggleButton
   const { isShown, toggleShown } = props;
 
   return (
-    <button className={`delay-300 duration-500 transition-all ${isShown ? 'translate-x-0' : 'translate-x-[250%]'}`} onClick={toggleShown}>
-      {isShown ? <ChevronLeft /> : <ChevronRight />}
+    <button onClick={toggleShown}>
+      {isShown ? <ChevronLeft width={'2rem'} /> : <ChevronRight width={'2rem'} />}
     </button>
   );
 }

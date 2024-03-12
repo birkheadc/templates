@@ -16,7 +16,7 @@ export default function Section1(props: Section1Props): JSX.Element {
   const t = useRichTranslations('home.section1');
 
   return (
-    <Section innerClassName='short:gap-2' className={utils.mergeClass('min-h-svh-nav items-center bg-fixed lg:justify-center bg-hero bg-clip-text ff:bg-scroll', styles.section)}>
+    <Section innerClassName='short:gap-2' className={utils.mergeClass('items-center bg-fixed lg:justify-center bg-hero bg-clip-text ff:bg-scroll', styles.section)}>
       <HeroHeader>{t('header')}</HeroHeader>
       <SectionBody className='max-w-2xl gap-12 short:gap-2'>
         <p className='text-transparent-offTheme-low text-pretty'>{t('body')}</p>

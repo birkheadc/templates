@@ -9,7 +9,7 @@ export default function DashboardSection(props: DashboardSectionProps): JSX.Elem
   const { children } = props;
   
   return (
-    <div className='p-6'>
+    <div className='w-full'>
       { children }
     </div>
   );

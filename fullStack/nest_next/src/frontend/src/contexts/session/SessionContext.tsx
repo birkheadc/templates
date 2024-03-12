@@ -12,7 +12,8 @@ import { UserContext } from '../user/UserContext';
 type Data = {
   session: Session
   login: (credentials: LoginCredentials) => Promise<Result>,
-  logout: () => void
+  logout: () => void,
+  expire: () => void
 }
 
 const DEFAULT_DATA: Data = {
@@ -25,6 +26,9 @@ const DEFAULT_DATA: Data = {
   session: {
     status: SessionStatus.CHECKING,
     token: undefined,
+  },
+  expire: function (): void {
+    throw new Error('Function not implemented.');
   }
 }
 
@@ -106,7 +110,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
   }
 
   return (
-    <SessionContext.Provider value={{ login, logout, session }} >
+    <SessionContext.Provider value={{ login, logout, expire, session }} >
       { children }
     </SessionContext.Provider>
   )

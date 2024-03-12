@@ -18,6 +18,6 @@ export default function DisplayNameInput<T extends { 'displayName': any }>(props
   const t = useRichTranslations('general');
 
   return (
-    <Input errors={errors} {...props} autoComplete='username' label={t('displayName') as string} registerOptions={{ required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }, minLength: { value: validationConfig.displayName?.minLength ?? 0, message: FormValidationErrorMessage.MIN_LENGTH }, maxLength: { value: validationConfig.displayName?.maxLength ?? 0, message: FormValidationErrorMessage.MAX_LENGTH }, pattern: { value: validationConfig.displayName?.match?.regexp ?? /a/, message: FormValidationErrorMessage.MATCHES }}} />
+    <Input errors={errors} {...props} autoComplete='off' label={t('displayName') as string} registerOptions={{ required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }, minLength: { value: validationConfig.displayName?.minLength ?? 0, message: FormValidationErrorMessage.MIN_LENGTH }, maxLength: { value: validationConfig.displayName?.maxLength ?? 0, message: FormValidationErrorMessage.MAX_LENGTH }, pattern: { value: validationConfig.displayName?.match?.regexp ?? /a/, message: FormValidationErrorMessage.MATCHES }}} />
   );
 }

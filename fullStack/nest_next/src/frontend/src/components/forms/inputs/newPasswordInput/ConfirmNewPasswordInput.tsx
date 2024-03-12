@@ -15,14 +15,12 @@ interface ConfirmNewPasswordInputProps<T extends { password: any, repeat: any }>
 export default function ConfirmNewPasswordInput<T extends { password: any, repeat: any }>(props: ConfirmNewPasswordInputProps<T>): JSX.Element {
 
   const { register, passwordName, repeatName, errors, watch } = props;
-
-  const t = useRichTranslations('general');
   
   const password = React.useRef('');
   password.current = watch(passwordName);
   
   return (
-    <div className='w-full flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 w-full'>
       <PasswordInput validate autoComplete='new-password' label={'newPassword'} name={passwordName} id={'new-password'} required register={register} errors={errors} />
       <RepeatPasswordInput name={repeatName} id={'repeat-new-password'} required register={register} errors={errors} password={password.current} />
     </div>

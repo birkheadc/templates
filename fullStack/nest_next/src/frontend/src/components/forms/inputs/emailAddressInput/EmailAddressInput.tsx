@@ -18,6 +18,6 @@ export default function EmailAddressInput<T extends { 'emailAddress': any }>(pro
   const t = useRichTranslations('general');
 
   return (
-    <Input {...props} autoComplete='email' errors={errors} label={t('emailAddress') as string} registerOptions={{ pattern: { value: /^.+\@.+\..+$/, message: FormValidationErrorMessage.IS_EMAIL } , required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }}} />
+    <Input {...props} autoComplete='username' errors={errors} label={t('emailAddress') as string} registerOptions={{ pattern: { value: /^.+\@.+\..+$/, message: FormValidationErrorMessage.IS_EMAIL } , required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }}} />
   );
 }

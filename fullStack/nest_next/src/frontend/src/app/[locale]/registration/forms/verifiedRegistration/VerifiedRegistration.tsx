@@ -16,7 +16,6 @@ export default function VerifiedRegistration(props: VerifiedRegistrationProps): 
   const [ recentResult, setRecentResult ] = React.useState<Result<string> | undefined>();
 
   const t = useRichTranslations('register');
-  const tGeneral = useRichTranslations('general');
 
   React.useEffect(() => {
     (async function verifyCodeOnMount() {

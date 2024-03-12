@@ -25,9 +25,9 @@ export default function RedirectWrapper(props: RedirectWrapperProps): JSX.Elemen
   }, [ statuses, mode, session, redirect ]);
 
   return (
-    <div>
+    <>
       { session.status !== SessionStatus.CHECKING && !shouldRedirect(session.status, mode, statuses) && children }
-    </div>
+    </>
   );
 }
 

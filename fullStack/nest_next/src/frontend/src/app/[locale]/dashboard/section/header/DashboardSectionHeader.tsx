@@ -9,7 +9,7 @@ export default function DashboardSectionHeader(props: DashboardSectionHeaderProp
   const { children } = props;
 
   return (
-    <h2 className='text-2xl font-bold py-4'>
+    <h2 className='text-xl font-bold p-4'>
       { children }
     </h2>
   );

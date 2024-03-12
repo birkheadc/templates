@@ -31,7 +31,8 @@ export interface Messages {
   login: {
     header: string,
     recoverAccount: string,
-    registerNew: string
+    registerNew: string,
+    sessionExpired: string
   },
   register: {
     header: string,

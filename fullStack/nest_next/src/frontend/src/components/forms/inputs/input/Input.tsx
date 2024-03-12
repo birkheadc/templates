@@ -2,8 +2,10 @@ import * as React from 'react';
 import { FieldErrors, FieldValues, Path, RegisterOptions, UseFormRegister } from 'react-hook-form';
 import FieldErrorDisplay from '../../form/errorDisplay/FieldErrorDisplay';
 import BaseInput from './BaseInput';
+import utils from '../../../../utils';
 
 interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string,
   label?: string,
   name: Path<T>,
   register?: UseFormRegister<T>,
@@ -13,10 +15,10 @@ interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HT
 
 export default function Input<T extends FieldValues>(props: InputProps<T>): JSX.Element {
 
-  const { id, name, label, disabled, errors, readOnly, hidden } = props;
+  const { id, name, label, disabled, errors, readOnly, hidden, className } = props;
 
   return (
-    <div className={`'flex flex-col w-full gap-0' ${hidden && 'hidden'}`}>
+    <div className={utils.mergeClass('flex flex-col w-full', hidden ? 'hidden' : '', className)}>
       { label &&
         <div className=''>
           <label className='font-bold text-primary-700' htmlFor={id}>{label}</label>

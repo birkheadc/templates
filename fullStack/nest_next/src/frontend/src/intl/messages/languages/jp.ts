@@ -32,7 +32,8 @@ const messages: Messages = {
   login: {
     header: 'ログイン',
     recoverAccount: 'ログインできない場合',
-    registerNew: '新規登録'
+    registerNew: '新規登録',
+    sessionExpired: 'もう一度ログインしてください'
   },
   register: {
     header: '新規登録',

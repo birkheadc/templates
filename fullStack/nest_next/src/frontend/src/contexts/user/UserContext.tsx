@@ -28,7 +28,7 @@ const DEFAULT_DATA: Data = {
 export const UserContext = React.createContext<Data>(DEFAULT_DATA);
 export const UserProvider = ({ children }: {  children: React.ReactNode}) => {
 
-  const { session, logout } = React.useContext(SessionContext);
+  const { session, logout, expire } = React.useContext(SessionContext);
   const [ user, setUser ] = React.useState<User | undefined>();
 
   React.useEffect(() => {
@@ -47,6 +47,9 @@ export const UserProvider = ({ children }: {  children: React.ReactNode}) => {
   const changePassword = async (request: ChangePasswordRequest): Promise<Result> => {
     if (session.token == null) return Result.Fail().WithMessage(ResultMessage.NOT_LOGGED_IN);
     const result = await api.user.changePassword(session.token, request);
+    if (result.wasSuccess) {
+      expire();
+    }
     return result;
   }
 

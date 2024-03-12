@@ -32,7 +32,8 @@ const messages: Messages = {
   login: {
     header: 'login',
     recoverAccount: 'recover account',
-    registerNew: 'register new'
+    registerNew: 'register new',
+    sessionExpired: 'your session has expired. please log in again'
   },
   register: {
     header: 'register',

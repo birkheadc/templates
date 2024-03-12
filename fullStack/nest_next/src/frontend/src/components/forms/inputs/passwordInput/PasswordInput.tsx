@@ -8,6 +8,7 @@ import FieldErrorDisplay from '../../form/errorDisplay/FieldErrorDisplay';
 import BaseInput from '../input/BaseInput';
 import { validationConfig } from '../../../../config/config';
 import { FormValidationErrorMessage } from '../../../../types/formValidation/formValidationErrorMessage';
+import utils from '../../../../utils';
 
 type PasswordInputProps<T extends { password: any } | { newPassword: any }> = {
   autoComplete?: string,
@@ -27,11 +28,11 @@ export default function PasswordInput<T extends { password: any } | { newPasswor
 
   const t = useRichTranslations('general');
 
-  const { id, disabled, label, register, errors, name, validate } = props;
+  const { id, disabled, label, register, errors, name, validate, className } = props;
   const [ show, setShow ] = React.useState<boolean>(false);
   
   return (
-    <div className='flex flex-col w-full gap-1'>
+    <div className={utils.mergeClass('flex flex-col gap-1 w-full', className)}>
       <label className='font-bold text-primary-700' htmlFor={id}>{t(label ?? 'password')}</label>
       <fieldset disabled={disabled} className='relative flex items-center justify-center gap-2 border border-primary-500 focus-within:outline focus-within:outline-1 bg-primary-50 text-primary-700 disabled:border-0 disabled:bg-transparent-full'>
         <BaseInput {...props} type={show ? 'text': 'password' } register={register} registerOptions={validate ? { minLength: { value: validationConfig.password?.minLength ?? 0, message: FormValidationErrorMessage.MIN_LENGTH}, maxLength: { value: validationConfig.password?.maxLength ?? 1, message: FormValidationErrorMessage.MAX_LENGTH}, required: { value: true, message: FormValidationErrorMessage.REQUIRED}} : undefined} />

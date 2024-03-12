@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { NotificationType } from '../../types/notification/notificationType';
 import NotificationIcon from './NotificationIcon';
+import utils from '../../utils';
 
 type NotificationBoxProps = {
+  className?: string,
   type: NotificationType,
   children?: React.ReactNode
 }
 
 export default function NotificationBox(props: NotificationBoxProps): JSX.Element {
 
-  const { type, children } = props;
+  const { className, type, children } = props;
 
   
 
   return (
-    <div className={`${BORDER_COLOR[type]} ${COLOR[type]} ${BG_COLOR[type]} border-2 p-2 px-4 w-full flex justify-center items-center gap-4`}>
+    <div className={utils.mergeClass('border-2 p-2 px-4 flex justify-center items-center gap-4 w-80', BORDER_COLOR[type], COLOR[type], BG_COLOR[type], className)}>
       <div className='w-fit'>
         <NotificationIcon type={type} />
       </div>

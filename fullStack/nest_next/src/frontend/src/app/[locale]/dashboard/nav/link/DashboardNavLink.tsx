@@ -20,8 +20,8 @@ export default function DashboardNavLink(props: DashboardNavLinkProps): JSX.Elem
   }
 
   return (
-    <li className='flex flex-col h-full'>
-      <Link className={utils.mergeClass(`flex items-center h-full gap-2 p-1 font-bold text-primary-500 hocus:text-primary-900 ${isActive ? 'text-primary-900' : ''}`, className)} href={href} onClick={handleClick}>{children}</Link>
+    <li className='flex flex-col h-full gap-2 w-60'>
+      <Link className={utils.mergeClass(`flex items-center h-full gap-2 px-1 font-bold text-primary-500 hocus:text-primary-900 ${isActive ? 'text-primary-900' : ''}`, className)} href={href} onClick={handleClick}>{children}</Link>
       <div className={`h-1 bg-primary-900 transition-all ${isActive ? 'w-[100%]' : 'w-[0%]'}`}></div>
     </li>
   )

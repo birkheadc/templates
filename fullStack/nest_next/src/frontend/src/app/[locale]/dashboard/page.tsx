@@ -6,6 +6,9 @@ import RedirectWrapper from '../../../components/redirectWrapper/RedirectWrapper
 import { SessionStatus } from '../../../types/session/session';
 import { UserContext } from '../../../contexts/user/UserContext';
 import useRichTranslations from '../../../hooks/useRichTranslations/useRichTranslations';
+import DashboardBody from './body/DashboardBody';
+import DashboardHeader from './header/DashboardHeader';
+import DashboardSection from './section/DashboardSection';
 
 type DashboardPageProps = {
 
@@ -18,30 +21,33 @@ export default function DashboardPage(props: DashboardPageProps): JSX.Element {
   const t = useRichTranslations('dashboard');
   
   return (
-    <Section className='pl-8'>
+    <DashboardBody>
       <span className='hidden'>{`User: ${JSON.stringify(user)}`}</span>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-    </Section>
+      <DashboardHeader>{t('nav.dashboard')}</DashboardHeader>
+      <DashboardSection>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
+      </DashboardSection>
+    </DashboardBody>
   );
 }

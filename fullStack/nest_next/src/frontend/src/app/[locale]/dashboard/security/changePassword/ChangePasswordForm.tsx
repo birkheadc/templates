@@ -24,7 +24,7 @@ export default function ChangePasswordForm(props: ChangePasswordFormProps): JSX.
     })
   }
 
-  return (
+  return (  
     <Form submit={handleSubmit(onSubmit)} result={result}>
       <EmailAddressInput name={'emailAddress'} hidden />
       <PasswordInput autoComplete='current-password' label='currentPassword' errors={formState.errors} id={'password'} register={register} name={'password'} />
