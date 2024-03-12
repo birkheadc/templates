@@ -18,8 +18,8 @@ export default function DashboardPage(props: DashboardPageProps): JSX.Element {
   const t = useRichTranslations('dashboard');
   
   return (
-    <div>
-      <span>{`User: ${JSON.stringify(user)}`}</span>
+    <Section className='pl-8'>
+      <span className='hidden'>{`User: ${JSON.stringify(user)}`}</span>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
@@ -42,6 +42,6 @@ export default function DashboardPage(props: DashboardPageProps): JSX.Element {
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dignissimos eveniet molestias expedita porro sequi atque natus? Aliquid odio dolores earum, cumque eius, voluptatibus adipisci delectus possimus consectetur dolorem iusto.</p>
-    </div>
+    </Section>
   );
 }
