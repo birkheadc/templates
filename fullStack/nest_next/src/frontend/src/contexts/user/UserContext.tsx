@@ -54,6 +54,7 @@ export const UserProvider = ({ children }: {  children: React.ReactNode}) => {
   }
 
   const updatePreferences = async (request: UpdatePreferencesRequest): Promise<Result> => {
+    console.log({request});
     return Result.Fail().WithMessage(ResultMessage.NOT_YET_IMPLEMENTED);
   }
   

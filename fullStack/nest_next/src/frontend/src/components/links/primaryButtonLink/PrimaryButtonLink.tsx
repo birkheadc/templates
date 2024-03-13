@@ -13,6 +13,6 @@ export default function PrimaryButtonLink(props: PrimaryButtonLinkProps): JSX.El
   const { href, className, children } = props;
 
   return (
-    <BasicLink className={utils.mergeClass('text-lg p-2 px-6 bg-primary-600 text-primary-50 font-bold hocus:bg-primary-400 hocus:text-primary-950 active:scale-90 hocus:no-underline', className)} href={href}>{children}</BasicLink>
+    <BasicLink className={utils.mergeClass('flex items-center justify-center text-lg p-2 px-6 bg-primary-600 text-primary-50 font-bold hocus:bg-primary-400 hocus:text-primary-950 active:scale-90 hocus:no-underline', className)} href={href}>{children}</BasicLink>
   );
 }

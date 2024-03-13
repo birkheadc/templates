@@ -54,6 +54,11 @@ const messages: Messages = {
       security: 'security',
       userPreferences: 'user preferences',
       profile: 'profile'
+    },
+    profile: {
+      profile: 'profile',
+      emailAddress: 'email address',
+      displayName: 'display name'
     }
   },
   general: {

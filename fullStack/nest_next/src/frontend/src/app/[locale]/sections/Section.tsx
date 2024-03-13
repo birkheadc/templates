@@ -12,7 +12,7 @@ export default function Section(props: SectionProps): JSX.Element {
   const { className, innerClassName, children } = props;
 
   return (
-    <div className={utils.mergeClass('flex justify-center items-stretch p-2 min-h-svh-nav w-full overflow-x-hidden', className)}>
+    <div className={utils.mergeClass('flex justify-center items-stretch p-2 px-4 min-h-svh-nav w-full overflow-x-hidden', className)}>
       <div className={utils.mergeClass('flex flex-col items-center justify-between w-full gap-8', innerClassName)}>
         {children}
       </div>

@@ -56,6 +56,11 @@ export interface Messages {
       security: string,
       userPreferences: string,
       profile: string
+    },
+    profile: {
+      profile: string,
+      emailAddress: string,
+      displayName: string
     }
   },
   general: {

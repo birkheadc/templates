@@ -14,6 +14,6 @@ export default function BaseInput<T extends FieldValues>(props: BaseInputProps<T
   const { name, register, registerOptions, required, validate, ...rest } = props;
 
   return (
-    <input {...rest} className={'p-1 px-3 flex-grow outline-none bg-transparent-full shadow-none w-full'}  {...register ? register(name, {...registerOptions, required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }}) : {}}></input>
+    <input {...rest} className={'p-1 px-3 flex-grow outline-none bg-transparent-full shadow-none w-full hocus-within:outline hocus-within:outline-1'}  {...register ? register(name, {...registerOptions, required: { value: !!required, message: FormValidationErrorMessage.REQUIRED }}) : {}}></input>
   );
 }

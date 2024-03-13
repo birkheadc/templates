@@ -54,6 +54,11 @@ const messages: Messages = {
       security: 'セキュリティ',
       userPreferences: '設定',
       profile: 'プロフィール'
+    },
+    profile: {
+      profile: 'プロフィール',
+      emailAddress: 'メールアドレス',
+      displayName: 'ユーザーネーム'
     }
   },
   general: {

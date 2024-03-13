@@ -1,4 +1,4 @@
-import { BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, NotImplementedException, UnauthorizedException } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { User } from './entities/user.entity';
 import { compareSync, hashSync } from 'bcrypt';
@@ -7,6 +7,7 @@ import { MailService } from 'src/mail/mail.service';
 import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
 import { CreateUserRequestDto } from './dtos/create-user.dto';
 import { ChangePasswordRequestDto } from './dtos/change-password.dto';
+import { UpdatePreferencesRequestDto } from './dtos/update-preferences.dto';
 
 @Injectable()
 export class UsersService {
@@ -68,5 +69,9 @@ export class UsersService {
     
     const user = User.fromCreateUserRequestDto(request);
     await this.repository.putUser(user);
+  }
+
+  async updatePreferences(user: User, request: UpdatePreferencesRequestDto): Promise<void> {
+    throw new NotImplementedException();
   }
 }
