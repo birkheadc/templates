@@ -71,8 +71,7 @@ export class UsersService {
     await this.repository.putUser(user);
   }
 
-  async updatePreferences(user: User, request: UpdatePreferencesRequestDto): Promise<void> {
-    console.log({ user, request });
-    await this.repository.putUser({ ...user, preferences: request.preferences });
+  async updatePreferences(user: User, request: UpdatePreferencesRequestDto): Promise<User> {
+    return await this.repository.putUser({ ...user, preferences: request.preferences });
   }
 }

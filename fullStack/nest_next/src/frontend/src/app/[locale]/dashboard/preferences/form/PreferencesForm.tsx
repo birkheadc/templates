@@ -19,7 +19,9 @@ export default function PreferencesForm(props: PreferencesFormProps): JSX.Elemen
 
   const { user, updatePreferences } = React.useContext(UserContext);
 
-  const { register, handleSubmit, watch, formState } = useForm<UserPreferences>();
+  const { register, handleSubmit, watch, formState } = useForm<UserPreferences>({
+    defaultValues: user?.preferences
+  });
 
   const onSubmit = async (preferences: UserPreferences) => {
     awaitResult(async () => {
@@ -29,7 +31,7 @@ export default function PreferencesForm(props: PreferencesFormProps): JSX.Elemen
   
   return (
     <Form submit={handleSubmit(onSubmit)} result={result}>
-      <LanguageSelect defaultValue={user?.preferences.language} register={register} name={'language'} />
+      <LanguageSelect register={register} name={'language'} />
     </Form>
   );
 }

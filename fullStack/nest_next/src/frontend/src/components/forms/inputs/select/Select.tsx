@@ -15,7 +15,7 @@ interface SelectProps<T extends FieldValues> extends React.SelectHTMLAttributes<
 
 export default function Select<T extends FieldValues>(props: SelectProps<T>): JSX.Element {
 
-  const { className, label, name, id, hidden, disabled, errors, options, register } = props;
+  const { className, label, name, id, hidden, disabled, errors, options, register, defaultValue } = props;
 
   return (
     <div className={utils.mergeClass('flex flex-col gap-1 w-full', hidden ? 'hidden' : '', className)}>

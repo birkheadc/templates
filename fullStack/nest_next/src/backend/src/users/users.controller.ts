@@ -24,9 +24,10 @@ export class UsersController {
 
   @Put('/me/preferences')
   @UseGuards(JwtGuard)
-  async updatePreferences(@Request() request: BearerAuthenticatedRequest, @Body() dto: UpdatePreferencesRequestDto): Promise<void> {
+  async updatePreferences(@Request() request: BearerAuthenticatedRequest, @Body() dto: UpdatePreferencesRequestDto): Promise<UserOmitPassword> {
     const user = request.user;
-    await this.service.updatePreferences(user, dto);
+    const { password, ...newUser} = await this.service.updatePreferences(user, dto);
+    return newUser;
   }
 
   @Post('register')

@@ -12,7 +12,6 @@ export class MailService {
   }
 
   async sendVerificationEmail(request: RegisterUserRequestDto): Promise<void> {
-    console.log(`Send verification email to ${request.emailAddress}`);
     const verifyCode = await this.generateVerifyCode(request);
     const command = new SendTemplatedEmailCommand({
       Source: 'registration@mail.birkheadc.me',
@@ -35,7 +34,6 @@ export class MailService {
   }
 
   async sendSomeoneTriedToUseYourAddressEmail(emailAddress: string, language: string): Promise<void> {
-    console.log(`Send warning (someone tried to register with your address) email to ${emailAddress}`);
     const command = new SendTemplatedEmailCommand({
       Source: 'registration@mail.birkheadc.me',
       Destination: {

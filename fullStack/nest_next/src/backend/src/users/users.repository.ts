@@ -10,7 +10,6 @@ export class UsersRepository {
   constructor(private readonly client: DynamoDBClient) { }
 
   async getUserById(id: string): Promise<User> {
-    console.log(`looking for user: (${id})`);
     const command = new GetItemCommand({
       TableName: this.tableName,
       Key: { id: { S: id } }
@@ -19,7 +18,6 @@ export class UsersRepository {
     try {
       const response = await this.client.send(command);
       if (!response.Item) {
-        console.log('no item in response:', response);
         throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
       }
 
@@ -53,7 +51,6 @@ export class UsersRepository {
   }
 
   async getUserByDisplayName(displayName: string): Promise<User | null> {
-    console.log({displayName});
     const command = new QueryCommand({
       TableName: this.tableName,
       IndexName: 'displayName',

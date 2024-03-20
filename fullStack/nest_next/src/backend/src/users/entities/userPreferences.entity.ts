@@ -6,7 +6,7 @@ export class UserPreferences {
   static fromDynamoDBObject(data: any): UserPreferences {
     const userPreferences = new UserPreferences();
 
-    userPreferences.language = data?.language?.S ?? 'en';
+    userPreferences.language = data?.M?.language?.S ?? 'en';
 
     return userPreferences;
   }

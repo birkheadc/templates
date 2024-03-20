@@ -10,3 +10,5 @@ create user preferences form (preferred language)
 think about styling buttons to show they are doing something after pushed?
 
 password recovery -- email password reset link
+
+fix waiting overlay causing a scroll bar to appear when processing form
