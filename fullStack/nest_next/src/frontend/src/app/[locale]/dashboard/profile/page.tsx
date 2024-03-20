@@ -29,6 +29,10 @@ export default function DashboardProfile(props: DashboardProfileProps): JSX.Elem
             <td className='p-4 font-light'>{t('displayName')}</td>
             <td className='p-4 font-bold'>{user?.displayName}</td>
           </tr>
+          <tr>
+            <td className='p-4 font-light'>{t('language')}</td>
+            <td className='p-4 font-bold'>{user?.preferences.language}</td>
+          </tr>
         </tbody>
       </table>
     </DashboardBody>

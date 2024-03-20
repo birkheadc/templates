@@ -58,7 +58,8 @@ const messages: Messages = {
     profile: {
       profile: 'プロフィール',
       emailAddress: 'メールアドレス',
-      displayName: 'ユーザーネーム'
+      displayName: 'ユーザーネーム',
+      language: '言語'
     }
   },
   general: {

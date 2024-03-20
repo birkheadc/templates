@@ -58,7 +58,8 @@ const messages: Messages = {
     profile: {
       profile: 'profile',
       emailAddress: 'email address',
-      displayName: 'display name'
+      displayName: 'display name',
+      language: 'preferred language'
     }
   },
   general: {

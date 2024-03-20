@@ -29,7 +29,7 @@ export default function PreferencesForm(props: PreferencesFormProps): JSX.Elemen
   
   return (
     <Form submit={handleSubmit(onSubmit)} result={result}>
-      <LanguageSelect register={register} name={'language'} />
+      <LanguageSelect defaultValue={user?.preferences.language} register={register} name={'language'} />
     </Form>
   );
 }

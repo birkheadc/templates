@@ -60,7 +60,8 @@ export interface Messages {
     profile: {
       profile: string,
       emailAddress: string,
-      displayName: string
+      displayName: string,
+      language: string
     }
   },
   general: {
