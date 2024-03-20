@@ -2,6 +2,7 @@ import { DynamoDBClient, GetItemCommand, PutItemCommand, QueryCommand, ScanComma
 import {HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { User } from "./entities/user.entity";
 import { UserDynamoDBObject } from "./dynamoDBObjects/UserDynamoDBObject";
+import { UpdatePreferencesRequestDto } from "./dtos/update-preferences.dto";
 
 @Injectable()
 export class UsersRepository {

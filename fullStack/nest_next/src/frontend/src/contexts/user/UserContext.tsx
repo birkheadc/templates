@@ -54,8 +54,9 @@ export const UserProvider = ({ children }: {  children: React.ReactNode}) => {
   }
 
   const updatePreferences = async (request: UpdatePreferencesRequest): Promise<Result> => {
-    console.log({request});
-    return Result.Fail().WithMessage(ResultMessage.NOT_YET_IMPLEMENTED);
+    if (session.token == null) return Result.Fail().WithMessage(ResultMessage.NOT_LOGGED_IN);
+    const result = await api.user.updatePreferences(session.token, request);
+    return result;
   }
   
   return (

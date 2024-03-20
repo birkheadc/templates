@@ -72,6 +72,7 @@ export class UsersService {
   }
 
   async updatePreferences(user: User, request: UpdatePreferencesRequestDto): Promise<void> {
-    throw new NotImplementedException();
+    console.log({ user, request });
+    await this.repository.putUser({ ...user, preferences: request.preferences });
   }
 }

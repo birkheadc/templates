@@ -19,6 +19,8 @@ export class UserDynamoDBObject implements Record<string, AttributeValue> {
     dynamoDBObject.displayName = { S: entity.displayName };
     dynamoDBObject.preferences = { M: UserPreferencesDynamoDBObject.fromEntity(entity.preferences)};
 
+    console.log({ entity, dynamoDBObject, preferences: JSON.stringify(dynamoDBObject.preferences) });
+
     return dynamoDBObject;
   }
 }
