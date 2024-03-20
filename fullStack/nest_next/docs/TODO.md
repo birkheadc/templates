@@ -7,4 +7,6 @@ create user preferences form (preferred language)
   - Implement backend
   - write api call for front end
 
+think about styling buttons to show they are doing something after pushed?
+
 password recovery -- email password reset link
