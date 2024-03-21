@@ -6,9 +6,3 @@ create user preferences form (preferred language)
   - Have website change to preferred language on login
   - Implement backend
   - write api call for front end
-
-think about styling buttons to show they are doing something after pushed?
-
-password recovery -- email password reset link
-
-fix waiting overlay causing a scroll bar to appear when processing form
