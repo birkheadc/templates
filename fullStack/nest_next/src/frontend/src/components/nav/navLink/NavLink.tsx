@@ -18,15 +18,22 @@ export default function NavLink(props: NavLinkProps): JSX.Element {
   const pathname = usePathname();
   const isActive = isCurrentLinkActive(href, pathname);
 
+  const [ isWorking, setWorking ] = React.useState<boolean>(false);
+
+  React.useEffect(function clearWorkingOnNavigate() {
+    setWorking(false);
+  }, [pathname]);
+
   const handleClick = () => {
     const activeElement = document.activeElement as HTMLElement;
+    setWorking(true);
     activeElement.blur();
   }
 
   return (
-    <li className='flex flex-col h-full'>
+    <li className='flex flex-col h-full items-center'>
       <Link className={utils.mergeClass(`flex items-center h-full gap-2 px-2 font-bold text-primary-500 hocus:text-primary-900 ${isActive ? 'text-primary-900' : ''}`, className)} href={href} onClick={handleClick}>{children}</Link>
-      <div className={`h-1 bg-primary-900 transition-all ${isActive ? 'w-[100%]' : 'w-[0%]'}`}></div>
+      <div className={`h-1 bg-primary-900 transition-all ${isActive ? 'w-[100%]' : isWorking ? 'w-[50%]' : 'w-[0%]'}`}></div>
     </li>
   )
 }

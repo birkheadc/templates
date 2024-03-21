@@ -4,6 +4,7 @@ import verify from "./verify";
 import createUser from "./createUser";
 import changePassword from "./changePassword";
 import updatePreferences from "./updatePreferences";
+import resetPassword from "./resetPassword";
 
 export default {
   getUser,
@@ -11,5 +12,6 @@ export default {
   verify,
   createUser,
   changePassword,
-  updatePreferences
+  updatePreferences,
+  resetPassword
 }

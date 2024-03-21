@@ -44,7 +44,8 @@ export interface Messages {
     }
   },
   accountRecovery: {
-    header: string
+    header: string,
+    instructions: string
   }
   logout: {
     header: string

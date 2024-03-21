@@ -2,8 +2,6 @@
 
 import * as React from 'react';
 import Form from '../../../../../components/forms/form/Form';
-import { Result } from '../../../../../types/result/result';
-import Input from '../../../../../components/forms/inputs/input/Input';
 import useRichTranslations from '../../../../../hooks/useRichTranslations/useRichTranslations';
 import api from '../../../../../api';
 import useLanguage from '../../../../../hooks/language/useLanguage';

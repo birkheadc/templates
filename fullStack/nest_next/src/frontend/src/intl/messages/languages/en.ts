@@ -99,7 +99,8 @@ const messages: Messages = {
     [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'must only include letters and numbers'
   },
   accountRecovery: {
-    header: 'account recovery'
+    header: 'account recovery',
+    instructions: "enter your email in the field below, and we will send you a link to reset your password"
   }
 }
 

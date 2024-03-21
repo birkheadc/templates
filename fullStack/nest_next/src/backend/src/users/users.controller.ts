@@ -30,6 +30,11 @@ export class UsersController {
     return newUser;
   }
 
+  @Post('reset-password')
+  async resetPassword(@Body() request: ) {
+
+  }
+
   @Post('register')
   async registerNewUser(@Body() request: RegisterUserRequestDto) {
     await this.service.registerNewUser(request);

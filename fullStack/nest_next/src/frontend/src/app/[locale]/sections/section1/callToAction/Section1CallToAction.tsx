@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PrimaryButtonLink from '../../../../../components/links/primaryButtonLink/PrimaryButtonLink';
+import PrimaryButtonLink from '@/components/links/primaryButtonLink/PrimaryButtonLink';
 import BasicButtonLink from '../../../../../components/links/basicButtonLink/BasicButtonLink';
 import useRichTranslations from '../../../../../hooks/useRichTranslations/useRichTranslations';
 

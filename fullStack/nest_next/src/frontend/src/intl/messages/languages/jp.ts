@@ -99,7 +99,8 @@ const messages: Messages = {
     [FormValidationErrorMatchesCriteria.ALPHANUMERIC]: 'ローマ字またはローマ数字以外禁止'
   },
   accountRecovery: {
-    header: 'アカウント復元'
+    header: 'アカウント復元',
+    instructions: '下のフォームにメールアドレスをご記入いただき、パスワードを変更するためのリンクをお送りいたします。'
   }
 }
 
