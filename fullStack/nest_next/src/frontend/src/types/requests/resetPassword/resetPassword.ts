@@ -1,7 +1,7 @@
 import { EmailAddress } from "../../emailAddress/emailAddress";
 
-export type RegisterUserRequest = {
+export type ResetPasswordRequest = {
+  resetToken: string;
   emailAddress: EmailAddress;
-  language: string;
-  verifyUrl: string;
+  password: string;
 }

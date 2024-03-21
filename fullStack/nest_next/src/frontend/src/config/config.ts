@@ -3,7 +3,7 @@ import { FormValidationErrorMatchesCriteria } from "../types/formValidation/form
 export const validationConfig: ValidationConfig = {
   password: {
     minLength: 8,
-    maxLength: 64
+    maxLength: 255
   },
   displayName: {
     minLength: 1,

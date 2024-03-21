@@ -62,6 +62,8 @@ Allows the execution of arbitrary commands when deploying (does not work with se
 #### @haftahave/serverless-ses-template
 Allows Simple Email Service templates to be configured automatically by serverless. Templates are defined in `backend/serverless/sesEmailTemplates/index.mjs`
 
+Templates ( and email in general ) is always done through production, so templates must be deployed to be used. Deploy only templates with `sls ses-template deploy`.
+
 ## Serverless Config
 My serverless configuration has gotten difficult to follow, so I'll explain it here before I forget.
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, Request, Get, Put } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Request, Get, Put, NotImplementedException } from '@nestjs/common';
 import { BearerAuthenticatedRequest } from '../auth/request/bearerAuthenticatedRequest';
 import { ChangePasswordRequestDto } from './dtos/change-password.dto';
 import { UsersService } from './users.service';
@@ -9,6 +9,10 @@ import { CreateUserRequestDto } from './dtos/create-user.dto';
 import { User } from './entities/user.entity';
 import { UserOmitPassword } from '../auth/entities/userOmitPassword';
 import { UpdatePreferencesRequestDto } from './dtos/update-preferences.dto';
+import { RequestResetPasswordLinkRequestDto } from './dtos/request-reset-password-link.dto';
+import { ResetPasswordRequestDto } from './dtos/reset-password.dto';
+import { VerifyResetPasswordCodeRequestDto } from './dtos/verify-reset-password-code.dto';
+import { EmailAddress } from '../types/emailAddress/emailAddress';
 
 @Controller('users')
 export class UsersController {
@@ -30,9 +34,19 @@ export class UsersController {
     return newUser;
   }
 
-  @Post('reset-password')
-  async resetPassword(@Body() request: ) {
+  @Post('request-reset-password-link')
+  async requestResetPasswordLink(@Body() request: RequestResetPasswordLinkRequestDto) {
+    await this.service.requestResetPasswordLink(request);
+  }
 
+  @Post('verify-reset-password-code')
+  async verifyResetPasswordCode(@Body() request: VerifyResetPasswordCodeRequestDto): Promise<EmailAddress> {
+    return await this.service.verifyResetPasswordCode(request);
+  }
+
+  @Post('/reset-password')
+  async resetPassword(@Body() request: ResetPasswordRequestDto) {
+    await this.service.resetPassword(request);
   }
 
   @Post('register')
@@ -40,8 +54,8 @@ export class UsersController {
     await this.service.registerNewUser(request);
   }
 
-  @Post('verify')
-  async verifyUserEmailAddress(@Body() request: VerifyEmailRequestDto): Promise<string> {
+  @Post('verify-email-code')
+  async verifyUserEmailAddress(@Body() request: VerifyEmailRequestDto): Promise<EmailAddress> {
     const emailAddress = await this.service.verifyUserEmailAddress(request);
     return emailAddress;
   }

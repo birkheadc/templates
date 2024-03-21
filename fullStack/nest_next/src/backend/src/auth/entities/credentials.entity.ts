@@ -1,4 +1,6 @@
+import { EmailAddress } from "../../types/emailAddress/emailAddress";
+
 export class Credentials {
-  emailAddress: string;
+  emailAddress: EmailAddress;
   password: string;
 }

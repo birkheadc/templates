@@ -1,5 +1,7 @@
+import { EmailAddress } from "../../types/emailAddress/emailAddress";
+
 export class RegisterUserRequestDto {
-  emailAddress: string = '';
+  emailAddress: EmailAddress = '';
   language: string = '';
   verifyUrl: string = '';
 }

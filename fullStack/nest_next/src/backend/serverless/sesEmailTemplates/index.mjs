@@ -10,6 +10,8 @@ const registrationEmail_en = fs.readFileSync(path.resolve(__dirname, 'registrati
 const registrationEmail_jp = fs.readFileSync(path.resolve(__dirname, 'registrationEmail_jp.html'), 'utf8');
 const emailAddressInUse_en = fs.readFileSync(path.resolve(__dirname, 'emailAddressInUse_en.html'), 'utf8');
 const emailAddressInUse_jp = fs.readFileSync(path.resolve(__dirname, 'emailAddressInUse_jp.html'), 'utf8');
+const passwordResetEmail_en = fs.readFileSync(path.resolve(__dirname, 'passwordResetEmail_en.html'), 'utf8');
+const passwordResetEmail_jp = fs.readFileSync(path.resolve(__dirname, 'passwordResetEmail_jp.html'), 'utf8');
 
 
 const templateConfiguration = async (serverless, options) => [{
@@ -32,6 +34,16 @@ const templateConfiguration = async (serverless, options) => [{
   subject: 'nestnexttemplate 誰かがこのメールアドレスで新しいアカウントを登録しようとしました',
   html: emailAddressInUse_jp,
   text: "誰かがこのメールアドレスで新しいアカウントを登録しようとしました。\nご自分であれば、アカウントはつねに登録できています！アカウント回復をお訪ねください。ご自分でなくても、心配は要りません。間違ってこのメールアドレスを入力した可能性があります。"
+}, {
+  name: 'nestnexttemplate_PasswordResetEmail_en',
+  subject: 'nestnexttemplate Account Recovery',
+  html: passwordResetEmail_en,
+  text: "Someone has requested a password reset for this account. If that was not you, you can safely ignore this message; someone likely just made a mistake typing in their email address. If it was you, please click, or copy and paste, the link below to reset your password.\n{{resetLink}}"
+}, {
+  name: 'nestnexttemplate_PasswordResetEmail_jp',
+  subject: 'nestnexttemplate アカウント復帰',
+  html: passwordResetEmail_jp,
+  text: "誰かがこのメールアドレスでパスワードリセットを申し込みました。ご自分でなくても、心配は要りません。間違ってこのメールアドレスを入力した可能性があります。ご自分であれば、下のリンクをクリック、またはコピペしてください。\n{{resetLink}}"
 }];
 
 export default templateConfiguration;

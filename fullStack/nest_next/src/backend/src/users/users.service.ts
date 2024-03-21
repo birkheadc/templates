@@ -8,6 +8,10 @@ import { VerifyEmailRequestDto } from './dtos/verify-email.dto';
 import { CreateUserRequestDto } from './dtos/create-user.dto';
 import { ChangePasswordRequestDto } from './dtos/change-password.dto';
 import { UpdatePreferencesRequestDto } from './dtos/update-preferences.dto';
+import { RequestResetPasswordLinkRequestDto } from './dtos/request-reset-password-link.dto';
+import { VerifyResetPasswordCodeRequestDto } from './dtos/verify-reset-password-code.dto';
+import { EmailAddress } from '../types/emailAddress/emailAddress';
+import { ResetPasswordRequestDto } from './dtos/reset-password.dto';
 
 @Injectable()
 export class UsersService {
@@ -17,7 +21,7 @@ export class UsersService {
     return this.repository.getUserById(id);
   }
 
-  async getUserByEmailAddress(emailAddress: string): Promise<User | null> {
+  async getUserByEmailAddress(emailAddress: EmailAddress): Promise<User | null> {
     return this.repository.getUserByEmailAddress(emailAddress);
   }
 
@@ -40,10 +44,21 @@ export class UsersService {
     await this.mailService.sendVerificationEmail(request);
   }
 
-  async verifyUserEmailAddress(request: VerifyEmailRequestDto): Promise<string> {
+  async verifyUserEmailAddress(request: VerifyEmailRequestDto): Promise<EmailAddress> {
     const emailAddress = await this.mailService.verifyCode(request.code);
     const user = await this.getUserByEmailAddress(emailAddress);
+    console.log({ request, emailAddress, user });
     if (user != null) {
+      throw new UnauthorizedException();
+    }
+    return emailAddress;
+  }
+
+  async verifyResetPasswordCode(request: VerifyResetPasswordCodeRequestDto): Promise<EmailAddress> {
+    const emailAddress = await this.mailService.verifyCode(request.code);
+    const user = await this.getUserByEmailAddress(emailAddress);
+    console.log({ request, emailAddress, user });
+    if (user == null) {
       throw new UnauthorizedException();
     }
     return emailAddress;
@@ -73,5 +88,32 @@ export class UsersService {
 
   async updatePreferences(user: User, request: UpdatePreferencesRequestDto): Promise<User> {
     return await this.repository.putUser({ ...user, preferences: request.preferences });
+  }
+
+  async requestResetPasswordLink(request: RequestResetPasswordLinkRequestDto): Promise<void> {
+    const user = await this.getUserByEmailAddress(request.emailAddress);
+    console.log({ user });
+    if (user == null) {
+      console.log('Warning in requestResetPasswordLink: requested user not found.', { request });
+      return;
+    }
+    await this.mailService.sendPasswordResetEmail({ emailAddress: user.emailAddress, language: user.preferences.language, resetUrl: request.resetUrl });
+  }
+
+  async resetPassword(request: ResetPasswordRequestDto): Promise<void> {
+    const verifiedEmailAddress = await this.mailService.verifyCode(request.resetToken);
+    if (verifiedEmailAddress !== request.emailAddress) {
+      console.log('Error in resetPassword: token payload does not match request email address', { request });
+      throw new UnauthorizedException();
+    }
+
+    const user = await this.getUserByEmailAddress(request.emailAddress);
+    if (user == null) {
+      console.log('Error in resetPassword: user not found.', { request });
+      throw new UnauthorizedException();
+    }
+
+    const hash = hashSync(request.password, 10);
+    await this.repository.putUser({ ...user, password: hash });
   }
 }

@@ -1,8 +1,9 @@
+import { EmailAddress } from "../emailAddress/emailAddress";
 import { UserPreferences } from "./userPreferences"
 
 export class User {
   id: string = '';
-  emailAddress: string = '';
+  emailAddress: EmailAddress = '';
   displayName: string = '';
   preferences: UserPreferences = new UserPreferences();
 

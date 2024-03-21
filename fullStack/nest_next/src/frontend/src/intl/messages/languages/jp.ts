@@ -84,7 +84,9 @@ const messages: Messages = {
     [ResultMessage.REGISTRATION_EMAIL_SENT]: '登録手続きのメールを送信しました。ご確認ください。',
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'メールアドレスの確認が完了しました。',
     [ResultMessage.CREATE_USER_SUCCESS]: 'ありがとうございます。アカウント登録が完成しました。ログインしてください。',
-    [ResultMessage.NOT_LOGGED_IN]: 'ログインしていません'
+    [ResultMessage.NOT_LOGGED_IN]: 'ログインしていません',
+    [ResultMessage.ACCOUNT_RECOVERY_EMAIL_SENT]: '登録手続きのメールを送信しました。ご確認ください。',
+    [ResultMessage.PASSWORD_RESET_SUCCESS]: 'パスワードを変更しました。再びログインしてください。'
   },
   formValidationErrorMessages: {
     [FormValidationErrorMessage.REQUIRED]: '必要',
@@ -100,7 +102,10 @@ const messages: Messages = {
   },
   accountRecovery: {
     header: 'アカウント復元',
-    instructions: '下のフォームにメールアドレスをご記入いただき、パスワードを変更するためのリンクをお送りいたします。'
+    instructions: '下のフォームにメールアドレスをご記入いただき、パスワードを変更するためのリンクをお送りいたします。',
+    resetFormInstructions: '新しいパスワードを入力してください',
+    checking: '確認中。少々お待ちください。',
+    failure: '申し訳ございません。メールアドレスの確認が失敗しました。',
   }
 }
 

@@ -2,10 +2,11 @@ import { hashSync } from "bcrypt";
 import { CreateUserRequestDto } from "../dtos/create-user.dto";
 import { v4 as uuid } from 'uuid';
 import { UserPreferences } from "./userPreferences.entity";
+import { EmailAddress } from "../../types/emailAddress/emailAddress";
  
 export class User {
   id: string;
-  emailAddress: string;
+  emailAddress: EmailAddress;
   password: string;
   displayName: string;
   preferences: UserPreferences;

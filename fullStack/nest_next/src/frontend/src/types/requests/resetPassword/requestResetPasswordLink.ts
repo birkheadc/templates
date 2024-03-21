@@ -1,7 +1,7 @@
 import { EmailAddress } from "../../emailAddress/emailAddress";
 
-export type RegisterUserRequest = {
+export type RequestResetPasswordLinkRequest = {
   emailAddress: EmailAddress;
   language: string;
-  verifyUrl: string;
+  resetUrl: string;
 }

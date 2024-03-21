@@ -20,7 +20,7 @@ export default (): Configuration => ({
     validation: {
       password: {
         minLength: 8,
-        maxLength: 64
+        maxLength: 255
       },
       displayName: {
         minLength: 1,

@@ -9,5 +9,7 @@ export enum ResultMessage {
   REGISTRATION_EMAIL_SENT = 'registrationEmailSent',
   VERIFY_EMAIL_SUCCESS = 'verifyEmailSuccess',
   CREATE_USER_SUCCESS = 'createUserSuccess',
-  NOT_LOGGED_IN ='notLoggedIn'
+  NOT_LOGGED_IN ='notLoggedIn',
+  ACCOUNT_RECOVERY_EMAIL_SENT = 'accountRecoveryEmailSent',
+  PASSWORD_RESET_SUCCESS = 'passwordResetSuccess'
 }

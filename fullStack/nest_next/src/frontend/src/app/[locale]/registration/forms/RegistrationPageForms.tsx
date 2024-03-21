@@ -13,6 +13,6 @@ export default function RegistrationPageForms(props: RegistrationPageFormsProps)
 
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
-
+  
   return code == null ? <RegistrationForm /> : <VerifiedRegistration code={code} />;
 }

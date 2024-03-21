@@ -4,7 +4,7 @@ import { SessionStatus } from '../../../types/session/session';
 import Section from '../sections/Section';
 import useRichTranslations from '../../../hooks/useRichTranslations/useRichTranslations';
 import PageHeader from '../header/PageHeader';
-import AccountRecoveryForm from './form/AccountRecoveryForm';
+import AccountRecoveryForms from './forms/AccountRecoveryForms';
 
 type AccountRecoveryPageProps = {
 
@@ -18,7 +18,7 @@ export default function AccountRecoveryPage(props: AccountRecoveryPageProps): JS
     <RedirectWrapper mode='excludes' statuses={[ SessionStatus.LOGGED_IN ]}>
       <Section innerClassName='justify-start'>
         <PageHeader>{t('header')}</PageHeader>
-        <AccountRecoveryForm />
+        <AccountRecoveryForms />
       </Section>
     </RedirectWrapper>
   );

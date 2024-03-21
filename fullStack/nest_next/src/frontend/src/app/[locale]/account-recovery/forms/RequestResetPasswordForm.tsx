@@ -5,27 +5,27 @@ import Form from '../../../../components/forms/form/Form';
 import EmailAddressInput from '../../../../components/forms/inputs/emailAddressInput/EmailAddressInput';
 import useResult from '../../../../hooks/result/useResult';
 import { useForm } from 'react-hook-form';
-import { ResetPasswordRequest } from '../../../../types/requests/resetPassword/resetPasswordRequest';
 import useLanguage from '../../../../hooks/language/useLanguage';
 import api from '../../../../api';
 import useRichTranslations from '../../../../hooks/useRichTranslations/useRichTranslations';
+import { RequestResetPasswordLinkRequest } from '../../../../types/requests/resetPassword/requestResetPasswordLink';
 
-type AccountRecoveryFormProps = {
+type RequestResetPasswordFormProps = {
 
 }
 
-export default function AccountRecoveryForm(props: AccountRecoveryFormProps): JSX.Element {
+export default function RequestResetPasswordForm(props: RequestResetPasswordFormProps): JSX.Element {
 
   const t = useRichTranslations('accountRecovery');
   const {language} = useLanguage();
 
   const { result, awaitResult } = useResult();
 
-  const { register, handleSubmit, watch, formState } = useForm<Omit<ResetPasswordRequest, 'resetUrl'>>();
+  const { register, handleSubmit, watch, formState } = useForm<Omit<RequestResetPasswordLinkRequest, 'resetUrl'>>();
 
-  const onSubmit = async (request: Omit<ResetPasswordRequest, 'resetUrl'|'language'>) => {
+  const onSubmit = async (request: Omit<RequestResetPasswordLinkRequest, 'resetUrl'|'language'>) => {
     awaitResult(async () => {
-      return await api.user.resetPassword({ emailAddress: request.emailAddress, language: language });
+      return await api.user.requestResetPasswordLink({ emailAddress: request.emailAddress, language: language });
     });
   }
 

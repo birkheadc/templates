@@ -19,7 +19,7 @@ export default function VerifiedRegistration(props: VerifiedRegistrationProps): 
 
   React.useEffect(() => {
     (async function verifyCodeOnMount() {
-      const result = await api.user.verify({ code });
+      const result = await api.user.verifyEmailCode({ code });
       setRecentResult(result);
     })();
   }, [code])

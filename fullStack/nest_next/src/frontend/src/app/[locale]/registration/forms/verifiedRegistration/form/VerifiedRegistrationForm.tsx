@@ -11,10 +11,11 @@ import DisplayNameInput from '../../../../../../components/forms/inputs/displayN
 import useLanguage from '../../../../../../hooks/language/useLanguage';
 import { validationConfig } from '../../../../../../config/config';
 import { useRouter } from '@/navigation/navigation';
+import { EmailAddress } from '../../../../../../types/emailAddress/emailAddress';
 
 type VerifiedRegistrationFormProps = {
   emailVerificationToken: string,
-  emailAddress: string
+  emailAddress: EmailAddress
 }
 
 export default function VerifiedRegistrationForm(props: VerifiedRegistrationFormProps): JSX.Element {

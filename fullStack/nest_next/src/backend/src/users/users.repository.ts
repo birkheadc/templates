@@ -3,6 +3,7 @@ import {HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { User } from "./entities/user.entity";
 import { UserDynamoDBObject } from "./dynamoDBObjects/UserDynamoDBObject";
 import { UpdatePreferencesRequestDto } from "./dtos/update-preferences.dto";
+import { EmailAddress } from "../types/emailAddress/emailAddress";
 
 @Injectable()
 export class UsersRepository {
@@ -29,7 +30,7 @@ export class UsersRepository {
     }
   }
 
-  async getUserByEmailAddress(emailAddress: string): Promise<User | null> {
+  async getUserByEmailAddress(emailAddress: EmailAddress): Promise<User | null> {
     const command = new QueryCommand({
       TableName: this.tableName,
       IndexName: 'emailAddress',

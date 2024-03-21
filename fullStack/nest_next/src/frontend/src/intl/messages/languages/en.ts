@@ -84,7 +84,9 @@ const messages: Messages = {
     [ResultMessage.REGISTRATION_EMAIL_SENT]: 'an email has been sent to your inbox with instructions on how to proceed',
     [ResultMessage.VERIFY_EMAIL_SUCCESS]: 'your email address has been verified',
     [ResultMessage.CREATE_USER_SUCCESS]: 'congratulations, you have successfully created an account. you may now login',
-    [ResultMessage.NOT_LOGGED_IN]: 'not logged in'
+    [ResultMessage.NOT_LOGGED_IN]: 'not logged in',
+    [ResultMessage.ACCOUNT_RECOVERY_EMAIL_SENT]: 'an email has been sent to your inbox with instructions on how to proceed',
+    [ResultMessage.PASSWORD_RESET_SUCCESS]: 'your password has been changed. you may now proceed to login.'
   },
   formValidationErrorMessages: {
     [FormValidationErrorMessage.MIN_LENGTH]: 'must be at least <min></min> characters',
@@ -100,7 +102,10 @@ const messages: Messages = {
   },
   accountRecovery: {
     header: 'account recovery',
-    instructions: "enter your email in the field below, and we will send you a link to reset your password"
+    instructions: "enter your email in the field below, and we will send you a link to reset your password",
+    resetFormInstructions: 'please create a new password',
+    checking: 'verifying your email address. please wait.',
+    failure: 'sorry, something went wrong with your verification code',
   }
 }
 

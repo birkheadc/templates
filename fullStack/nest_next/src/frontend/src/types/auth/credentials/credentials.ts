@@ -1,4 +1,6 @@
+import { EmailAddress } from "../../emailAddress/emailAddress";
+
 export type LoginCredentials = {
-  emailAddress: string;
+  emailAddress: EmailAddress;
   password: string;
 }

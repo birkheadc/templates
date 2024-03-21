@@ -1,12 +1,13 @@
 import { IsEmail, IsNotEmpty, Matches, MaxLength, MinLength } from 'class-validator';
 import configuration from '../../config/configuration'
+import { EmailAddress } from '../../types/emailAddress/emailAddress';
 
 export class CreateUserRequestDto {
   @IsNotEmpty()
   emailVerificationToken: string = '';
 
   @IsEmail()
-  emailAddress: string = '';
+  emailAddress: EmailAddress = '';
 
   @IsNotEmpty()
   @MinLength(configuration().users.validation.displayName.minLength)

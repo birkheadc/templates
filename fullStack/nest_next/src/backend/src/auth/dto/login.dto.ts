@@ -1,5 +1,7 @@
+import { EmailAddress } from "../../types/emailAddress/emailAddress";
+
 export class LoginDto {
-  emailAddress: string;
+  emailAddress: EmailAddress;
   password: string;
 
   static fromBasicAuth(basicAuth: string): LoginDto {

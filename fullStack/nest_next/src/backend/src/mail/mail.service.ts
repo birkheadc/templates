@@ -3,6 +3,8 @@ import { Injectable, UnauthorizedException, UnprocessableEntityException } from 
 import { RegisterUserRequestDto } from "../users/dtos/register-user.dto";
 import { JwtService } from "@nestjs/jwt";
 import { EmailVerificationTokenPayload } from "./payload/emailVerificationTokenPayload";
+import { RequestResetPasswordLinkRequestDto } from "../users/dtos/request-reset-password-link.dto";
+import { EmailAddress } from "../types/emailAddress/emailAddress";
 
 @Injectable()
 export class MailService {
@@ -33,7 +35,7 @@ export class MailService {
     }
   }
 
-  async sendSomeoneTriedToUseYourAddressEmail(emailAddress: string, language: string): Promise<void> {
+  async sendSomeoneTriedToUseYourAddressEmail(emailAddress: EmailAddress, language: string): Promise<void> {
     const command = new SendTemplatedEmailCommand({
       Source: 'registration@mail.birkheadc.me',
       Destination: {
@@ -63,9 +65,32 @@ export class MailService {
     }
   }
 
-  async generateVerifyCode(request: RegisterUserRequestDto): Promise<string> {
+  async generateVerifyCode(request: { emailAddress: EmailAddress}): Promise<string> {
     const payload: EmailVerificationTokenPayload = { sub: request.emailAddress };
     const token = await this.jwtService.signAsync(payload);
     return token;
+  }
+
+  async sendPasswordResetEmail(request: RequestResetPasswordLinkRequestDto): Promise<void> {
+    console.log({request});
+    const resetCode = await this.generateVerifyCode(request);
+    const command = new SendTemplatedEmailCommand({
+      Source: 'security@mail.birkheadc.me',
+      Destination: {
+        ToAddresses: [
+          request.emailAddress
+        ]
+      },
+      Template: `nestnexttemplate_PasswordResetEmail_${request.language}`,
+      TemplateData: JSON.stringify({
+        resetLink: `${request.resetUrl}?code=${resetCode}`
+      })
+    });
+    try {
+      await this.client.send(command);
+    } catch (error) {
+      console.log('Error in sendPasswordResetEmail:', error);
+      throw new UnprocessableEntityException();
+    }
   }
 }
