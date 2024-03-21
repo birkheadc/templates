@@ -7,7 +7,6 @@ import { Result } from '../../types/result/result';
 import api from '../../api';
 import { Session, SessionStatus } from '../../types/session/session';
 import { ResultMessage } from '@/types/result/resultMessage';
-import { UserContext } from '../user/UserContext';
 
 type Data = {
   session: Session

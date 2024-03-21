@@ -8,6 +8,7 @@ import { UpdatePreferencesRequest } from "../../types/requests/updatePreferences
 import { ResultMessage } from "../../types/result/resultMessage";
 import api from "../../api";
 import { SessionContext } from "../session/SessionContext";
+import useLanguage from "../../hooks/language/useLanguage";
 
 type Data = {
   user: User | undefined,
@@ -30,6 +31,13 @@ export const UserProvider = ({ children }: {  children: React.ReactNode}) => {
 
   const { session, logout, expire } = React.useContext(SessionContext);
   const [ user, setUser ] = React.useState<User | undefined>();
+
+  const { changeLanguage } = useLanguage();
+
+  React.useEffect(function changeLanguageOnUserChange() {
+    if (user == null) return;
+    changeLanguage(user.preferences.language);
+  }, [ user ]);
 
   React.useEffect(() => {
     (async function fetchUserWhenLogin() {
