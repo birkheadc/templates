@@ -127,7 +127,7 @@ Translation injection is slightly different in client and server components. `us
 
 I have introduced type safety to translations via `intl/messages/interface.ts`. All languages implement this interface, and `useRichTranslations` understands all the possible keys of this interface, so incorrect values are flagged by the TypeScript compiler, both in the language files, and in components trying to display translations.
 
-In other words, messages can be extended by simply adding them to `interface.ts`. The compiler will tell the developer to add those messages in the language files. `useRichTranslations` will also only accept values that are included in the interface.
+In other words, messages can be extended by simply adding them to `interface.ts`. The compiler will force the developer to add those messages in the language files. `useRichTranslations` will also only accept values that are included in the interface.
 
 ### Packages
 I use a few packages beyond what Next comes with out of the box.
