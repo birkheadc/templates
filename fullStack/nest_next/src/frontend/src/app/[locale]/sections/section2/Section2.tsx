@@ -14,9 +14,9 @@ export default function Section2(props: Section2Props): JSX.Element {
   const t = useRichTranslations('home.section2');
 
   return (
-    <Section className='bg-gradient-to-br from-primary-100 to-primary-50'>
+    <Section className='p-10 bg-gradient-to-br from-primary-100 to-primary-50'>
       <SectionHeader>{t('header')}</SectionHeader>
-      <SectionBody className='gap-20 lg:flex-row lg:items-start short:flex-row short:items-start'>
+      <SectionBody className='gap-20 short:gap-6 lg:flex-row lg:items-start short:flex-row short:items-start'>
         <p>{t('body')}</p>
         <Image className='max-w-full max-h-full' src={'https://picsum.photos/400/300'} alt={'random image'} height={300} width={400} />
       </SectionBody>
