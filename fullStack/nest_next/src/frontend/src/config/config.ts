@@ -2,12 +2,12 @@ import { FormValidationErrorMatchesCriteria } from "../types/formValidation/form
 
 export const validationConfig: ValidationConfig = {
   password: {
-    minLength: 8,
-    maxLength: 255
+    minLength: parseInt(process.env.NEXT_PUBLIC_PASSWORD_MIN_LENGTH ?? "0"),
+    maxLength: parseInt(process.env.NEXT_PUBLIC_PASSWORD_MAX_LENGTH ?? "0")
   },
   displayName: {
-    minLength: 1,
-    maxLength: 32,
+    minLength: parseInt(process.env.NEXT_PUBLIC_DISPLAY_NAME_MIN_LENGTH ?? "0"),
+    maxLength: parseInt(process.env.NEXT_PUBLIC_DISPLAY_NAME_MAX_LENGTH ?? "0"),
     match: {
       regexp: /^[a-zA-Z0-9]+$/,
       criteria: FormValidationErrorMatchesCriteria.ALPHANUMERIC

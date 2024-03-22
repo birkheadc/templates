@@ -67,7 +67,9 @@ Templates ( and email in general ) is always done through production, so templat
 ## Serverless Config
 My serverless configuration has gotten difficult to follow, so I'll explain it here before I forget.
 
-The `serverless` directory contains a script to seed the database after deploying (to AWS, not locally) and the data to be seeded (the data IS used both locally and on AWS)
+The `serverless` directory (not to be confused with `.serverless`, which is created by serverless when deploying locally) contains a script to seed the database after deploying (to AWS, not locally) and the data to be seeded (the data IS used both locally and on AWS)
+
+It also contains `sesEmailTemplates` which contains email templates and `index.mjs`, which declares how those templates should be deployed to AWS.
 
 `serverless.yml.custom` contains instructions for plugins to help streamline deployment.
 
@@ -104,12 +106,16 @@ Frontend deployment is done through AWS Amplify. For now this is done manually, 
     - Source address: `</^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>`
     - Target address: `/index.html`
     - Type: `200 (Rewrite)`
-  - From now on, every time there is a push to the repository, the app should update automatically.
+  - From now on, every time there is a push to the repository, the app should update automatically. Make sure to watch and make sure the build succeeds; it is easy to accidentally push with a typescript syntax compiler error that was overlooked, causing the rebuild to fail.
 
 ## Environment Variables
 The following Environment Variables need to be set up for the application to work. In Amplify, this is easy to do through the console.
 
 - NEXT_PUBLIC_BACKEND_URL
+- NEXT_PUBLIC_DISPLAY_NAME_MIN_LENGTH
+- NEXT_PUBLIC_DISPLAY_NAME_MAX_LENGTH
+- NEXT_PUBLIC_PASSWORD_MIN_LENGTH
+- NEXT_PUBLIC_PASSWORD_MAX_LENGTH
 
 ## Localization
 
