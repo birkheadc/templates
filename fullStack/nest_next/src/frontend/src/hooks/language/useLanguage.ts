@@ -16,10 +16,11 @@ export default function useLanguage(): { language: string, changeLanguage: (lang
     setLanguage(html.getAttribute('lang') ?? 'en');
   }, []);
 
-  const changeLanguage = (language: string) => {
+  const changeLanguage = (newLanguage: string) => {
+    if (newLanguage === language) return;
     let searchParamsString = '?';
     searchParams.forEach((value, key) => searchParamsString = searchParamsString.concat(`${key}=${value}&`));
-    router.push(pathname + searchParamsString, { locale: language });
+    router.push(pathname + searchParamsString, { locale: newLanguage });
   }
 
   return { language, changeLanguage }

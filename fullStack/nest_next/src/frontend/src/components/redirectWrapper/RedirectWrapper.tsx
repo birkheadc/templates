@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { SessionContext } from '../../contexts/session/SessionContext';
 import { SessionStatus } from '../../types/session/session';
-import { useRouter } from '../../navigation/navigation';
+import { usePathname, useRouter } from '../../navigation/navigation';
 
 type RedirectWrapperProps = {
   mode: 'includes' | 'excludes',
@@ -16,13 +16,14 @@ export default function RedirectWrapper(props: RedirectWrapperProps): JSX.Elemen
 
   const { statuses, mode, children, redirect } = props;
   const { session } = React.useContext(SessionContext);
+  const pathname = usePathname();
   const router = useRouter();
 
   React.useEffect(function redirectIfNotLoggedIn() {
     if (shouldRedirect(session.status, mode, statuses)) {
       router.push(redirect ?? '/');
-    }
-  }, [ statuses, mode, session, redirect ]);
+    } 
+  }, [ statuses, mode, session, redirect, pathname ]);
 
   return (
     <>

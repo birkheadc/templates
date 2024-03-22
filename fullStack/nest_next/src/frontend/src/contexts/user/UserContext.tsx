@@ -34,11 +34,6 @@ export const UserProvider = ({ children }: {  children: React.ReactNode}) => {
 
   const { changeLanguage } = useLanguage();
 
-  React.useEffect(function changeLanguageOnUserChange() {
-    if (user == null) return;
-    changeLanguage(user.preferences.language);
-  }, [ user ]);
-
   React.useEffect(() => {
     (async function fetchUserWhenLogin() {
       if (session.token == null) return;
@@ -49,6 +44,7 @@ export const UserProvider = ({ children }: {  children: React.ReactNode}) => {
         return;
       }
       setUser(result.body);
+      changeLanguage(result.body.preferences.language);
     })();
   }, [ session, logout ])
 
