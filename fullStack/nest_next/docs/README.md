@@ -102,10 +102,6 @@ Frontend deployment is done through AWS Amplify. For now this is done manually, 
       - Check again to make sure `AMPLIFY_MONOREPO_APP_ROOT` matches `appRoot` in `amplify.yml`
   - Save and Deploy
   - Go to Domain management to configure a custom domain
-  - Go to Rewrites and redirects. Add the following rule to make React's SPA routing work:
-    - Source address: `</^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>`
-    - Target address: `/index.html`
-    - Type: `200 (Rewrite)`
   - From now on, every time there is a push to the repository, the app should update automatically. Make sure to watch and make sure the build succeeds; it is easy to accidentally push with a typescript syntax compiler error that was overlooked, causing the rebuild to fail.
 
 ## Environment Variables
