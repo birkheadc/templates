@@ -5,11 +5,11 @@ import { UserPreferences } from "./userPreferences.entity";
 import { EmailAddress } from "../../types/emailAddress/emailAddress";
  
 export class User {
-  id: string;
-  emailAddress: EmailAddress;
-  password: string;
-  displayName: string;
-  preferences: UserPreferences;
+  id: string = '';
+  emailAddress: EmailAddress = '';
+  password: string = '';
+  displayName: string = '';
+  preferences: UserPreferences = new UserPreferences();
 
   static fromDynamoDBObject(data: any): User {
     const user = new User();

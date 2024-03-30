@@ -1,7 +1,7 @@
 import { CreateUserRequestDto } from "../dtos/create-user.dto";
 
 export class UserPreferences {
-  language: string;
+  language: string = '';
 
   static fromDynamoDBObject(data: any): UserPreferences {
     const userPreferences = new UserPreferences();
