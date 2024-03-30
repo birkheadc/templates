@@ -30,7 +30,7 @@ export class UsersService {
   }
 
   async changePassword(user: User, request: ChangePasswordRequestDto): Promise<User> {
-    if (compareSync(request.password, user.password) === false) throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    if (compareSync(request.password, user.password) === false) throw new UnauthorizedException();
     const hash = hashSync(request.newPassword, 10);
     return await this.repository.putUser({ ...user, password: hash });
   }
@@ -47,7 +47,6 @@ export class UsersService {
   async verifyUserEmailAddress(request: VerifyEmailRequestDto): Promise<EmailAddress> {
     const emailAddress = await this.mailService.verifyCode(request.code);
     const user = await this.getUserByEmailAddress(emailAddress);
-    console.log({ request, emailAddress, user });
     if (user != null) {
       throw new UnauthorizedException();
     }

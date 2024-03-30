@@ -145,3 +145,9 @@ I use a few packages beyond what Next comes with out of the box.
 
 - react-hook-form
   - form framework, especially useful for validating form fields
+
+  # Testing
+
+  At the moment, this template does not have much testing. I have created a few tests in the backend UsersService just to warm up for testing in my current project, and work out how testing fits into the stack.
+
+  I have plans to go back and test more if I come back to this template, or work testing in from the start if I move onto a new template.
