@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{DE172844-D198-443F-B8F3-42115E5C57F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vite_aspnetcore_template_api", "vite_aspnetcore_template_api", "{520966AD-8E3B-45BF-A00D-2008070DA36A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViteAspNetCoreTemplateAPI", "ViteAspNetCoreTemplateAPI", "{292FF120-D115-4743-B240-DC5300D2D01A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5697F88C-B631-49E9-A382-70D001E5E90D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViteAspNetCoreTemplateAPI", "apps\vite_aspnetcore_template_api\ViteAspNetCoreTemplateAPI\src\ViteAspNetCoreTemplateAPI\ViteAspNetCoreTemplateAPI.csproj", "{40336AC5-FF61-4617-8105-C4863DEB4BA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6B9F2EA8-DBDE-43A7-86BE-3A70F885285F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViteAspNetCoreTemplateAPI.Tests", "apps\vite_aspnetcore_template_api\ViteAspNetCoreTemplateAPI\test\ViteAspNetCoreTemplateAPI.Tests\ViteAspNetCoreTemplateAPI.Tests.csproj", "{118B6BFC-24E4-4260-996B-DF8F33756730}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40336AC5-FF61-4617-8105-C4863DEB4BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40336AC5-FF61-4617-8105-C4863DEB4BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40336AC5-FF61-4617-8105-C4863DEB4BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40336AC5-FF61-4617-8105-C4863DEB4BA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{118B6BFC-24E4-4260-996B-DF8F33756730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118B6BFC-24E4-4260-996B-DF8F33756730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118B6BFC-24E4-4260-996B-DF8F33756730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{118B6BFC-24E4-4260-996B-DF8F33756730}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{520966AD-8E3B-45BF-A00D-2008070DA36A} = {DE172844-D198-443F-B8F3-42115E5C57F5}
+		{292FF120-D115-4743-B240-DC5300D2D01A} = {520966AD-8E3B-45BF-A00D-2008070DA36A}
+		{5697F88C-B631-49E9-A382-70D001E5E90D} = {292FF120-D115-4743-B240-DC5300D2D01A}
+		{40336AC5-FF61-4617-8105-C4863DEB4BA2} = {5697F88C-B631-49E9-A382-70D001E5E90D}
+		{6B9F2EA8-DBDE-43A7-86BE-3A70F885285F} = {292FF120-D115-4743-B240-DC5300D2D01A}
+		{118B6BFC-24E4-4260-996B-DF8F33756730} = {6B9F2EA8-DBDE-43A7-86BE-3A70F885285F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDFE13F6-22F1-40E2-9E6C-9F889CCB07C4}
+	EndGlobalSection
+EndGlobal
