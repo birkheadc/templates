@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViteAspNetCoreTemplateAPI", "ViteAspNetCoreTemplateAPI", "{449357EE-775F-46BD-A653-EAFEA51EF778}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{36EF164D-2EE0-471C-BB4E-5B3FA81AC9CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViteAspNetCoreTemplateAPI", "ViteAspNetCoreTemplateAPI\src\ViteAspNetCoreTemplateAPI\ViteAspNetCoreTemplateAPI.csproj", "{81AB280A-3626-4377-84E8-D9086773DC6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E9A45293-3851-4565-A0B7-93EF53D9914E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViteAspNetCoreTemplateAPI.Tests", "ViteAspNetCoreTemplateAPI\test\ViteAspNetCoreTemplateAPI.Tests\ViteAspNetCoreTemplateAPI.Tests.csproj", "{B526091E-9021-464D-A91D-AA3417C4C607}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81AB280A-3626-4377-84E8-D9086773DC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81AB280A-3626-4377-84E8-D9086773DC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81AB280A-3626-4377-84E8-D9086773DC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81AB280A-3626-4377-84E8-D9086773DC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B526091E-9021-464D-A91D-AA3417C4C607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B526091E-9021-464D-A91D-AA3417C4C607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B526091E-9021-464D-A91D-AA3417C4C607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B526091E-9021-464D-A91D-AA3417C4C607}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36EF164D-2EE0-471C-BB4E-5B3FA81AC9CA} = {449357EE-775F-46BD-A653-EAFEA51EF778}
+		{81AB280A-3626-4377-84E8-D9086773DC6E} = {36EF164D-2EE0-471C-BB4E-5B3FA81AC9CA}
+		{E9A45293-3851-4565-A0B7-93EF53D9914E} = {449357EE-775F-46BD-A653-EAFEA51EF778}
+		{B526091E-9021-464D-A91D-AA3417C4C607} = {E9A45293-3851-4565-A0B7-93EF53D9914E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12B8410C-A3BB-4C5E-B6B4-7DFEC33BB868}
+	EndGlobalSection
+EndGlobal
