@@ -27,6 +27,8 @@ I'm going to aim for higher test coverage, especially in front end components, i
 
 ## About the Template
 Todo: Detail packages, frameworks, and design decisions.
+### Development
+All of my templates are in one large monorepo, but this template is meant to be used in 2 repos, one for the front and one for the API. As such, I have configured it under the expectation that it be run in two separate VSCode instances. One open to `vite_aspnetcore_template_api`, the other to `vite_aspnetcore_template_front`.
 
 ## How to Use
 Todo: Detail how to create a project with this template.
