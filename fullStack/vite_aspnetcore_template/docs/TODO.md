@@ -1,2 +1,11 @@
 # Todo
-- Change API to target net8.0
+- Learn and build integration test (api)
+- Learn vite and build the front end
+- Introduce Storybook and test a component
+- Write a more complicated system that uses an in-memory DB
+- Create tests for that system
+- Create E2E test for that system
+- Migrate to a real database / EF
+- Create new tests for the system
+- Create new E2E test for the system that works with a real database
+- Introduce 0Auth2.0

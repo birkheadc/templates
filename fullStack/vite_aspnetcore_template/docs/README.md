@@ -25,6 +25,19 @@ Rather than attempting to replicate the entire cloud stack locally when developi
 ### Testing
 I'm going to aim for higher test coverage, especially in front end components, integration, and e2e. I mean it this time.
 
+#### Unit Testing
+Unit Testing is pretty straightforward.
+
+For the api, most classes are covered by Unit Tests as long as the test wouldn't be trivial. 
+
+The frontend is a little more interesting. I plan on introducing Storybook for designing and testing components in isolation.
+
+#### Integration Testing
+It is sometimes difficult to draw the line between Integration and E2E testing. For this template, only the api will have Integration Testing. Integration Testing will consist of all the logic from receiving a request, up to but not including interacting with a real database. I will mock the database.
+
+#### E2E Testing
+E2E Testing, then, will involve creating Testing Containers with as much of the tech stack as possible. The tests will operate the frontend, and the entire application will run, including an actual database in the Testing Container. I might have all of this done in the cloud.
+
 ## About the Template
 Todo: Detail packages, frameworks, and design decisions.
 ### Development
