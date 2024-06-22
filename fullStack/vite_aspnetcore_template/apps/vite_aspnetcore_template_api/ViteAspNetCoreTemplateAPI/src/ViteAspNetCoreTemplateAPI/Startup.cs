@@ -1,4 +1,7 @@
-﻿using ViteAspNetCoreTemplateAPI.Services.Sums;
+﻿using ViteAspNetCoreTemplateAPI.Converters.Books;
+using ViteAspNetCoreTemplateAPI.Repositories.Books;
+using ViteAspNetCoreTemplateAPI.Services.Books;
+using ViteAspNetCoreTemplateAPI.Services.Sums;
 
 namespace ViteAspNetCoreTemplateAPI;
 
@@ -15,6 +18,10 @@ public class Startup
   public void ConfigureServices(IServiceCollection services)
   {
     services.AddScoped<ISumsService, SumsService>();
+
+    services.AddScoped<IBooksService, BooksService>();
+    services.AddScoped<IBooksRepository, BooksRepository>();
+    services.AddScoped<IBooksConverter, BooksConverter>();
 
     services.AddControllers();
   }
