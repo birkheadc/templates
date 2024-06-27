@@ -1,5 +1,5 @@
 # Todo
-- Learn and build integration test (api)
+- ~~Learn and build integration test (api)~~
 - Learn vite and build the front end
 - Introduce Storybook and test a component
 - Write a more complicated system that uses an in-memory DB

@@ -10,5 +10,10 @@
   "configuration": "Release",
   "s3-prefix": "ViteAspNetCoreTemplateAPI/",
   "template": "serverless.template",
-  "template-parameters": ""
+  "template-parameters": "",
+  "stack-name": "ViteAspNetCoreTemplateAPI",
+  "s3-bucket:": "vite_aspnetcore_template_api_build",
+  "resolve-s3": true,
+  "framework": "dotnet8",
+  "persist-config-file": true
 }
