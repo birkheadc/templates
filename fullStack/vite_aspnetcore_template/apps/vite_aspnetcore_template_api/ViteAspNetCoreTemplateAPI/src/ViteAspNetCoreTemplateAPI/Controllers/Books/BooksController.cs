@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ViteAspNetCoreTemplateAPI.Converters.Books;
 using ViteAspNetCoreTemplateAPI.Dtos.Books;
 using ViteAspNetCoreTemplateAPI.Entities.Books;
 using ViteAspNetCoreTemplateAPI.Services.Books;
@@ -12,12 +13,17 @@ namespace ViteAspNetCoreTemplateAPI.Controllers.Books;
 
 [ApiController]
 [Route("books")]
-public class BooksController(IBooksService service)
+public class BooksController(IBooksService service, IBooksConverter converter)
 {
   private readonly IBooksService _service = service;
+  private readonly IBooksConverter _converter = converter;
 
-  // [HttpGet]
-  // public async Task<IEnumerable<BookDto>> GetAll() { }
+  [HttpGet]
+  public async Task<IEnumerable<BookDto>> GetAll()
+  {
+    var books = await _service.GetAll();
+    return books.Select(_converter.ToDto);
+  }
 
   // [HttpGet]
   // [Route("/{id}")]

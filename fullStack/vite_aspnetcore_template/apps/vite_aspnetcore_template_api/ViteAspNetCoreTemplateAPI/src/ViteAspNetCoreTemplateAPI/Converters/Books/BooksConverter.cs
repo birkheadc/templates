@@ -49,4 +49,17 @@ public class BooksConverter : IBooksConverter
       };
     return newBook;
   }
+
+  public BookDto ToDto(Book book)
+  {
+    BookDto dto =
+      new()
+      {
+        Id = book.Id,
+        Title = book.Title,
+        Author = book.Author,
+        Pages = book.Pages
+      };
+    return dto;
+  }
 }
