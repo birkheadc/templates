@@ -7,15 +7,17 @@ const enTranslations: ITranslations = {
         CoreLinks: {
           home: "home",
           about: "about",
-          contact: "contact"
+          contact: "contact",
         },
         SessionLinks: {
           login: "login",
-          register: "register"
-        }
-      }
-    }
-  }
-}
+          register: "register",
+        },
+        leftPanelTitle: "navigation",
+        rightPanelTitle: "profile",
+      },
+    },
+  },
+};
 
 export default enTranslations;

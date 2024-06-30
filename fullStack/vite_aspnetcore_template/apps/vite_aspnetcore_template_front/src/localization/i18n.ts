@@ -4,15 +4,16 @@ import enTranslations from "./translations/en/enTranslations";
 
 const resources = {
   en: {
-    enTranslations
-  }
-}
+    translation: enTranslations,
+  },
+};
 
 i18n.use(initReactI18next).init({
+  fallbackLng: "en",
   resources,
   interpolation: {
-    escapeValue: false
-  }
-})
+    escapeValue: false,
+  },
+});
 
 export default i18n;

@@ -14,10 +14,13 @@ function PrimaryNavLink({
   return (
     <NavLink
       className={({ isActive, isPending }) =>
-        mergeClass("hocus:text-secondary-50 text-primary-700", {
-          "scale-125": isActive,
-          "background-primary-100": isPending,
-        })
+        mergeClass(
+          "hocus:text-secondary-700 hocus:underline text-primary-700 flex gap-2 items-center",
+          {
+            "text-secondary-50 pointer-events-none": isActive,
+            "background-primary-100": isPending,
+          },
+        )
       }
       to={to}
     >

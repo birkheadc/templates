@@ -44,7 +44,19 @@ const neutral = {
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        nav: "4rem",
+        "svh-nav": "calc(100svh - 4rem)",
+      },
+      minHeight: {
+        "svh-nav": "calc(100svh - 4rem)",
+        "lvh-nav": "calc(100lvh - 4rem)",
+      },
+      boxShadow: {
+        "3xl": "1px 1px 5px black",
+      },
+    },
   },
   plugins: [
     plugin(function ({ addVariant }) {

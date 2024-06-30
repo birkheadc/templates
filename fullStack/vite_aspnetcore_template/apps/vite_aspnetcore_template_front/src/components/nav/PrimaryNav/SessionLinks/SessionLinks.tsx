@@ -1,13 +1,20 @@
-import { useTranslation } from "react-i18next";
+import useKeyedTranslation from "../../../../hooks/useKeyedTranslation/useKeyedTranslation";
 import PrimaryNavLink from "../PrimaryNavLink/PrimaryNavLink";
+import { CircleUserIcon, LogInIcon } from "lucide-react";
 
 function SessionLinks(): JSX.Element | null {
-  const { t } = useTranslation("components.nav.PrimaryNav.SessionLinks");
+  const { t } = useKeyedTranslation("components.nav.PrimaryNav.SessionLinks");
 
   return (
     <>
-      <PrimaryNavLink to={"/login"}>{t("login")}</PrimaryNavLink>
-      <PrimaryNavLink to={"/register"}>{t("register")}</PrimaryNavLink>
+      <PrimaryNavLink to={"/login"}>
+        <LogInIcon size={"1rem"} />
+        {t("login")}
+      </PrimaryNavLink>
+      <PrimaryNavLink to={"/register"}>
+        <CircleUserIcon size={"1rem"} />
+        {t("register")}
+      </PrimaryNavLink>
     </>
   );
 }

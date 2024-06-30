@@ -1,14 +1,24 @@
-import { useTranslation } from "react-i18next";
 import PrimaryNavLink from "../PrimaryNavLink/PrimaryNavLink";
+import { AtSignIcon, BookAIcon, HomeIcon } from "lucide-react";
+import useKeyedTranslation from "../../../../hooks/useKeyedTranslation/useKeyedTranslation";
 
 function CoreLinks(): JSX.Element | null {
-  const { t } = useTranslation("components.nav.PrimaryNav.CoreLinks");
+  const { t } = useKeyedTranslation("components.nav.PrimaryNav.CoreLinks");
 
   return (
     <>
-      <PrimaryNavLink to={"/"}>{t("home")}</PrimaryNavLink>
-      <PrimaryNavLink to={"/about"}>{t("about")}</PrimaryNavLink>
-      <PrimaryNavLink to={"/contact"}>{t("contact")}</PrimaryNavLink>
+      <PrimaryNavLink to={"/"}>
+        <HomeIcon size={"1rem"} />
+        {t("home")}
+      </PrimaryNavLink>
+      <PrimaryNavLink to={"/about"}>
+        <BookAIcon size={"1rem"} />
+        {t("about")}
+      </PrimaryNavLink>
+      <PrimaryNavLink to={"/contact"}>
+        <AtSignIcon size={"1rem"} />
+        {t("contact")}
+      </PrimaryNavLink>
     </>
   );
 }
