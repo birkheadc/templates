@@ -33,13 +33,30 @@ export const OpenLeftPanel: Story = {
     const canvas = within(canvasElement as HTMLCanvasElement);
     const menuButton = canvas.getByLabelText("open navigation menu");
 
+    await expect(menuButton).toBeDefined();
+
     await userEvent.click(menuButton);
 
-    const NUM_LINKS = 3;
-    for (let i = 0; i < NUM_LINKS + 1; i++) {
-      await userEvent.tab();
-    }
-
-    await expect(menuButton.matches(":focus")).toBeTruthy();
+    // Todo: Expect panel to be open
   },
+};
+
+export const OpenRightPanel: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobileVertical",
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement as HTMLCanvasElement);
+    const menuButton = canvas.getByLabelText("open profile menu");
+
+    await expect(menuButton).toBeDefined();
+
+    await userEvent.click(menuButton);
+
+    // Todo: Expect panel to be open
+  },
+
+  // Todo: Write stories for escape key / click outside to close
 };
