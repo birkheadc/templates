@@ -20,12 +20,16 @@ function NavPanel({
   return (
     <>
       <button
+        aria-expanded={show}
+        aria-controls={`${title}-menu`}
+        aria-label={`open ${title} menu`}
         className="lg:hidden hocus:text-secondary-700 text-primary-700"
         onClick={toggleShow}
       >
-        {show ? <XIcon /> : <MenuIcon />}
+        {show ? <XIcon aria-hidden /> : <MenuIcon aria-hidden />}
       </button>
       <div
+        id={`${title}-menu`}
         className={mergeClass(
           "px-16 py-4 lg:p-4 flex flex-col lg:flex-row fixed lg:border-0 h-svh-nav lg:h-fit border-primary-700 transition-transform bottom-0 bg-primary-200 lg:bg-primary-300 lg:relative gap-4",
           {
