@@ -21,37 +21,49 @@ function NavPanel({
   React.useEffect(
     function manageEventListeners() {
       const escapeKeyListener = (event: KeyboardEvent) => {
-        console.log("escapeKeyListener");
-        if (event.key === "escape") {
+        if (event.key === "Escape") {
           toggleShow();
         }
       };
 
       const clickOutsideListener = (event: PointerEvent) => {
-        console.log("click!");
-        console.log(event);
+        const elements = document.elementsFromPoint(
+          event.clientX,
+          event.clientY
+        );
+        if (
+          !elements.some((element) => element.id === `${title}-menu`) &&
+          !elements.some(
+            (element) => element.ariaLabel === `toggle ${title} menu`
+          )
+        ) {
+          toggleShow();
+        }
       };
 
       if (show) {
-        window.addEventListener("keypress", escapeKeyListener);
+        window.addEventListener("keydown", escapeKeyListener);
         window.addEventListener("pointerdown", clickOutsideListener);
       }
 
       return () => {
-        window.removeEventListener("keypress", escapeKeyListener);
+        window.removeEventListener("keydown", escapeKeyListener);
         window.removeEventListener("pointerdown", clickOutsideListener);
       };
     },
-    [show, toggleShow],
+    [show, title, toggleShow]
   );
 
   return (
-    <FocusTrap active={show}>
-      <div>
+    <FocusTrap
+      active={show}
+      focusTrapOptions={{ clickOutsideDeactivates: true }}
+    >
+      <div role="navigation">
         <button
           aria-expanded={show}
           aria-controls={`${title}-menu`}
-          aria-label={`open ${title} menu`}
+          aria-label={`toggle ${title} menu`}
           className="lg:hidden hocus:text-secondary-700 text-primary-700"
           onClick={toggleShow}
         >
@@ -60,16 +72,12 @@ function NavPanel({
         <div
           id={`${title}-menu`}
           className={mergeClass(
-            "px-16 py-4 lg:p-4 flex flex-col lg:flex-row fixed lg:border-0 h-svh-nav lg:h-fit border-primary-700 transition-transform bottom-0 bg-primary-200 lg:bg-primary-300 lg:relative gap-4",
-            {
-              "-translate-x-full lg:translate-x-0": !show && side === "left",
-            },
-            {
-              "translate-x-full lg:translate-x-0": !show && side === "right",
-            },
-            { "left-0": side === "left" },
-            { "right-0": side === "right" },
-            { "hidden lg:flex": !show },
+            "px-16 py-4 lg:p-4 flex lg:flex flex-col lg:flex-row fixed lg:border-0 h-svh-nav lg:h-fit border-primary-700 transition-transform bottom-0 bg-primary-200 lg:bg-primary-300 lg:relative gap-4 lg:translate-x-0",
+            side === "left"
+              ? { "-translate-x-full": !show }
+              : { "translate-x-full": !show },
+            side === "left" ? "left-0" : "right-0",
+            { hidden: !show }
           )}
         >
           <h2 className="text-center lg:hidden" tabIndex={-1}>

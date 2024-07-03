@@ -8,30 +8,7 @@ import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import withI18next from "./withI18next";
 
 import "../src/styles/main.css";
-
-const viewports = {
-  mobileVertical: {
-    name: "Mobile Portrait",
-    styles: {
-      width: "360px",
-      height: "800px",
-    },
-  },
-  mobileHorizontal: {
-    name: "Mobile Landscape",
-    styles: {
-      width: "800px",
-      height: "360px",
-    },
-  },
-  full: {
-    name: "Full Screen",
-    styles: {
-      width: "100%",
-      height: "100%",
-    },
-  },
-};
+import { CUSTOM_VIEWPORTS } from "./customViewports";
 
 const preview: Preview = {
   parameters: {
@@ -48,9 +25,9 @@ const preview: Preview = {
     viewport: {
       viewports: {
         ...MINIMAL_VIEWPORTS,
-        ...viewports,
+        ...CUSTOM_VIEWPORTS,
       },
-      defaultViewport: "full",
+      defaultViewport: "large",
     },
   },
   decorators: [

@@ -9,5 +9,3 @@ API Integration
 e2e Tests
 
 Dark / Light mode switch
-
-focus trap menus
