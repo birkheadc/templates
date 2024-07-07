@@ -55,7 +55,6 @@
     "storybook-addon-remix-react-router": "^3.0.0",
     "storybook-i18n": "^3.0.1",
     "tailwindcss": "^3.4.4",
-    "tw-colors": "^3.3.1",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
   }
