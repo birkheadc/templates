@@ -15,9 +15,10 @@ function PrimaryNavLink({
     <NavLink
       className={({ isActive, isPending }) =>
         cn(
-          "hocus:text-secondary-700 hocus:underline text-primary-700 flex gap-2 items-center",
+          "hocus:text-secondary-600 hocus:dark:text-secondary-300 border-b-2 border-transparent-full hocus:border-secondary-600 dark:hocus:border-secondary-300 text-primary-900 flex gap-2 items-center dark:text-primary-50",
           {
-            "text-secondary-50 pointer-events-none": isActive,
+            "font-bold text-primary-700 dark:text-primary-300 border-primary-700 dark:border-primary-300 pointer-events-none":
+              isActive,
             "background-primary-100": isPending,
           }
         )

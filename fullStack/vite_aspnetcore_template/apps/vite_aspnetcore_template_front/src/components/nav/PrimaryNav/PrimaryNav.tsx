@@ -36,8 +36,8 @@ function PrimaryNav(): JSX.Element | null {
   };
 
   return (
-    <nav className="w-full border-b-2 h-nav bg-primary-300 border-primary-600">
-      <div className="flex flex-row items-center justify-between h-full px-4 m-auto max-w-7xl">
+    <nav className="sticky top-0 w-full border-b-2 h-nav bg-primary-300 border-primary-600 dark:bg-primary-900 dark:border-primary-900">
+      <div className="sticky flex flex-row items-center justify-between h-full px-4 m-auto max-w-7xl">
         <NavPanel
           side="left"
           show={showLeftPanel}

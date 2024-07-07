@@ -4,8 +4,12 @@ import animatecss from "tailwindcss-animate";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "selector",
   theme: {
     colors: {
+      transparent: {
+        full: "rgba(0,0,0,0)",
+      },
       primary: {
         50: "#f1ebf8",
         100: "#e2d6f1",

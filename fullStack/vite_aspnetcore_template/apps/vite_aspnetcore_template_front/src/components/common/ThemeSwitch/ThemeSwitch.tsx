@@ -13,9 +13,15 @@ function ThemeSwitch(): JSX.Element | null {
     <div>
       <Switch checked={theme === "dark"} onCheckedChange={handleCheckedChange}>
         {theme === "dark" ? (
-          <MoonIcon className="p-0.5 text-primary-400" size="100%" />
+          <MoonIcon
+            className="p-0.5 text-primary-700 dark:text-primary-200"
+            size="100%"
+          />
         ) : (
-          <SunIcon className="p-0.5 text-primary-400" size="100%" />
+          <SunIcon
+            className="p-0.5 text-primary-700 dark:text-primary-200"
+            size="100%"
+          />
         )}
       </Switch>
     </div>
