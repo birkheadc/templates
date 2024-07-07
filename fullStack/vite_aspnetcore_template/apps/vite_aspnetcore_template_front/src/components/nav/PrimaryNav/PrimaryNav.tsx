@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import CoreLinks from "./CoreLinks/CoreLinks";
-import SessionLinks from "./SessionLinks/SessionLinks";
-import NavPanel from "./NavPanel/NavPanel";
 import { useLocation } from "react-router-dom";
-import useKeyedTranslation from "../../../hooks/useKeyedTranslation/useKeyedTranslation";
+import ThemeSwitch from "@/components/common/ThemeSwitch/ThemeSwitch";
+import useKeyedTranslation from "@/hooks/useKeyedTranslation/useKeyedTranslation";
+import CoreLinks from "@/components/nav/PrimaryNav/CoreLinks/CoreLinks";
+import NavPanel from "@/components/nav/PrimaryNav/NavPanel/NavPanel";
+import SessionLinks from "@/components/nav/PrimaryNav/SessionLinks/SessionLinks";
 
 function PrimaryNav(): JSX.Element | null {
   const { t } = useKeyedTranslation("components.nav.PrimaryNav");
@@ -21,7 +22,7 @@ function PrimaryNav(): JSX.Element | null {
 
       (document.activeElement as HTMLElement).blur();
     },
-    [location],
+    [location]
   );
 
   const toggleShowLeft = () => {
@@ -52,6 +53,7 @@ function PrimaryNav(): JSX.Element | null {
           title={t("rightPanelTitle")}
         >
           <SessionLinks />
+          <ThemeSwitch />
         </NavPanel>
       </div>
     </nav>

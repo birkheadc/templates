@@ -1,7 +1,7 @@
 import * as React from "react";
-import mergeClass from "../../../../utils/mergeClass";
 import { MenuIcon, XIcon } from "lucide-react";
 import FocusTrap from "focus-trap-react";
+import mergeClass from "@/utils/mergeClass";
 
 type NavPanelProps = {
   children?: React.ReactNode;

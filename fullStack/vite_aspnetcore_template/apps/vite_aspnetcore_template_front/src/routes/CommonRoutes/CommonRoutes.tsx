@@ -1,9 +1,9 @@
+import AboutPage from "@/components/pages/AboutPage/AboutPage";
+import ContactPage from "@/components/pages/ContactPage/ContactPage";
+import HomePage from "@/components/pages/HomePage/HomePage";
+import LoginPage from "@/components/pages/LoginPage/LoginPage";
+import RegisterPage from "@/components/pages/RegisterPage/RegisterPage";
 import { Route } from "react-router-dom";
-import HomePage from "../../components/pages/HomePage/HomePage";
-import ContactPage from "../../components/pages/ContactPage/ContactPage";
-import AboutPage from "../../components/pages/AboutPage/AboutPage";
-import LoginPage from "../../components/pages/LoginPage/LoginPage";
-import RegisterPage from "../../components/pages/RegisterPage/RegisterPage";
 
 const CommonRoutes = (
   <>

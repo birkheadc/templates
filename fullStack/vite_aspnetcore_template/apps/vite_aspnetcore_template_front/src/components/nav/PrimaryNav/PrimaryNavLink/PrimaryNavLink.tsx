@@ -1,6 +1,6 @@
+import mergeClass from "@/utils/mergeClass";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import mergeClass from "../../../../utils/mergeClass";
 
 type PrimaryNavLinkProps = {
   to: string;
@@ -19,7 +19,7 @@ function PrimaryNavLink({
           {
             "text-secondary-50 pointer-events-none": isActive,
             "background-primary-100": isPending,
-          },
+          }
         )
       }
       to={to}

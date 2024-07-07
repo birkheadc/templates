@@ -1,6 +1,6 @@
-import PrimaryNavLink from "../PrimaryNavLink/PrimaryNavLink";
+import PrimaryNavLink from "@/components/nav/PrimaryNav/PrimaryNavLink/PrimaryNavLink";
+import useKeyedTranslation from "@/hooks/useKeyedTranslation/useKeyedTranslation";
 import { AtSignIcon, BookAIcon, HomeIcon } from "lucide-react";
-import useKeyedTranslation from "../../../../hooks/useKeyedTranslation/useKeyedTranslation";
 
 function CoreLinks(): JSX.Element | null {
   const { t } = useKeyedTranslation("components.nav.PrimaryNav.CoreLinks");

@@ -1,4 +1,4 @@
-import ITranslations from "../translationsInterface";
+import ITranslations from "@/localization/translations/translationsInterface";
 
 const enTranslations: ITranslations = {
   components: {
