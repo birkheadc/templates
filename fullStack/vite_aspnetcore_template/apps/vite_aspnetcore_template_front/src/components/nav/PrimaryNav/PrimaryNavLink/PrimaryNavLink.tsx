@@ -1,4 +1,4 @@
-import mergeClass from "@/utils/mergeClass";
+import { cn } from "@/utils";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -14,7 +14,7 @@ function PrimaryNavLink({
   return (
     <NavLink
       className={({ isActive, isPending }) =>
-        mergeClass(
+        cn(
           "hocus:text-secondary-700 hocus:underline text-primary-700 flex gap-2 items-center",
           {
             "text-secondary-50 pointer-events-none": isActive,

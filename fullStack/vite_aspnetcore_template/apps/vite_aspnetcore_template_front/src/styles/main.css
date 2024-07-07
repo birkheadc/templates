@@ -1,3 +1,7 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
+  
+html {
+  color: hsl(var(--twc-neutral-900));
+}
