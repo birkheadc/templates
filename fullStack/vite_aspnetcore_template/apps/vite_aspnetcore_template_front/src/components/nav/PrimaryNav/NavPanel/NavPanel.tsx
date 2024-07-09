@@ -64,7 +64,7 @@ function NavPanel({
           aria-expanded={show}
           aria-controls={`${title}-menu`}
           aria-label={`toggle ${title} menu`}
-          className="lg:hidden hocus:text-secondary-700 text-primary-700"
+          className="lg:hidden hocus:text-secondary-200 text-neutral-50"
           onClick={toggleShow}
         >
           {show ? <XIcon aria-hidden /> : <MenuIcon aria-hidden />}
@@ -72,7 +72,7 @@ function NavPanel({
         <div
           id={`${title}-menu`}
           className={cn(
-            "px-16 py-4 lg:py-0 flex lg:flex flex-col lg:flex-row fixed lg:border-0 h-svh-nav lg:h-fit border-primary-700 bottom-0 bg-primary-200 lg:bg-primary-300 lg:relative gap-4 lg:translate-x-0 dark:bg-primary-900",
+            "px-16 py-4 lg:py-0 flex lg:flex flex-col lg:flex-row fixed lg:border-0 h-svh-nav lg:h-fit border-primary-700 bottom-0 bg-primary-800 lg:bg-transparent-full lg:relative gap-4 lg:translate-x-0",
             side === "left"
               ? { "-translate-x-full": !show }
               : { "translate-x-full": !show },
@@ -80,7 +80,10 @@ function NavPanel({
             { hidden: !show }
           )}
         >
-          <h2 className="text-center lg:hidden" tabIndex={-1}>
+          <h2
+            className="text-lg font-bold text-center lg:hidden text-neutral-50"
+            tabIndex={-1}
+          >
             {title}
           </h2>
           {children}
