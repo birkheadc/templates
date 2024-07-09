@@ -31,6 +31,8 @@ export const OpenLeftPanel: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement as HTMLCanvasElement);
+    await expect(canvasElement.clientWidth).toBe(360);
+
     const menuButton = canvas.getByLabelText("toggle navigation menu");
 
     await expect(menuButton).toBeDefined();

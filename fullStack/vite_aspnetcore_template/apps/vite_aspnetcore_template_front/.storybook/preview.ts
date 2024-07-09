@@ -1,14 +1,15 @@
 import { Preview, ReactRenderer } from "@storybook/react";
 import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { withThemeByClassName } from "@storybook/addon-themes";
 import {
   reactRouterParameters,
   withRouter,
 } from "storybook-addon-remix-react-router";
-import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import withI18next from "./withI18next";
 
-import "../src/styles/main.css";
 import { CUSTOM_VIEWPORTS } from "./customViewports";
+
+import "../src/styles/main.css";
 
 const preview: Preview = {
   parameters: {
@@ -33,13 +34,12 @@ const preview: Preview = {
   decorators: [
     withI18next,
     withRouter,
-    withThemeByDataAttribute<ReactRenderer>({
+    withThemeByClassName<ReactRenderer>({
       themes: {
         light: "light",
         dark: "dark",
       },
       defaultTheme: "light",
-      attributeName: "data-theme",
     }),
   ],
 };

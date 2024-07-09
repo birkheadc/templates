@@ -72,7 +72,7 @@ function NavPanel({
         <div
           id={`${title}-menu`}
           className={cn(
-            "px-16 py-4 lg:p-4 flex lg:flex flex-col lg:flex-row fixed lg:border-0 h-svh-nav lg:h-fit border-primary-700 bottom-0 bg-primary-200 lg:bg-primary-300 lg:relative gap-4 lg:translate-x-0 dark:bg-primary-900",
+            "px-16 py-4 lg:py-0 flex lg:flex flex-col lg:flex-row fixed lg:border-0 h-svh-nav lg:h-fit border-primary-700 bottom-0 bg-primary-200 lg:bg-primary-300 lg:relative gap-4 lg:translate-x-0 dark:bg-primary-900",
             side === "left"
               ? { "-translate-x-full": !show }
               : { "translate-x-full": !show },
